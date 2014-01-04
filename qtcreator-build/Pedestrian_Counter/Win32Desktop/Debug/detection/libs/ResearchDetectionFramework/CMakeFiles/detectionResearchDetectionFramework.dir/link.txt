@@ -1,0 +1,2 @@
+C:\TDM-GCC-32\bin\ar.exe cr libdetectionResearchDetectionFramework.a  CMakeFiles/detectionResearchDetectionFramework.dir/src/ResearchDetectionFramework.cpp.obj
+C:\TDM-GCC-32\bin\ranlib.exe libdetectionResearchDetectionFramework.a

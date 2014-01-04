@@ -1,0 +1,2 @@
+C:\TDM-GCC-32\bin\ar.exe cr libdetectionPeopleCounter.a  CMakeFiles/detectionPeopleCounter.dir/src/PeopleCounter.cpp.obj
+C:\TDM-GCC-32\bin\ranlib.exe libdetectionPeopleCounter.a

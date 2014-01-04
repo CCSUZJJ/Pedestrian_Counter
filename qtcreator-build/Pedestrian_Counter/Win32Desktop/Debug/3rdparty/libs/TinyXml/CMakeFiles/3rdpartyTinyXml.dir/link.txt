@@ -1,0 +1,2 @@
+C:\TDM-GCC-32\bin\ar.exe cr lib3rdpartyTinyXml.a  CMakeFiles/3rdpartyTinyXml.dir/src/tinystr.cpp.obj CMakeFiles/3rdpartyTinyXml.dir/src/tinyxml.cpp.obj CMakeFiles/3rdpartyTinyXml.dir/src/tinyxmlerror.cpp.obj CMakeFiles/3rdpartyTinyXml.dir/src/tinyxmlparser.cpp.obj
+C:\TDM-GCC-32\bin\ranlib.exe lib3rdpartyTinyXml.a

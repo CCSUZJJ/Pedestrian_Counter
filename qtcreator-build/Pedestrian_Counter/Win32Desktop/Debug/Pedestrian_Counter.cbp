@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="Pedestrian_Counter" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\cmake\;CMake Files\..\..\..\3rdparty\;CMake Files\..\..\..\3rdparty\libs\;CMake Files\..\..\..\3rdparty\libs\TinyXml\;CMake Files\..\..\..\3rdparty\libs\TinyXml++\;CMake Files\..\..\..\detection\;CMake Files\..\..\..\detection\libs\;CMake Files\..\..\..\detection\libs\ResearchGeneral\;CMake Files\..\..\..\detection\libs\ResearchDetectionFramework\;CMake Files\..\..\..\detection\libs\OpenCVWrappers\;CMake Files\..\..\..\detection\libs\PeopleCounter\;CMake Files\OpenCV\;CMake Files\OpenCV\opencv\;CMake Files\OpenCV\opencv\Build\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="Continuous">
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 Continuous" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="Experimental">
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 Experimental" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="Nightly">
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 Nightly" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="Pedestrian_Counter">
+         <Option output="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Pedestrian_Counter.exe" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add directory="C:/OpenCV/opencv/Build" />
+            <Add directory="C:/OpenCV/opencv/sources/include" />
+            <Add directory="C:/OpenCV/opencv/sources/include/opencv" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/calib3d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/contrib/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/core/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/features2d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/flann/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/gpu/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/highgui/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/imgproc/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/legacy/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ml/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/nonfree/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/objdetect/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/photo/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/stitching/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/superres/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ts/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/video/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/videostab/include" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../3rdparty/inc/TinyXml" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../3rdparty/inc/TinyXml++" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../detection/inc/OpenCVWrappers" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../detection/inc/PeopleCounter" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../detection/inc/ResearchDetectionFramework" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../detection/inc/ResearchGeneral" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/inc" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 Pedestrian_Counter" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="Pedestrian_Counter/fast">
+         <Option output="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Pedestrian_Counter.exe" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add directory="C:/OpenCV/opencv/Build" />
+            <Add directory="C:/OpenCV/opencv/sources/include" />
+            <Add directory="C:/OpenCV/opencv/sources/include/opencv" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/calib3d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/contrib/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/core/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/features2d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/flann/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/gpu/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/highgui/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/imgproc/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/legacy/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ml/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/nonfree/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/objdetect/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/photo/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/stitching/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/superres/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ts/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/video/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/videostab/include" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../3rdparty/inc/TinyXml" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../3rdparty/inc/TinyXml++" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../detection/inc/OpenCVWrappers" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../detection/inc/PeopleCounter" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../detection/inc/ResearchDetectionFramework" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../detection/inc/ResearchGeneral" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/inc" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 Pedestrian_Counter/fast" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="edit_cache">
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 edit_cache" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="test">
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 test" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="3rdpartyTinyXml">
+         <Option output="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml/lib3rdpartyTinyXml.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add directory="C:/OpenCV/opencv/Build" />
+            <Add directory="C:/OpenCV/opencv/sources/include" />
+            <Add directory="C:/OpenCV/opencv/sources/include/opencv" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/calib3d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/contrib/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/core/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/features2d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/flann/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/gpu/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/highgui/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/imgproc/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/legacy/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ml/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/nonfree/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/objdetect/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/photo/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/stitching/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/superres/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ts/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/video/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/videostab/include" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/libs/TinyXml/../../inc/TinyXml" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml/Makefile&quot;  VERBOSE=1 3rdpartyTinyXml" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="3rdpartyTinyXml/fast">
+         <Option output="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml/lib3rdpartyTinyXml.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add directory="C:/OpenCV/opencv/Build" />
+            <Add directory="C:/OpenCV/opencv/sources/include" />
+            <Add directory="C:/OpenCV/opencv/sources/include/opencv" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/calib3d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/contrib/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/core/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/features2d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/flann/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/gpu/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/highgui/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/imgproc/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/legacy/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ml/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/nonfree/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/objdetect/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/photo/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/stitching/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/superres/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ts/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/video/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/videostab/include" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/libs/TinyXml/../../inc/TinyXml" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml/Makefile&quot;  VERBOSE=1 3rdpartyTinyXml/fast" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="3rdpartyTinyXml++">
+         <Option output="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++/lib3rdpartyTinyXml++.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add directory="C:/OpenCV/opencv/Build" />
+            <Add directory="C:/OpenCV/opencv/sources/include" />
+            <Add directory="C:/OpenCV/opencv/sources/include/opencv" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/calib3d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/contrib/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/core/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/features2d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/flann/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/gpu/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/highgui/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/imgproc/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/legacy/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ml/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/nonfree/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/objdetect/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/photo/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/stitching/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/superres/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ts/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/video/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/videostab/include" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/libs/TinyXml++/../../inc/TinyXml++" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++/Makefile&quot;  VERBOSE=1 3rdpartyTinyXml++" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="3rdpartyTinyXml++/fast">
+         <Option output="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++/lib3rdpartyTinyXml++.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add directory="C:/OpenCV/opencv/Build" />
+            <Add directory="C:/OpenCV/opencv/sources/include" />
+            <Add directory="C:/OpenCV/opencv/sources/include/opencv" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/calib3d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/contrib/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/core/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/features2d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/flann/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/gpu/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/highgui/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/imgproc/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/legacy/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ml/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/nonfree/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/objdetect/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/photo/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/stitching/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/superres/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ts/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/video/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/videostab/include" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/libs/TinyXml++/../../inc/TinyXml++" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++/Makefile&quot;  VERBOSE=1 3rdpartyTinyXml++/fast" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="detectionResearchGeneral">
+         <Option output="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchGeneral/libdetectionResearchGeneral.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchGeneral" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add directory="C:/OpenCV/opencv/Build" />
+            <Add directory="C:/OpenCV/opencv/sources/include" />
+            <Add directory="C:/OpenCV/opencv/sources/include/opencv" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/calib3d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/contrib/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/core/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/features2d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/flann/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/gpu/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/highgui/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/imgproc/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/legacy/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ml/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/nonfree/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/objdetect/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/photo/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/stitching/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/superres/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ts/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/video/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/videostab/include" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchGeneral/../../../3rdparty/inc/TinyXml++" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchGeneral/../../../detection/inc/OpenCVWrappers" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchGeneral/../../inc/ResearchGeneral" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchGeneral/Makefile&quot;  VERBOSE=1 detectionResearchGeneral" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchGeneral/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchGeneral/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchGeneral/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="detectionResearchGeneral/fast">
+         <Option output="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchGeneral/libdetectionResearchGeneral.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchGeneral" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add directory="C:/OpenCV/opencv/Build" />
+            <Add directory="C:/OpenCV/opencv/sources/include" />
+            <Add directory="C:/OpenCV/opencv/sources/include/opencv" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/calib3d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/contrib/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/core/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/features2d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/flann/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/gpu/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/highgui/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/imgproc/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/legacy/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ml/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/nonfree/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/objdetect/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/photo/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/stitching/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/superres/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ts/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/video/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/videostab/include" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchGeneral/../../../3rdparty/inc/TinyXml++" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchGeneral/../../../detection/inc/OpenCVWrappers" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchGeneral/../../inc/ResearchGeneral" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchGeneral/Makefile&quot;  VERBOSE=1 detectionResearchGeneral/fast" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchGeneral/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchGeneral/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchGeneral/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="detectionResearchDetectionFramework">
+         <Option output="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchDetectionFramework/libdetectionResearchDetectionFramework.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchDetectionFramework" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add directory="C:/OpenCV/opencv/Build" />
+            <Add directory="C:/OpenCV/opencv/sources/include" />
+            <Add directory="C:/OpenCV/opencv/sources/include/opencv" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/calib3d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/contrib/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/core/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/features2d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/flann/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/gpu/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/highgui/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/imgproc/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/legacy/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ml/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/nonfree/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/objdetect/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/photo/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/stitching/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/superres/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ts/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/video/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/videostab/include" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../3rdparty/inc/TinyXml" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../3rdparty/inc/TinyXml++" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/OpenCVWrappers" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/ResearchGeneral" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../inc/ResearchDetectionFramework" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchDetectionFramework/Makefile&quot;  VERBOSE=1 detectionResearchDetectionFramework" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchDetectionFramework/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchDetectionFramework/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchDetectionFramework/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="detectionResearchDetectionFramework/fast">
+         <Option output="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchDetectionFramework/libdetectionResearchDetectionFramework.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchDetectionFramework" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add directory="C:/OpenCV/opencv/Build" />
+            <Add directory="C:/OpenCV/opencv/sources/include" />
+            <Add directory="C:/OpenCV/opencv/sources/include/opencv" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/calib3d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/contrib/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/core/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/features2d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/flann/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/gpu/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/highgui/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/imgproc/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/legacy/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ml/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/nonfree/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/objdetect/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/photo/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/stitching/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/superres/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ts/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/video/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/videostab/include" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../3rdparty/inc/TinyXml" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../3rdparty/inc/TinyXml++" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/OpenCVWrappers" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/ResearchGeneral" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../inc/ResearchDetectionFramework" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchDetectionFramework/Makefile&quot;  VERBOSE=1 detectionResearchDetectionFramework/fast" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchDetectionFramework/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchDetectionFramework/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchDetectionFramework/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="detectionOpenCVWrappers">
+         <Option output="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/OpenCVWrappers/libdetectionOpenCVWrappers.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/OpenCVWrappers" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add directory="C:/OpenCV/opencv/Build" />
+            <Add directory="C:/OpenCV/opencv/sources/include" />
+            <Add directory="C:/OpenCV/opencv/sources/include/opencv" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/calib3d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/contrib/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/core/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/features2d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/flann/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/gpu/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/highgui/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/imgproc/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/legacy/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ml/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/nonfree/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/objdetect/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/photo/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/stitching/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/superres/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ts/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/video/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/videostab/include" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/../../inc/OpenCVWrappers" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/OpenCVWrappers/Makefile&quot;  VERBOSE=1 detectionOpenCVWrappers" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/OpenCVWrappers/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/OpenCVWrappers/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/OpenCVWrappers/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="detectionOpenCVWrappers/fast">
+         <Option output="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/OpenCVWrappers/libdetectionOpenCVWrappers.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/OpenCVWrappers" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add directory="C:/OpenCV/opencv/Build" />
+            <Add directory="C:/OpenCV/opencv/sources/include" />
+            <Add directory="C:/OpenCV/opencv/sources/include/opencv" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/calib3d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/contrib/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/core/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/features2d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/flann/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/gpu/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/highgui/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/imgproc/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/legacy/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ml/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/nonfree/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/objdetect/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/photo/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/stitching/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/superres/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ts/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/video/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/videostab/include" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/../../inc/OpenCVWrappers" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/OpenCVWrappers/Makefile&quot;  VERBOSE=1 detectionOpenCVWrappers/fast" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/OpenCVWrappers/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/OpenCVWrappers/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/OpenCVWrappers/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="detectionPeopleCounter">
+         <Option output="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/libdetectionPeopleCounter.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add directory="C:/OpenCV/opencv/Build" />
+            <Add directory="C:/OpenCV/opencv/sources/include" />
+            <Add directory="C:/OpenCV/opencv/sources/include/opencv" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/calib3d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/contrib/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/core/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/features2d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/flann/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/gpu/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/highgui/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/imgproc/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/legacy/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ml/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/nonfree/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/objdetect/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/photo/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/stitching/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/superres/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ts/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/video/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/videostab/include" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../../3rdparty/inc/TinyXml" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../../3rdparty/inc/TinyXml++" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../../detection/inc/OpenCVWrappers" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../../detection/inc/ResearchGeneral" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/Makefile&quot;  VERBOSE=1 detectionPeopleCounter" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="detectionPeopleCounter/fast">
+         <Option output="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/libdetectionPeopleCounter.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
+            <Add directory="C:/OpenCV/opencv/Build" />
+            <Add directory="C:/OpenCV/opencv/sources/include" />
+            <Add directory="C:/OpenCV/opencv/sources/include/opencv" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/calib3d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/contrib/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/core/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/features2d/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/flann/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/gpu/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/highgui/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/imgproc/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/legacy/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ml/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/nonfree/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/objdetect/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/photo/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/stitching/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/superres/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/ts/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/video/include" />
+            <Add directory="C:/OpenCV/opencv/sources/modules/videostab/include" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../../3rdparty/inc/TinyXml" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../../3rdparty/inc/TinyXml++" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../../detection/inc/OpenCVWrappers" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../../detection/inc/ResearchGeneral" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/Makefile&quot;  VERBOSE=1 detectionPeopleCounter/fast" />
+            <CompileFile command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="C:/TDM-GCC-32/bin/mingw32-make.exe -f &quot;F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/libs/TinyXml++/src/ticpp.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/libs/TinyXml++/src/tinyxml++.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/libs/TinyXml++/src/tinyxmlerror.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/libs/TinyXml++/src/tinyxmlparser.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/libs/TinyXml/src/tinystr.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/libs/TinyXml/src/tinyxml.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/libs/TinyXml/src/tinyxmlerror.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/libs/TinyXml/src/tinyxmlparser.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/CvBoundingBox.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/CvCanvas.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/CvCanvasWithGrayImages.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/CvFunctionPlot.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/CvHistogramPlot.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/CvLine.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/CvMultiFunctionPlotWithTrackbar.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/CvPlotUtilities.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/CvPoint.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/CvPointUtilities.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/CvRect.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/CvSize.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/LinePieceFunctions.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/OfflineFrame.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/OpenCvFrame.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/OpenCvMouse.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/OpenCvUtilities.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/OpenCvVideo.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/OpenCvVideoRecorder.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/OuterContourFinder.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/Point.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/cvplot.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/PeopleCounter.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/ResearchDetectionFramework.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchGeneral/src/ResearchGeneral.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/src/main.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/inc/TinyXml++/ticpp.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/inc/TinyXml++/ticppapi.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/inc/TinyXml++/ticpprc.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/inc/TinyXml++/tinyxml++.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/inc/TinyXml/tinystr.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/3rdparty/inc/TinyXml/tinyxml.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/CvBoundingBox.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/CvCanvas.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/CvFunctionPlot.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/CvHistogramPlot.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/CvLine.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/CvMultiFunctionPlotWithTrackbar.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/CvPlotUtilities.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/CvPoint.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/CvPointUtilities.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/CvRect.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/CvSize.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/LinePieceFunctions.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/OfflineFrame.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/OpenCvColours.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/OpenCvFrame.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/OpenCvMouse.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/OpenCvUtilities.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/OpenCvVideo.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/OpenCvVideoRecorder.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/OpenCvYFrameUtilities.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/OuterContourFinder.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/Point.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/cvplot.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/PeopleCounter.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/ResearchDetectionFramework/ResearchDetectionFramework.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/ResearchGeneral/DetAlgoI.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/ResearchGeneral/ResearchGeneral.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/src/PreDefinedParameters.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../cmake/OptionsCommon.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\cmake\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../cmake/OptionsWin32Desktop.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\cmake\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../cmake/OptionsCommon.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\cmake\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../cmake/OptionsWin32Desktop.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\cmake\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../cmake/OptionsCommon.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\cmake\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../cmake/OptionsWin32Desktop.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\cmake\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../cmake/OptionsCommon.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\cmake\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../cmake/OptionsWin32Desktop.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\cmake\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../cmake/OptionsCommon.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\cmake\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../cmake/OptionsWin32Desktop.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\cmake\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../cmake/OptionsCommon.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\cmake\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../cmake/OptionsWin32Desktop.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\cmake\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../cmake/OptionsCommon.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\cmake\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../cmake/OptionsWin32Desktop.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\cmake\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../3rdparty/libs/TinyXml/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\..\..\..\3rdparty\libs\TinyXml\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../3rdparty/libs/TinyXml++/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\..\..\..\3rdparty\libs\TinyXml++\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../detection/libs/ResearchGeneral/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\..\..\..\detection\libs\ResearchGeneral\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../detection/libs/ResearchDetectionFramework/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\..\..\..\detection\libs\ResearchDetectionFramework\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../detection/libs/OpenCVWrappers/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\..\..\..\detection\libs\OpenCVWrappers\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/../../../detection/libs/PeopleCounter/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\..\..\..\detection\libs\PeopleCounter\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/OpenCV/opencv/Build/OpenCVConfig-version.cmake">
+          <Option virtualFolder="CMake Files\OpenCV\opencv\Build\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/OpenCV/opencv/Build/OpenCVConfig.cmake">
+          <Option virtualFolder="CMake Files\OpenCV\opencv\Build\" />
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/products/libs/Pedestrian_Counter/OpenCV/opencv/Build/OpenCVModules.cmake">
+          <Option virtualFolder="CMake Files\OpenCV\opencv\Build\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>

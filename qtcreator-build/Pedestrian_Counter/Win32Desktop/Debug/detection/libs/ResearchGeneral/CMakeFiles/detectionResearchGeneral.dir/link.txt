@@ -1,0 +1,2 @@
+C:\TDM-GCC-32\bin\ar.exe cr libdetectionResearchGeneral.a  CMakeFiles/detectionResearchGeneral.dir/src/ResearchGeneral.cpp.obj
+C:\TDM-GCC-32\bin\ranlib.exe libdetectionResearchGeneral.a
