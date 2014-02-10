@@ -928,6 +928,10 @@ iostream
 string
 -
 
+F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/ResearchGeneral/DetectedObject.h
+vector
+-
+
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../inc/ResearchDetectionFramework/ResearchDetectionFramework.h
 string
 -
@@ -963,4 +967,8 @@ CvLine.h
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/CvLine.h
 vector
 -
+math.h
+-
+DetectedObject.h
+F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/DetectedObject.h
 

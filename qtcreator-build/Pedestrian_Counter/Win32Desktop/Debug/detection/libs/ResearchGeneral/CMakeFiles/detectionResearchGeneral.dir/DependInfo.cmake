@@ -18,6 +18,7 @@ SET(CMAKE_TARGET_DEFINITIONS
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
   "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++/CMakeFiles/3rdpartyTinyXml++.dir/DependInfo.cmake"
+  "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/OpenCVWrappers/CMakeFiles/detectionOpenCVWrappers.dir/DependInfo.cmake"
   )
 
 # The include file search paths:

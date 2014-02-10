@@ -1,0 +1,43 @@
+bool ResearchDetectionFramework::Run()
+{
+
+    bool RetVal = false;
+
+
+    if(m_Configured){
+        cv::namedWindow("Background");
+        cv::namedWindow("Original");
+        cv::namedWindow("Foreground");
+        cv::Mat currFrame = m_VideoPlayer.GetNextFrame();
+        cv::Mat currFrameGray;
+        cv::cvtColor(currFrame, currFrameGray,CV_BGR2GRAY);
+        cv::Mat bg = cv::Mat(currFrameGray.size(), CV_8UC1, cv::Scalar(128));
+        cv::Mat fg = cv::Mat(currFrameGray.size(), CV_8UC1);
+        cv::Mat fgIntens = cv::Mat(currFrameGray.size(), CV_8UC1);
+
+        while(true){
+            currFrame = m_VideoPlayer.GetNextFrame();
+            if(currFrame.data == 0){
+                m_VideoPlayer.Reset();
+                break;
+            }
+            cv::cvtColor(currFrame, currFrameGray, CV_BGR2GRAY);
+
+            for(int i = 0; i < currFrameGray.rows; i++){
+                for(int j = 0; j < currFrameGray.cols; j++){
+                    if(currFrameGray.at<uchar>(i,j) > bg.at<uchar>(i,j))
+                        bg.at<uchar>(i,j)++;
+                    else if(currFrameGray.at<uchar>(i,j) < bg.at<uchar>(i,j))
+                        bg.at<uchar>(i,j)--;
+                }
+            }
+            cv::absdiff(currFrameGray, bg, fg);
+            cv::threshold(fg, fgIntens, 20, 255, 0);
+            cv::imshow("Original", currFrameGray);
+            cv::imshow("Background", bg);
+            cv::imshow("Foreground", fgIntens);
+            cv::waitKey(25);
+        }
+    }
+    return true;
+}

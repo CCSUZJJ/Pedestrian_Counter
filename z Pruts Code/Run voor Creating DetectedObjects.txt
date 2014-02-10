@@ -1,0 +1,92 @@
+bool ResearchDetectionFramework::Run()
+{
+
+    bool RetVal = false;
+
+
+    if(m_Configured){
+        try{
+            ticpp::Document Dom(m_Config.s_GroundTruthFile.c_str());
+            Dom.LoadFile();
+            ticpp::Element* FrameNodes = Dom.FirstChild("GroundTruth")->FirstChildElement("Frames");
+
+            vector<DetectedObject> objects;
+            vector<DetectedObject> currSeqObjects;
+            vector<int> existingIDs;
+
+            ticpp::Iterator < ticpp::Element > Frame("Frame");
+            for(Frame = Frame.begin(FrameNodes); Frame != Frame.end(); Frame++){
+                if(Frame->FirstChildElement("BBox", 0) != NULL){    //BBoxes aanwezig, geen exception werpen als null
+                    int frameNr;
+                    Frame->GetAttribute("Nr", &frameNr);
+                    std::cout << "Found box(es) at frame " << frameNr << std::endl;
+
+                    ticpp::Element* currFrame = Frame.Get();
+                    ticpp::Iterator< ticpp::Element > CurrBox ( "BBox" );
+                    for(CurrBox = CurrBox.begin(currFrame); CurrBox != CurrBox.end(); CurrBox++){
+                        int x, y, w, h, id, catid;
+                        CurrBox->GetAttribute("X", &x);
+                        CurrBox->GetAttribute("Y", &y);
+                        CurrBox->GetAttribute("W", &w);
+                        CurrBox->GetAttribute("H", &h);
+                        CurrBox->GetAttribute("ID", &id);
+                        CurrBox->GetAttribute("CatID", &catid);
+
+                        cv::Rect rec = cv::Rect(x, y, w, h);
+                        FrameRectPair frp;
+                        frp.s_Nr = frameNr; frp.s_BBox = rec;
+
+                        if(std::find(existingIDs.begin(),existingIDs.end(), id) != existingIDs.end()){
+                            //id already exists in current sequence => find existing object, add box
+                            for(DetectedObject obj : currSeqObjects){
+                                if(obj.ID == id){
+                                    obj.Frames.push_back(frp);
+                                    std::cout << "added to existing object with ID "<<obj.ID<<": (" << frp.s_BBox.x << ","
+                                              << frp.s_BBox.y << ")" << std::endl;
+                                    std::cout << "object now contains: " << std::endl;
+                                    for(FrameRectPair pair : obj.Frames){
+                                        std::cout << "(" << pair.s_BBox.x << "," << pair.s_BBox.y << ")" << std::endl;
+                                    }
+
+                                }
+                            }
+                        }
+                        else{
+                            //create new object, add id to existing ID's
+                            DetectedObject obj;
+                            obj.CatID = catid;
+                            obj.Frames.push_back(frp);
+                            obj.ID = id;
+                            existingIDs.push_back(id);
+                            currSeqObjects.push_back(obj);
+                            std::cout << "created new object with ID "<< obj.ID << std::endl;
+                        }
+                    }
+                }
+                else{   //end of current sequence of frames that contains BBoxes
+                    for(DetectedObject obj : currSeqObjects){
+                        objects.push_back(obj);
+                        std::cout << "Object w ID " << obj.ID << " -> Objects" << std::endl;
+                    }
+                    if(!(currSeqObjects.empty() || existingIDs.empty())){
+                        currSeqObjects.clear();
+                        existingIDs.clear();
+                        std::cout << "flushed" << std::endl;
+                    }
+                }
+            }
+            for(auto i = 0; i < objects.size(); i++){
+                DetectedObject obj = objects[i];
+                std::cout << "Object "<< i+1 <<" contains " << obj.Frames.size() << " elements" << std::endl;
+                for(FrameRectPair i: obj.Frames){
+                    std::cout << "("<< i.s_BBox.x<<","<< i.s_BBox.y<<") at frame "
+                              <<i.s_Nr << std::endl;
+                }
+            }
+        }
+        catch(ticpp::Exception& e){
+            std::cout << e.what() << std::endl;
+        }
+    }
+    return true;
+}

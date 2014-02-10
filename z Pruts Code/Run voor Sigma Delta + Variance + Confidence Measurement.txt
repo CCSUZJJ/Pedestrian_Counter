@@ -1,0 +1,132 @@
+bool ResearchDetectionFramework::Run()
+{
+
+    bool RetVal = false;
+
+
+    if(m_Configured){
+        //Init toUpdate
+        bool toUpdate = false;
+        //Init Background
+        cv::Mat background;
+        cv::cvtColor(m_VideoPlayer.GetNextFrame(),background, CV_BGR2GRAY);
+        //Init Variance: Vini = Vmin       Vt = [10,200]
+        cv::Mat variance = cv::Mat(background.size(), CV_8UC1, cv::Scalar(10));
+        //Init Detection Counter & Frame Counter
+        cv::Mat detectionCount = cv::Mat::zeros(background.size(), CV_8UC1);
+        cv::Mat frameCount = cv::Mat::zeros(background.size(), CV_8UC1);
+        //Init Confidence Measure: Cini = Cmin      Ct = [10,125]
+        cv::Mat confidence = cv::Mat(background.size(), CV_8UC1, cv::Scalar(10));
+
+        //Extra Inits
+        //Init Foreground
+        cv::Mat foreground(background.size(), CV_8UC1);
+        //Init difference background model, currentframe
+        cv::Mat difference(background.size(), CV_8UC1);
+
+        while(true){
+            cv::Mat currFrame = m_VideoPlayer.GetNextFrame();
+            if(currFrame.data == 0){
+                m_VideoPlayer.Reset();
+                break;
+            }
+            cv::Mat currFrameGray;
+            cv::cvtColor(currFrame, currFrameGray, CV_BGR2GRAY);
+            //Increment Frame Counter
+            frameCount += 1;
+
+            //For each pixel
+            for(int i = 0; i < frameCount.rows; i++){
+                for(int j = 0; j < frameCount.cols; j++){
+                    if(frameCount.at<uchar>(i,j) < confidence.at<uchar>(i,j)){  //Current confidence period not expired
+                        if(frameCount.at<uchar>(i,j) % 10){         //Refresh period expires
+                            if(variance.at<uchar>(i,j) <= 38){      //Low variance: Vt <= Vth: reliable info
+                                if((detectionCount.at<uchar>(i,j) / frameCount.at<uchar>(i,j)) <= 0.8){ //No heavy traffic
+                                    toUpdate = true;                //Refresh period updating mode
+                                }
+                            }
+                        }
+                    }
+                    else{                                                       //Current confidence period expired
+                        if(variance.at<uchar>(i,j) <= 38){          //Low variance
+                            confidence.at<uchar>(i,j) +=            //Confidence updating as function of detection ratio
+                                    round(11 * exp(-4 * (detectionCount.at<uchar>(i,j) / frameCount.at<uchar>(i,j))) -1);
+                            if(confidence.at<uchar>(i,j) == 10){    //Confidence = Cmin
+                                toUpdate = true;                    //Force updating
+                            }
+                        }
+                        else{                                       //High variance: no reliable info
+                            toUpdate = true;                        //Confidence period updating mode
+                                                                    //to avoid background model deadlock
+                        }
+                        detectionCount = cv::Scalar(0);             //Reset Detection Counter
+                        frameCount = cv::Scalar(0);                 //Reset Frame Counter
+                    }
+                }
+            }
+
+            if(toUpdate == true){                                   //Updating recommended
+                //Update Background Model
+                for(int i = 0; i < background.rows; i++){
+                    for(int j = 0; j < background.cols; j++){
+                        if(currFrameGray.at<uchar>(i,j) > background.at<uchar>(i,j))
+                            background.at<uchar>(i,j)++;
+                        else if(currFrameGray.at<uchar>(i,j) < background.at<uchar>(i,j))
+                            background.at<uchar>(i,j)--;
+                    }
+                }
+                cv::absdiff(currFrameGray, background, difference); //Compute difference
+                //Update Variance
+                for(int i = 0; i < variance.rows; i++){
+                    for(int j = 0; j < variance.cols; j++){
+                        if(variance.at<uchar>(i,j) > 10 + 4*difference.at<uchar>(i,j))
+                            variance.at<uchar>(i,j)--;
+                        if(variance.at<uchar>(i,j) < 10 + 4*difference.at<uchar>(i,j))
+                            variance.at<uchar>(i,j)++;
+                    }
+                }
+                //Compute Foreground
+                for(int i = 0; i < difference.rows; i++){
+                    for(int j = 0; j < difference.cols; j++){
+                        if(difference.at<uchar>(i,j) > variance.at<uchar>(i,j))
+                            foreground.at<uchar>(i,j) = 255;
+                        else
+                            foreground.at<uchar>(i,j) = 0;
+                    }
+                }
+            }
+            else{                                                   //Do not update, just detect
+                cv::absdiff(currFrameGray, background, difference); //Compute difference
+                //Compute Foreground
+                for(int i = 0; i < difference.rows; i++){
+                    for(int j = 0; j < difference.cols; j++){
+                        if(difference.at<uchar>(i,j) > variance.at<uchar>(i,j))
+                            foreground.at<uchar>(i,j) = 255;
+                        else
+                            foreground.at<uchar>(i,j) = 0;
+                    }
+                }
+            }
+            //Update Detection Counter
+            for(int i = 0; i < detectionCount.rows; i++){
+                for(int j = 0; j < detectionCount.cols; j++){
+                    if(foreground.at<uchar>(i,j) == 255)
+                        detectionCount.at<uchar>(i,j)++;
+                }
+            }
+
+            //Show output
+            cv::namedWindow("Original");                //Original
+            cv::imshow("Original", currFrameGray);
+            cv::namedWindow("Background");              //Background
+            cv::imshow("Background", background);
+            cv::namedWindow("Foreground");              //Foreground
+            cv::imshow("Foreground", foreground);
+            cv::namedWindow("Variance");                //Variance
+            cv::imshow("Variance", variance);
+            cv::waitKey(25);
+        }
+
+    }
+    return true;
+}

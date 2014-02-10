@@ -280,7 +280,7 @@ detectionPeopleCounter_LIB_DEPENDS:STATIC=general;-Wl,--start-group;general;-Wl,
 detectionResearchDetectionFramework_LIB_DEPENDS:STATIC=general;-Wl,--start-group;general;-Wl,--end-group;general;-Wl,--start-group;general;-Wl,--end-group;general;detectionResearchGeneral;general;detectionOpenCVWrappers;general;3rdpartyTinyXml;general;3rdpartyTinyXml++;
 
 //Dependencies for the target
-detectionResearchGeneral_LIB_DEPENDS:STATIC=general;-Wl,--start-group;general;-Wl,--end-group;general;-Wl,--start-group;general;-Wl,--end-group;general;3rdpartyTinyXml++;
+detectionResearchGeneral_LIB_DEPENDS:STATIC=general;-Wl,--start-group;general;-Wl,--end-group;general;-Wl,--start-group;general;-Wl,--end-group;general;3rdpartyTinyXml++;general;detectionOpenCVWrappers;
 
 
 ########################

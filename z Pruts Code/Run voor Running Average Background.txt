@@ -1,0 +1,35 @@
+bool ResearchDetectionFramework::Run()
+{
+
+    bool RetVal = false;
+
+
+    if(m_Configured){
+        cv::namedWindow("Average");
+        cv::namedWindow("Original");
+        cv::namedWindow("Foreground");
+        cv::Mat currFrame = m_VideoPlayer.GetNextFrame();
+        cv::Mat avg;
+        currFrame.convertTo(avg,CV_32FC1);
+        cv::Mat fg;
+
+        for(int i = 0; i < 10000 ; i++){
+            currFrame = m_VideoPlayer.GetNextFrame();
+            if(currFrame.data == 0){
+                m_VideoPlayer.Reset();
+                break;
+            }
+            cv::accumulateWeighted(currFrame,avg,0.0075);       //0.01    0.001
+            cv::Mat result;
+            cv::convertScaleAbs(avg, result);
+            cv::absdiff(currFrame, result, fg);
+            cv::Mat fgIntens;
+            cv::threshold(fg, fgIntens, 25, 255, 0);
+            cv::imshow("Original", currFrame);
+            cv::imshow("Average", result);
+            cv::imshow("Foreground", fgIntens);
+            cv::waitKey(25);
+        }
+    }
+    return true;
+}

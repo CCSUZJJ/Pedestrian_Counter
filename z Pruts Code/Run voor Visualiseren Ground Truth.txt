@@ -1,0 +1,139 @@
+bool ResearchDetectionFramework::Run()
+{
+
+    bool RetVal = false;
+  /*  if(m_Configured)
+    {
+        IplImage* Frame = 0;
+        while(true)
+        {
+            cv::Mat CurrFrame = m_VideoPlayer.GetNextFrame();
+            if(CurrFrame.data == 0)
+            {
+                m_VideoPlayer.Reset();
+                break;		// no frames
+            }
+            OpenCvFrame UpdateFrame(CurrFrame);
+
+            unsigned long FieldCounter = GetTraficonFieldCounter(Frame);
+            for (unsigned int Idx = 0; Idx < m_Algo.size(); ++Idx)
+            {
+                m_Algo[Idx]->ReadSample(UpdateFrame);
+                m_Algo[Idx]->SetFieldCounter(FieldCounter);
+            }
+
+            //----------------------------------------------
+            // Run
+
+//            timeval start, end;
+//            long mtime, seconds, useconds;
+
+//            gettimeofday(&start, NULL);
+
+            bool HasWork = true;
+            while (HasWork)
+            {
+                HasWork = false;
+                for (unsigned int Idx = 0; Idx < m_Algo.size(); ++Idx)
+                {
+                    m_Algo[Idx]->Run();
+                    HasWork = HasWork || m_Algo[Idx]->HasWork();
+                }
+            }
+
+//            gettimeofday(&end, NULL);
+
+//            seconds = end.tv_sec - start.tv_sec;
+//            useconds = end.tv_usec - start.tv_usec;
+
+//            mtime = ((seconds)*1000 + useconds/1000.0) + 0.5;
+
+//            std::cout << "Elapsed time: " << mtime << " ms." << std::endl;
+        }
+
+        // Now perform the Matching to receive Performance results
+        for(auto& Algo : m_Algo)
+        {
+            Algo->ProcessPerformanceAnalyse();
+        }
+
+        RetVal = true;
+    }
+    return RetVal; */
+
+    //TESTING
+    int Point1X;
+    int Point1Y;
+    int Point2X;
+    int Point2Y;
+    ticpp::Document XmlDoc(m_ConfigFileName.c_str());
+    try{
+        XmlDoc.LoadFile();
+    }
+    catch(ticpp::Exception& ex){
+        std::cout << ex.what();
+    }
+
+    try{
+        ticpp::Element* Point1 = XmlDoc.FirstChild("Configuration")->FirstChildElement("IntrusionDetection")
+                ->FirstChildElement("IntrusionDetection")->FirstChildElement("Zones")->FirstChildElement("Zone")
+                ->FirstChildElement("Shape")->FirstChildElement("Point");
+        ticpp::Element* Point2 = Point1->NextSiblingElement("Point");
+        Point1->GetAttribute("X", &Point1X);
+        Point1->GetAttribute("Y", &Point1Y);
+        Point2->GetAttribute("X", &Point2X);
+        Point2->GetAttribute("Y", &Point2Y);
+    }
+    catch(ticpp::Exception& ex){
+        std::cout << ex.what();
+    }
+
+    if(m_Configured){
+        int frameNo = 0;
+        ticpp::Document Dom(m_Config.s_GroundTruthFile.c_str());
+        Dom.LoadFile();
+        ticpp::Element* FrameNodes = Dom.FirstChild("GroundTruth")->FirstChildElement("Frames");
+        ticpp::Element* CurrFrameNode = FrameNodes->FirstChildElement("Frame");
+
+        int totalFrames = 0;
+        ticpp::Iterator< ticpp::Element > Frame ("Frame");
+        for(Frame = Frame.begin(FrameNodes); Frame != Frame.end(); Frame++){
+            totalFrames++;
+        }
+
+        while(frameNo < totalFrames-1) //TotalFrames -1 omdat 1ste FrameNr = 0
+        {
+            cv::namedWindow("Video");
+            cv::Mat CurrFrame = m_VideoPlayer.GetNextFrame();
+            if(CurrFrame.data == 0)
+            {
+                m_VideoPlayer.Reset();
+                break;		// no frames
+            }
+
+            cv::Point Point1 = cv::Point(Point1X, Point1Y);
+            cv::Point Point2 = cv::Point(Point2X, Point2Y);
+            cv::line(CurrFrame,Point1, Point2, cv::Scalar(0,0,255), 2, 8);
+
+            ticpp::Iterator< ticpp::Element > CurrBox ( "BBox" );
+            for(CurrBox = CurrBox.begin(CurrFrameNode); CurrBox != CurrBox.end(); CurrBox++){
+                int x, y, w, h;
+                CurrBox->GetAttribute("X", &x);
+                CurrBox->GetAttribute("Y", &y);
+                CurrBox->GetAttribute("W", &w);
+                CurrBox->GetAttribute("H", &h);
+
+                cv::Rect rec = cv::Rect(x, y, w, h);
+                cv::rectangle(CurrFrame,rec,cv::Scalar(0,255,0),2,8);
+            }
+
+            cv::imshow("Video", CurrFrame);
+            cv::waitKey(30);
+            OpenCvFrame UpdateFrame(CurrFrame);
+
+            frameNo++;
+            CurrFrameNode = CurrFrameNode->NextSiblingElement("Frame");
+        }
+    }
+    return true;
+}

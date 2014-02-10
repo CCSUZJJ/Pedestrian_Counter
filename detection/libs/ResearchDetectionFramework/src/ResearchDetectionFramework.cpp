@@ -10,6 +10,9 @@
 #include "CvPoint.h"
 #include "CvLine.h"
 #include <vector>
+#include <math.h>
+
+#include "DetectedObject.h"
 
 namespace
 {
@@ -186,138 +189,131 @@ bool ResearchDetectionFramework::Run()
 {
 
     bool RetVal = false;
-  /*  if(m_Configured)
-    {
-        IplImage* Frame = 0;
-        while(true)
-        {
-            cv::Mat CurrFrame = m_VideoPlayer.GetNextFrame();
-            if(CurrFrame.data == 0)
-            {
+
+
+    if(m_Configured){
+        //Init toUpdate
+        bool toUpdate = false;
+        //Init Background
+        cv::Mat background;
+        cv::cvtColor(m_VideoPlayer.GetNextFrame(),background, CV_BGR2GRAY);
+        //Init Variance: Vini = Vmin       Vt = [10,200]
+        cv::Mat variance = cv::Mat(background.size(), CV_8UC1, cv::Scalar(10));
+        //Init Detection Counter & Frame Counter
+        cv::Mat detectionCount = cv::Mat::zeros(background.size(), CV_8UC1);
+        cv::Mat frameCount = cv::Mat::zeros(background.size(), CV_8UC1);
+        //Init Confidence Measure: Cini = Cmin      Ct = [10,125]
+        cv::Mat confidence = cv::Mat(background.size(), CV_8UC1, cv::Scalar(10));
+
+        //Extra Inits
+        //Init Foreground
+        cv::Mat foreground(background.size(), CV_8UC1);
+        //Init difference background model, currentframe
+        cv::Mat difference(background.size(), CV_8UC1);
+
+        while(true){
+            cv::Mat currFrame = m_VideoPlayer.GetNextFrame();
+            if(currFrame.data == 0){
                 m_VideoPlayer.Reset();
-                break;		// no frames
+                break;
             }
-            OpenCvFrame UpdateFrame(CurrFrame);
+            cv::Mat currFrameGray;
+            cv::cvtColor(currFrame, currFrameGray, CV_BGR2GRAY);
+            //Increment Frame Counter
+            frameCount += 1;
 
-            unsigned long FieldCounter = GetTraficonFieldCounter(Frame);
-            for (unsigned int Idx = 0; Idx < m_Algo.size(); ++Idx)
-            {
-                m_Algo[Idx]->ReadSample(UpdateFrame);
-                m_Algo[Idx]->SetFieldCounter(FieldCounter);
-            }
-
-            //----------------------------------------------
-            // Run
-
-//            timeval start, end;
-//            long mtime, seconds, useconds;
-
-//            gettimeofday(&start, NULL);
-
-            bool HasWork = true;
-            while (HasWork)
-            {
-                HasWork = false;
-                for (unsigned int Idx = 0; Idx < m_Algo.size(); ++Idx)
-                {
-                    m_Algo[Idx]->Run();
-                    HasWork = HasWork || m_Algo[Idx]->HasWork();
+            //For each pixel
+            for(int i = 0; i < frameCount.rows; i++){
+                for(int j = 0; j < frameCount.cols; j++){
+                    if(frameCount.at<uchar>(i,j) < confidence.at<uchar>(i,j)){  //Current confidence period not expired
+                        if(frameCount.at<uchar>(i,j) % 10){         //Refresh period expires
+                            if(variance.at<uchar>(i,j) <= 38){      //Low variance: Vt <= Vth: reliable info
+                                if((detectionCount.at<uchar>(i,j) / frameCount.at<uchar>(i,j)) <= 0.8){ //No heavy traffic
+                                    toUpdate = true;                //Refresh period updating mode
+                                }
+                            }
+                        }
+                    }
+                    else{                                                       //Current confidence period expired
+                        if(variance.at<uchar>(i,j) <= 38){          //Low variance
+                            confidence.at<uchar>(i,j) +=            //Confidence updating as function of detection ratio
+                                    round(11 * exp(-4 * (detectionCount.at<uchar>(i,j) / frameCount.at<uchar>(i,j))) -1);
+                            if(confidence.at<uchar>(i,j) == 10){    //Confidence = Cmin
+                                toUpdate = true;                    //Force updating
+                            }
+                        }
+                        else{                                       //High variance: no reliable info
+                            toUpdate = true;                        //Confidence period updating mode
+                                                                    //to avoid background model deadlock
+                        }
+                        detectionCount = cv::Scalar(0);             //Reset Detection Counter
+                        frameCount = cv::Scalar(0);                 //Reset Frame Counter
+                    }
                 }
             }
 
-//            gettimeofday(&end, NULL);
-
-//            seconds = end.tv_sec - start.tv_sec;
-//            useconds = end.tv_usec - start.tv_usec;
-
-//            mtime = ((seconds)*1000 + useconds/1000.0) + 0.5;
-
-//            std::cout << "Elapsed time: " << mtime << " ms." << std::endl;
-        }
-
-        // Now perform the Matching to receive Performance results
-        for(auto& Algo : m_Algo)
-        {
-            Algo->ProcessPerformanceAnalyse();
-        }
-
-        RetVal = true;
-    }
-    return RetVal; */
-
-    //TESTING
-    int Point1X;
-    int Point1Y;
-    int Point2X;
-    int Point2Y;
-    ticpp::Document XmlDoc(m_ConfigFileName.c_str());
-    try{
-        XmlDoc.LoadFile();
-    }
-    catch(ticpp::Exception& ex){
-        std::cout << ex.what();
-    }
-
-    try{
-        ticpp::Element* Point1 = XmlDoc.FirstChild("Configuration")->FirstChildElement("IntrusionDetection")
-                ->FirstChildElement("IntrusionDetection")->FirstChildElement("Zones")->FirstChildElement("Zone")
-                ->FirstChildElement("Shape")->FirstChildElement("Point");
-        ticpp::Element* Point2 = Point1->NextSiblingElement("Point");
-        Point1->GetAttribute("X", &Point1X);
-        Point1->GetAttribute("Y", &Point1Y);
-        Point2->GetAttribute("X", &Point2X);
-        Point2->GetAttribute("Y", &Point2Y);
-    }
-    catch(ticpp::Exception& ex){
-        std::cout << ex.what();
-    }
-
-    if(m_Configured){
-        int frameNo = 0;
-        ticpp::Document Dom(m_Config.s_GroundTruthFile.c_str());
-        Dom.LoadFile();
-        ticpp::Element* FrameNodes = Dom.FirstChild("GroundTruth")->FirstChildElement("Frames");
-        ticpp::Element* CurrFrameNode = FrameNodes->FirstChildElement("Frame");
-
-        int totalFrames = 0;
-        ticpp::Iterator< ticpp::Element > Frame ("Frame");
-        for(Frame = Frame.begin(FrameNodes); Frame != Frame.end(); Frame++){
-            totalFrames++;
-        }
-
-        while(frameNo < totalFrames-1) //TotalFrames -1 omdat 1ste FrameNr = 0
-        {
-            cv::namedWindow("Video");
-            cv::Mat CurrFrame = m_VideoPlayer.GetNextFrame();
-            if(CurrFrame.data == 0)
-            {
-                m_VideoPlayer.Reset();
-                break;		// no frames
+            if(toUpdate == true){                                   //Updating recommended
+                //Update Background Model
+                for(int i = 0; i < background.rows; i++){
+                    for(int j = 0; j < background.cols; j++){
+                        if(currFrameGray.at<uchar>(i,j) > background.at<uchar>(i,j))
+                            background.at<uchar>(i,j)++;
+                        else if(currFrameGray.at<uchar>(i,j) < background.at<uchar>(i,j))
+                            background.at<uchar>(i,j)--;
+                    }
+                }
+                cv::absdiff(currFrameGray, background, difference); //Compute difference
+                //Update Variance
+                for(int i = 0; i < variance.rows; i++){
+                    for(int j = 0; j < variance.cols; j++){
+                        if(variance.at<uchar>(i,j) > 10 + 4*difference.at<uchar>(i,j))
+                            variance.at<uchar>(i,j)--;
+                        if(variance.at<uchar>(i,j) < 10 + 4*difference.at<uchar>(i,j))
+                            variance.at<uchar>(i,j)++;
+                    }
+                }
+                //Compute Foreground
+                for(int i = 0; i < difference.rows; i++){
+                    for(int j = 0; j < difference.cols; j++){
+                        if(difference.at<uchar>(i,j) > variance.at<uchar>(i,j))
+                            foreground.at<uchar>(i,j) = 255;
+                        else
+                            foreground.at<uchar>(i,j) = 0;
+                    }
+                }
+            }
+            else{                                                   //Do not update, just detect
+                cv::absdiff(currFrameGray, background, difference); //Compute difference
+                //Compute Foreground
+                for(int i = 0; i < difference.rows; i++){
+                    for(int j = 0; j < difference.cols; j++){
+                        if(difference.at<uchar>(i,j) > variance.at<uchar>(i,j))
+                            foreground.at<uchar>(i,j) = 255;
+                        else
+                            foreground.at<uchar>(i,j) = 0;
+                    }
+                }
+            }
+            //Update Detection Counter
+            for(int i = 0; i < detectionCount.rows; i++){
+                for(int j = 0; j < detectionCount.cols; j++){
+                    if(foreground.at<uchar>(i,j) == 255)
+                        detectionCount.at<uchar>(i,j)++;
+                }
             }
 
-            cv::Point Point1 = cv::Point(Point1X, Point1Y);
-            cv::Point Point2 = cv::Point(Point2X, Point2Y);
-            cv::line(CurrFrame,Point1, Point2, cv::Scalar(0,0,255), 2, 8);
-
-            ticpp::Iterator< ticpp::Element > CurrBox ( "BBox" );
-            for(CurrBox = CurrBox.begin(CurrFrameNode); CurrBox != CurrBox.end(); CurrBox++){
-                int x, y, w, h;
-                CurrBox->GetAttribute("X", &x);
-                CurrBox->GetAttribute("Y", &y);
-                CurrBox->GetAttribute("W", &w);
-                CurrBox->GetAttribute("H", &h);
-
-                cv::Rect rec = cv::Rect(x, y, w, h);
-                cv::rectangle(CurrFrame,rec,cv::Scalar(0,255,0),2,8);
-            }
-
-            cv::imshow("Video", CurrFrame);
-            cv::waitKey(30);
-            OpenCvFrame UpdateFrame(CurrFrame);
-
-            frameNo++;
-            CurrFrameNode = CurrFrameNode->NextSiblingElement("Frame");
+            //Show output
+            cv::namedWindow("Original");                //Original
+            cv::imshow("Original", currFrameGray);
+            cv::namedWindow("Background");              //Background
+            cv::imshow("Background", background);
+            cv::namedWindow("Foreground");              //Foreground
+            cv::imshow("Foreground", foreground);
+            cv::namedWindow("Variance");                //Variance
+            cv::imshow("Variance", variance);
+            cv::waitKey(25);
         }
+
     }
     return true;
 }

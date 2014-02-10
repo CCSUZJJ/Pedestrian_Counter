@@ -929,8 +929,8 @@ clean: CMakeFiles/NightlyUpdate.dir/clean
 CMakeFiles/Pedestrian_Counter.dir/all: 3rdparty/libs/TinyXml/CMakeFiles/3rdpartyTinyXml.dir/all
 CMakeFiles/Pedestrian_Counter.dir/all: 3rdparty/libs/TinyXml++/CMakeFiles/3rdpartyTinyXml++.dir/all
 CMakeFiles/Pedestrian_Counter.dir/all: detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/all
-CMakeFiles/Pedestrian_Counter.dir/all: detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all
 CMakeFiles/Pedestrian_Counter.dir/all: detection/libs/OpenCVWrappers/CMakeFiles/detectionOpenCVWrappers.dir/all
+CMakeFiles/Pedestrian_Counter.dir/all: detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all
 CMakeFiles/Pedestrian_Counter.dir/all: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/all
 	$(MAKE) -f CMakeFiles\Pedestrian_Counter.dir\build.make CMakeFiles/Pedestrian_Counter.dir/depend
 	$(MAKE) -f CMakeFiles\Pedestrian_Counter.dir\build.make CMakeFiles/Pedestrian_Counter.dir/build
@@ -1067,14 +1067,16 @@ clean: 3rdparty/libs/TinyXml++/CMakeFiles/3rdpartyTinyXml++.dir/clean
 
 # Convenience name for "all" pass in the directory.
 detection/libs/ResearchGeneral/all: detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/all
+detection/libs/ResearchGeneral/all: detection/libs/OpenCVWrappers/all
 .PHONY : detection/libs/ResearchGeneral/all
 
 # Convenience name for "clean" pass in the directory.
 detection/libs/ResearchGeneral/clean: detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/clean
+detection/libs/ResearchGeneral/clean: detection/libs/OpenCVWrappers/clean
 .PHONY : detection/libs/ResearchGeneral/clean
 
 # Convenience name for "preinstall" pass in the directory.
-detection/libs/ResearchGeneral/preinstall:
+detection/libs/ResearchGeneral/preinstall: detection/libs/OpenCVWrappers/preinstall
 .PHONY : detection/libs/ResearchGeneral/preinstall
 
 #=============================================================================
@@ -1082,6 +1084,7 @@ detection/libs/ResearchGeneral/preinstall:
 
 # All Build rule for target.
 detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/all: 3rdparty/libs/TinyXml++/CMakeFiles/3rdpartyTinyXml++.dir/all
+detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/all: detection/libs/OpenCVWrappers/CMakeFiles/detectionOpenCVWrappers.dir/all
 	$(MAKE) -f detection\libs\ResearchGeneral\CMakeFiles\detectionResearchGeneral.dir\build.make detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/depend
 	$(MAKE) -f detection\libs\ResearchGeneral\CMakeFiles\detectionResearchGeneral.dir\build.make detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles  34
@@ -1094,7 +1097,7 @@ all: detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/all
 
 # Build rule for subdir invocation for target.
 detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 27
 	$(MAKE) -f CMakeFiles\Makefile2 detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 0
 .PHONY : detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/rule
@@ -1110,61 +1113,6 @@ detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/clean:
 
 # clean rule for target.
 clean: detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/clean
-.PHONY : clean
-
-#=============================================================================
-# Directory level rules for directory detection/libs/ResearchDetectionFramework
-
-# Convenience name for "all" pass in the directory.
-detection/libs/ResearchDetectionFramework/all: detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all
-detection/libs/ResearchDetectionFramework/all: detection/libs/OpenCVWrappers/all
-.PHONY : detection/libs/ResearchDetectionFramework/all
-
-# Convenience name for "clean" pass in the directory.
-detection/libs/ResearchDetectionFramework/clean: detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/clean
-detection/libs/ResearchDetectionFramework/clean: detection/libs/OpenCVWrappers/clean
-.PHONY : detection/libs/ResearchDetectionFramework/clean
-
-# Convenience name for "preinstall" pass in the directory.
-detection/libs/ResearchDetectionFramework/preinstall: detection/libs/OpenCVWrappers/preinstall
-.PHONY : detection/libs/ResearchDetectionFramework/preinstall
-
-#=============================================================================
-# Target rules for target detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir
-
-# All Build rule for target.
-detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all: 3rdparty/libs/TinyXml/CMakeFiles/3rdpartyTinyXml.dir/all
-detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all: 3rdparty/libs/TinyXml++/CMakeFiles/3rdpartyTinyXml++.dir/all
-detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all: detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/all
-detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all: detection/libs/OpenCVWrappers/CMakeFiles/detectionOpenCVWrappers.dir/all
-	$(MAKE) -f detection\libs\ResearchDetectionFramework\CMakeFiles\detectionResearchDetectionFramework.dir\build.make detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/depend
-	$(MAKE) -f detection\libs\ResearchDetectionFramework\CMakeFiles\detectionResearchDetectionFramework.dir\build.make detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles  33
-	@echo Built target detectionResearchDetectionFramework
-.PHONY : detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all
-
-# Include target in all.
-all: detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 32
-	$(MAKE) -f CMakeFiles\Makefile2 detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 0
-.PHONY : detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/rule
-
-# Convenience name for target.
-detectionResearchDetectionFramework: detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/rule
-.PHONY : detectionResearchDetectionFramework
-
-# clean rule for target.
-detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/clean:
-	$(MAKE) -f detection\libs\ResearchDetectionFramework\CMakeFiles\detectionResearchDetectionFramework.dir\build.make detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/clean
-.PHONY : detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/clean
-
-# clean rule for target.
-clean: detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -1215,6 +1163,59 @@ detection/libs/OpenCVWrappers/CMakeFiles/detectionOpenCVWrappers.dir/clean:
 
 # clean rule for target.
 clean: detection/libs/OpenCVWrappers/CMakeFiles/detectionOpenCVWrappers.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory detection/libs/ResearchDetectionFramework
+
+# Convenience name for "all" pass in the directory.
+detection/libs/ResearchDetectionFramework/all: detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all
+.PHONY : detection/libs/ResearchDetectionFramework/all
+
+# Convenience name for "clean" pass in the directory.
+detection/libs/ResearchDetectionFramework/clean: detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/clean
+.PHONY : detection/libs/ResearchDetectionFramework/clean
+
+# Convenience name for "preinstall" pass in the directory.
+detection/libs/ResearchDetectionFramework/preinstall:
+.PHONY : detection/libs/ResearchDetectionFramework/preinstall
+
+#=============================================================================
+# Target rules for target detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir
+
+# All Build rule for target.
+detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all: 3rdparty/libs/TinyXml/CMakeFiles/3rdpartyTinyXml.dir/all
+detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all: 3rdparty/libs/TinyXml++/CMakeFiles/3rdpartyTinyXml++.dir/all
+detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all: detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/all
+detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all: detection/libs/OpenCVWrappers/CMakeFiles/detectionOpenCVWrappers.dir/all
+	$(MAKE) -f detection\libs\ResearchDetectionFramework\CMakeFiles\detectionResearchDetectionFramework.dir\build.make detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/depend
+	$(MAKE) -f detection\libs\ResearchDetectionFramework\CMakeFiles\detectionResearchDetectionFramework.dir\build.make detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles  33
+	@echo Built target detectionResearchDetectionFramework
+.PHONY : detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all
+
+# Include target in all.
+all: detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 32
+	$(MAKE) -f CMakeFiles\Makefile2 detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 0
+.PHONY : detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/rule
+
+# Convenience name for target.
+detectionResearchDetectionFramework: detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/rule
+.PHONY : detectionResearchDetectionFramework
+
+# clean rule for target.
+detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/clean:
+	$(MAKE) -f detection\libs\ResearchDetectionFramework\CMakeFiles\detectionResearchDetectionFramework.dir\build.make detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/clean
+.PHONY : detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/clean
+
+# clean rule for target.
+clean: detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/clean
 .PHONY : clean
 
 #=============================================================================

@@ -527,19 +527,6 @@ detectionResearchGeneral/fast:
 .PHONY : detectionResearchGeneral/fast
 
 #=============================================================================
-# Target rules for targets named detectionResearchDetectionFramework
-
-# Build rule for target.
-detectionResearchDetectionFramework: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 detectionResearchDetectionFramework
-.PHONY : detectionResearchDetectionFramework
-
-# fast build rule for target.
-detectionResearchDetectionFramework/fast:
-	$(MAKE) -f detection\libs\ResearchDetectionFramework\CMakeFiles\detectionResearchDetectionFramework.dir\build.make detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/build
-.PHONY : detectionResearchDetectionFramework/fast
-
-#=============================================================================
 # Target rules for targets named detectionOpenCVWrappers
 
 # Build rule for target.
@@ -551,6 +538,19 @@ detectionOpenCVWrappers: cmake_check_build_system
 detectionOpenCVWrappers/fast:
 	$(MAKE) -f detection\libs\OpenCVWrappers\CMakeFiles\detectionOpenCVWrappers.dir\build.make detection/libs/OpenCVWrappers/CMakeFiles/detectionOpenCVWrappers.dir/build
 .PHONY : detectionOpenCVWrappers/fast
+
+#=============================================================================
+# Target rules for targets named detectionResearchDetectionFramework
+
+# Build rule for target.
+detectionResearchDetectionFramework: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 detectionResearchDetectionFramework
+.PHONY : detectionResearchDetectionFramework
+
+# fast build rule for target.
+detectionResearchDetectionFramework/fast:
+	$(MAKE) -f detection\libs\ResearchDetectionFramework\CMakeFiles\detectionResearchDetectionFramework.dir\build.make detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/build
+.PHONY : detectionResearchDetectionFramework/fast
 
 #=============================================================================
 # Target rules for targets named detectionPeopleCounter
@@ -630,8 +630,8 @@ help:
 	@echo ... 3rdpartyTinyXml
 	@echo ... 3rdpartyTinyXml++
 	@echo ... detectionResearchGeneral
-	@echo ... detectionResearchDetectionFramework
 	@echo ... detectionOpenCVWrappers
+	@echo ... detectionResearchDetectionFramework
 	@echo ... detectionPeopleCounter
 	@echo ... src/main.obj
 	@echo ... src/main.i

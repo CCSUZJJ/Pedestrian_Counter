@@ -8,6 +8,7 @@ traf_set_public_headers("ResearchGeneral")
 set(SRC_COMMON 
 	"${TRAF_INCLUDE_PUBLIC}/DetAlgoI.h"
         "${TRAF_INCLUDE_PUBLIC}/ResearchGeneral.h"
+        "${TRAF_INCLUDE_PUBLIC}/DetectedObject.h"
         "src/ResearchGeneral.cpp"
             )
 
@@ -17,6 +18,8 @@ traf_start_library()
 traf_end_library()
 
 traf_lib_use("3rdparty" "TinyXml++")
+
+traf_lib_use("detection" "OpenCVWrappers")
 
 traf_include_public_headers("ResearchGeneral")
 
