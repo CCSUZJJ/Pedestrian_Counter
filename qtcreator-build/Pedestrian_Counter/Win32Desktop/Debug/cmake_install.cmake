@@ -33,7 +33,6 @@ IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   INCLUDE("F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++/cmake_install.cmake")
   INCLUDE("F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchGeneral/cmake_install.cmake")
   INCLUDE("F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchDetectionFramework/cmake_install.cmake")
-  INCLUDE("F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

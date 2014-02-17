@@ -1,0 +1,127 @@
+bool ResearchDetectionFramework::Run()
+{
+
+    bool RetVal = false;
+
+
+    if(m_Configured){
+        int frameCount = 0;
+        int threshold = 35;
+        cv::Mat meanGradX = cv::Mat::zeros(m_VideoPlayer.GetFrameSize(), CV_8UC1);
+        cv::Mat meanGradY = cv::Mat::zeros(meanGradX.size(), CV_8UC1);
+        cv::Mat sqrStdDevGradX = cv::Mat::zeros(meanGradX.size(), CV_8UC1);
+        cv::Mat sqrStdDevGradY = cv::Mat::zeros(meanGradX.size(), CV_8UC1);
+
+        //200 frames to determine mean and stddev
+        for(int i = 0; i < 200; i++){
+            cv::Mat currFrame = m_VideoPlayer.GetNextFrame();
+            if(currFrame.data == 0){
+                m_VideoPlayer.Reset();
+                break;
+            }
+            //Blur because Edge detection is sensitive to noise
+            cv::GaussianBlur(currFrame, currFrame, cv::Size(5,5), 0, 0, cv::BORDER_DEFAULT);
+            cv::Mat currFrameGray;
+            cv::cvtColor(currFrame, currFrameGray, CV_BGR2GRAY);
+            //Gradient using Sobel Operator
+            cv::Mat gradX, gradY;
+            cv::Sobel(currFrameGray, gradX, CV_32FC1, 1, 0, 3, 1, 0, cv::BORDER_DEFAULT); //Float for accumulateWeighted
+            cv::Sobel(currFrameGray, gradY, CV_32FC1, 0, 1, 3, 1, 0, cv::BORDER_DEFAULT);
+            //Determine mean
+            meanGradX.convertTo(meanGradX, CV_32FC1);
+            meanGradY.convertTo(meanGradY, CV_32FC1);
+            cv::accumulateWeighted(gradX, meanGradX, 0.1);
+            cv::accumulateWeighted(gradY, meanGradY, 0.1);
+            cv::convertScaleAbs(meanGradX, meanGradX);
+            cv::convertScaleAbs(meanGradY, meanGradY);
+            //Determine standard deviation
+            cv::Mat meanDiffX, meanDiffY;
+            cv::subtract(gradX, meanGradX, meanDiffX, cv::noArray(), CV_32FC1); //Float for accumulateWeighted
+            cv::subtract(gradY, meanGradY, meanDiffY, cv::noArray(), CV_32FC1);
+            sqrStdDevGradX.convertTo(sqrStdDevGradX, CV_32FC1);
+            sqrStdDevGradY.convertTo(sqrStdDevGradY, CV_32FC1);
+            cv::accumulateWeighted(meanDiffX, sqrStdDevGradX, 0.1);
+            cv::accumulateWeighted(meanDiffY, sqrStdDevGradY, 0.1);
+            //Convert to CV_8U
+            cv::convertScaleAbs(sqrStdDevGradX, sqrStdDevGradX);
+            cv::convertScaleAbs(sqrStdDevGradY, sqrStdDevGradY);
+            cv::convertScaleAbs(gradX, gradX);
+            cv::convertScaleAbs(gradY, gradY);
+        }
+        //VideoPayer back to frame 0
+        m_VideoPlayer.Init();
+
+        while(true){
+            cv::Mat currFrame = m_VideoPlayer.GetNextFrame();
+            if(currFrame.data == 0){
+                m_VideoPlayer.Reset();
+                break;
+            }
+            frameCount++;
+            //Blur because Edge detection is sensitive to noise
+            cv::GaussianBlur(currFrame, currFrame, cv::Size(5,5), 0, 0, cv::BORDER_DEFAULT);
+            cv::Mat currFrameGray;
+            cv::cvtColor(currFrame, currFrameGray, CV_BGR2GRAY);
+            //Gradient using Sobel Operator
+            cv::Mat gradX, gradY;
+            cv::Sobel(currFrameGray, gradX, CV_16SC1, 1, 0, 3, 1, 0, cv::BORDER_DEFAULT);
+            cv::Sobel(currFrameGray, gradY, CV_16SC1, 0, 1, 3, 1, 0, cv::BORDER_DEFAULT);
+            cv::convertScaleAbs(gradX, gradX);
+            cv::convertScaleAbs(gradY, gradY);
+            //Calculate terms for thresholding
+            cv::Mat resultX, resultY, result, foregroundMask;
+            cv::absdiff(gradX, meanGradX, resultX);
+            resultX.mul(resultX);
+            cv::divide(resultX, sqrStdDevGradX, resultX);
+            cv::absdiff(gradY, meanGradY, resultY);
+            resultY.mul(resultY);
+            cv::divide(resultY, sqrStdDevGradY, resultY);
+            cv::add(resultX, resultY, result);
+            //If result > threshold => foreground
+            cv::threshold(result, foregroundMask, threshold, 255, 0);
+
+            //For all background pixels (inverse of foreground) => update mean and std dev
+            cv::Mat whiteMat = cv::Mat(meanGradX.size(), CV_8UC1);
+            whiteMat = cv::Scalar(255);
+            cv::Mat updateMask;
+            cv::subtract(whiteMat, foregroundMask, updateMask);
+            //Calculate terms for updating
+            double weight = 1/(frameCount);
+            gradX.convertTo(gradX, CV_32FC1);
+            meanGradX.convertTo(meanGradX, CV_32FC1);
+            cv::accumulateWeighted(gradX, meanGradX, weight, updateMask);
+            cv::Mat resultStdDevX;
+            cv::subtract(gradX, meanGradX, resultStdDevX, cv::noArray(), CV_16SC1);
+            resultStdDevX.mul(resultStdDevX);
+            resultStdDevX *= weight;
+            sqrStdDevGradX.convertTo(sqrStdDevGradX, CV_16SC1);
+            cv::add(sqrStdDevGradX, resultStdDevX, sqrStdDevGradX, updateMask);
+            cv::convertScaleAbs(sqrStdDevGradX, sqrStdDevGradX);
+            cv::convertScaleAbs(gradX, gradX);
+            cv::convertScaleAbs(meanGradX, meanGradX);
+
+            gradY.convertTo(gradY, CV_32FC1);
+            meanGradY.convertTo(meanGradY, CV_32FC1);
+            cv::accumulateWeighted(gradY, meanGradY, weight, updateMask);
+            cv::Mat resultStdDevY;
+            cv::subtract(gradY, meanGradY, resultStdDevY, cv::noArray(), CV_16SC1);
+            resultStdDevY.mul(resultStdDevY);
+            resultStdDevY *= weight;
+            sqrStdDevGradY.convertTo(sqrStdDevGradY, CV_16SC1);
+            cv::add(sqrStdDevGradY, resultStdDevY, sqrStdDevGradY, updateMask);
+            cv::convertScaleAbs(sqrStdDevGradY, sqrStdDevGradY);
+            cv::convertScaleAbs(gradY, gradY);
+            cv::convertScaleAbs(meanGradY, meanGradY);
+
+            cv::namedWindow("Foreground");
+            cv::imshow("Foreground", foregroundMask);
+            cv::namedWindow("Mean X");
+            cv::imshow("Mean X", meanGradX);
+            cv::namedWindow("Std Dev X");
+            cv::imshow("Std Dev X", sqrStdDevGradX);
+            cv::waitKey();
+        }
+
+    }
+    return true;
+}

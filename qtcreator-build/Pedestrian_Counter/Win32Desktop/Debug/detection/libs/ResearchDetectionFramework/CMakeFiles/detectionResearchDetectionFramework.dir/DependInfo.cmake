@@ -19,6 +19,7 @@ SET(CMAKE_TARGET_DEFINITIONS
 SET(CMAKE_TARGET_LINKED_INFO_FILES
   "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/DependInfo.cmake"
   "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/OpenCVWrappers/CMakeFiles/detectionOpenCVWrappers.dir/DependInfo.cmake"
+  "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/DependInfo.cmake"
   "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml/CMakeFiles/3rdpartyTinyXml.dir/DependInfo.cmake"
   "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/3rdparty/libs/TinyXml++/CMakeFiles/3rdpartyTinyXml++.dir/DependInfo.cmake"
   )
@@ -49,6 +50,7 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../inc/ResearchDetectionFramework"
   "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/ResearchGeneral"
   "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/OpenCVWrappers"
+  "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter"
   "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../3rdparty/inc/TinyXml"
   "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../3rdparty/inc/TinyXml++"
   )

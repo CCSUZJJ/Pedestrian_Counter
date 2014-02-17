@@ -234,6 +234,11 @@ bool ResearchDetectionFramework::Run()
             cv::Mat kernel = cv::Mat::ones(cv::Size(4,4), CV_8UC1);
             cv::morphologyEx(foreground, foreground, cv::MORPH_OPEN, kernel);
             cv::morphologyEx(foreground, foreground, cv::MORPH_CLOSE, kernel);
+            
+            //Blob Segmentation
+            cv::SimpleBlobDetector blobDetector = cv::SimpleBlobDetector();
+            blobDetector.Params.filterByArea = true;
+            blobDetector.
 
             //Display
             cv::namedWindow("Current Frame");

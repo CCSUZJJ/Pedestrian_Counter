@@ -1,0 +1,87 @@
+bool ResearchDetectionFramework::Run()
+{
+
+    bool RetVal = false;
+
+
+    if(m_Configured){
+        int thresholdLow = 20;
+        int thresholdHigh = 80;
+        cv::Mat backgroundShort = cv::Mat::zeros(m_VideoPlayer.GetFrameSize(), CV_8UC1);
+        cv::Mat backgroundLong = cv::Mat::zeros(backgroundShort.size(), CV_8UC1);
+
+        while(true){
+            cv::Mat currFrame = m_VideoPlayer.GetNextFrame();
+            if(currFrame.data == 0){
+                m_VideoPlayer.Reset();
+                break;
+            }
+            //Blur because Edge detection is sensitive to noise
+            cv::GaussianBlur(currFrame, currFrame, cv::Size(3,3), 0, 0, cv::BORDER_DEFAULT);
+            cv::Mat currFrameGray;
+            cv::cvtColor(currFrame, currFrameGray, CV_BGR2GRAY);
+
+            //Short Term Background Edge Model
+            double alfaS = 0.1;
+            cv::Mat gradX;
+            cv::Mat differenceS = cv::Mat::zeros(backgroundShort.size(), CV_16SC1);
+            cv::Sobel(currFrameGray, gradX, CV_16SC1, 1, 0, 3, 1, 0, cv::BORDER_DEFAULT);
+            cv::convertScaleAbs(gradX, gradX);
+            cv::subtract(gradX, backgroundShort, differenceS, cv::noArray(), CV_16SC1);
+            cv::addWeighted(backgroundShort, 1, differenceS, alfaS, 0, backgroundShort, CV_8UC1);
+            //Short Term Foreground Mask
+            cv::Mat foregroundShort;
+            cv::threshold(differenceS, foregroundShort, thresholdLow, 255, 0);
+            cv::convertScaleAbs(foregroundShort, foregroundShort);
+
+            //Long Term Foreground Edge Model
+            cv::Mat absDifferenceL, foregroundLong;
+            //cv::subtract(gradX, backgroundLong, differenceL, cv::noArray(), CV_16SC1);
+            cv::absdiff(gradX, backgroundLong, absDifferenceL);
+            cv::threshold(absDifferenceL, foregroundLong, thresholdHigh, 255, 0);
+            for(int i = 1; i < absDifferenceL.rows-1; i++){ //Vanaf 1 beginnen omdat bij 8connect 0-1 = -1 => bestaat niet
+                for(int j = 1; j < absDifferenceL.cols-1; j++){//Idem boven
+                    if(thresholdLow <= absDifferenceL.at<uchar>(i,j) <= thresholdHigh){
+                        //8 Connected
+                        if(absDifferenceL.at<uchar>(i-1, j-1) > thresholdHigh ||
+                           absDifferenceL.at<uchar>(i, j-1)   > thresholdHigh ||
+                           absDifferenceL.at<uchar>(i+1, j-1) > thresholdHigh ||
+                           absDifferenceL.at<uchar>(i-1, j)   > thresholdHigh ||
+                           absDifferenceL.at<uchar>(i+1, j)   > thresholdHigh ||
+                           absDifferenceL.at<uchar>(i-1, j+1) > thresholdHigh ||
+                           absDifferenceL.at<uchar>(i, j+1)   > thresholdHigh ||
+                           absDifferenceL.at<uchar>(i+1, j+1) > thresholdHigh){
+                            foregroundLong.at<uchar>(i,j) = 255;
+                        }
+                    }
+                }
+            }
+            double alfaL = 0.01;
+            cv::Mat updateMask, foregroundLongInv, foregroundShortInv, differenceL;
+            cv::bitwise_not(foregroundLong, foregroundLongInv);
+            cv::bitwise_not(foregroundShort, foregroundShortInv);
+            cv::bitwise_and(foregroundLongInv, foregroundShortInv, updateMask);
+            cv::subtract(gradX, backgroundLong, differenceL, updateMask, CV_16SC1);
+            cv::addWeighted(backgroundLong, 1, differenceL, alfaL, 0, backgroundLong, CV_8UC1);
+
+            //Total Foreground Mask
+            cv::Mat foregroundTotal;
+            cv::bitwise_and(foregroundLong, foregroundShort, foregroundTotal);
+
+            cv::namedWindow("Short Term Background Edge Model");
+            cv::imshow("Short Term Background Edge Model", backgroundShort);
+            cv::namedWindow("Short Term Foreground Mask");
+            cv::imshow("Short Term Foreground Mask", foregroundShort);
+            cv::namedWindow("Long Term Background Edge Model");
+            cv::imshow("Long Term Background Edge Model", backgroundLong);
+            cv::namedWindow("Long Term Foreground Mask");
+            cv::imshow("Long Term Foreground Mask", foregroundLong);
+            cv::namedWindow("Total Foreground Mask");
+            cv::imshow("Total Foreground Mask", foregroundTotal);
+
+            cv::waitKey(1);
+        }
+
+    }
+    return true;
+}

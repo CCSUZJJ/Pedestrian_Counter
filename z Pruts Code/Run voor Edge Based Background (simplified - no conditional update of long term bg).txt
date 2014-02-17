@@ -1,0 +1,91 @@
+bool ResearchDetectionFramework::Run()
+{
+
+    bool RetVal = false;
+
+
+    if(m_Configured){
+        int thresholdLow = 20;
+        int thresholdHigh = 50;
+        double alfaShort = 0.1;
+        double alfaLong = 0.01;
+        cv::Mat backgroundShort = cv::Mat::zeros(m_VideoPlayer.GetFrameSize(), CV_8UC1);
+        cv::Mat backgroundLong = cv::Mat::zeros(backgroundShort.size(), CV_8UC1);
+
+        while(true){
+            cv::Mat currFrame = m_VideoPlayer.GetNextFrame();
+            if(currFrame.data == 0){
+                m_VideoPlayer.Reset();
+                break;
+            }
+            //Blur because Edge detection is sensitive to noise
+            cv::GaussianBlur(currFrame, currFrame, cv::Size(3,3), 0, 0, cv::BORDER_DEFAULT);
+            cv::Mat currFrameGray, edges;
+            cv::cvtColor(currFrame, currFrameGray, CV_BGR2GRAY);
+            //Canny Edge Detector
+            //cv::Canny(currFrameGray, edges, 45, 100, 3);
+            //Gradient using Sobel Operator
+            cv::Mat gradX, gradY;
+            cv::Sobel(currFrameGray, gradX, CV_16SC1, 1, 0, 3, 1, 0, cv::BORDER_DEFAULT);
+            cv::Sobel(currFrameGray, gradY, CV_16SC1, 0, 1, 3, 1, 0, cv::BORDER_DEFAULT);
+            cv::convertScaleAbs(gradX, gradX);
+            cv::convertScaleAbs(gradY, gradY);
+            cv::addWeighted(gradX, 0.5, gradY, 0.5, 0, edges);
+
+            //Short Term Background Edge Model
+            cv::Mat edgesFloat,backgroundShortFloat;
+            edges.convertTo(edgesFloat, CV_32FC1);
+            backgroundShort.convertTo(backgroundShortFloat, CV_32FC1);
+            cv::accumulateWeighted(edgesFloat, backgroundShortFloat, alfaShort);
+            cv::convertScaleAbs(backgroundShortFloat, backgroundShort);
+            //Short Term Foreground Mask
+            cv::Mat differenceShort, foregroundShort;
+            cv::absdiff(edges, backgroundShort, differenceShort);
+            cv::threshold(differenceShort, foregroundShort, thresholdLow, 255, 0);
+
+            //Long Term Background Edge Model
+            cv::Mat backgroundLongFloat;
+            backgroundLong.convertTo(backgroundLongFloat, CV_32FC1);
+            cv::accumulateWeighted(edgesFloat, backgroundLongFloat, alfaLong);
+            cv::convertScaleAbs(backgroundLongFloat, backgroundLong);
+            //Long Term Foreground Mask
+            cv::Mat differenceLong, foregroundLong;
+            cv::absdiff(edges, backgroundLong, differenceLong);
+            cv::threshold(differenceLong, foregroundLong, thresholdHigh, 255, 0);
+            for(int i = 1; i < differenceLong.rows-1; i++){
+                for(int j = 1; j < differenceLong.cols-1; j++){
+                    if(thresholdLow <= differenceLong.at<uchar>(i,j) <= thresholdHigh){
+                        //8 Connected
+                        if(differenceLong.at<uchar>(i-1, j-1) > thresholdHigh ||
+                           differenceLong.at<uchar>(i, j-1)   > thresholdHigh ||
+                           differenceLong.at<uchar>(i+1, j-1) > thresholdHigh ||
+                           differenceLong.at<uchar>(i-1, j)   > thresholdHigh ||
+                           differenceLong.at<uchar>(i+1, j)   > thresholdHigh ||
+                           differenceLong.at<uchar>(i-1, j+1) > thresholdHigh ||
+                           differenceLong.at<uchar>(i, j+1)   > thresholdHigh ||
+                           differenceLong.at<uchar>(i+1, j+1) > thresholdHigh){
+                            foregroundLong.at<uchar>(i,j) = 255;
+                        }
+                    }
+                }
+            }
+            //Total Foreground
+            cv::Mat foregroundTotal;
+            cv::bitwise_and(foregroundLong, foregroundShort, foregroundTotal);
+
+            cv::namedWindow("Short Term Background Edge Model");
+            cv::imshow("Short Term Background Edge Model", backgroundShort);
+            cv::namedWindow("Short Term Foreground Mask");
+            cv::imshow("Short Term Foreground Mask", foregroundShort);
+            cv::namedWindow("Long Term Background Edge Model");
+            cv::imshow("Long Term Background Edge Model", backgroundLong);
+            cv::namedWindow("Long Term Foreground Mask");
+            cv::imshow("Long Term Foreground Mask", foregroundLong);
+            cv::namedWindow("Total Foreground Estimation");
+            cv::imshow("Total Foreground Estimation", foregroundTotal);
+            cv::waitKey();
+        }
+
+    }
+    return true;
+}

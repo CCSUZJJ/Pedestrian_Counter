@@ -1,5 +1,5 @@
-#ifndef DetectedObject_H
-#define DetectedObject_H
+#ifndef DETECTEDOBJECT_H
+#define DETECTEDOBJECT_H
 
 #include <vector>
 

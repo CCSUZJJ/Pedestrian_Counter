@@ -124,6 +124,30 @@ detectionPeopleCounter/fast:
 	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/build
 .PHONY : detectionPeopleCounter/fast
 
+src/ForegroundSegmentation.obj: src/ForegroundSegmentation.cpp.obj
+.PHONY : src/ForegroundSegmentation.obj
+
+# target to build an object file
+src/ForegroundSegmentation.cpp.obj:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj
+.PHONY : src/ForegroundSegmentation.cpp.obj
+
+src/ForegroundSegmentation.i: src/ForegroundSegmentation.cpp.i
+.PHONY : src/ForegroundSegmentation.i
+
+# target to preprocess a source file
+src/ForegroundSegmentation.cpp.i:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.i
+.PHONY : src/ForegroundSegmentation.cpp.i
+
+src/ForegroundSegmentation.s: src/ForegroundSegmentation.cpp.s
+.PHONY : src/ForegroundSegmentation.s
+
+# target to generate assembly for a file
+src/ForegroundSegmentation.cpp.s:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.s
+.PHONY : src/ForegroundSegmentation.cpp.s
+
 src/PeopleCounter.obj: src/PeopleCounter.cpp.obj
 .PHONY : src/PeopleCounter.obj
 
@@ -158,6 +182,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... test
+	@echo ... src/ForegroundSegmentation.obj
+	@echo ... src/ForegroundSegmentation.i
+	@echo ... src/ForegroundSegmentation.s
 	@echo ... src/PeopleCounter.obj
 	@echo ... src/PeopleCounter.i
 	@echo ... src/PeopleCounter.s

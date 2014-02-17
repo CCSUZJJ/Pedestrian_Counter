@@ -277,7 +277,7 @@ detectionOpenCVWrappers_LIB_DEPENDS:STATIC=general;-Wl,--start-group;general;-Wl
 detectionPeopleCounter_LIB_DEPENDS:STATIC=general;-Wl,--start-group;general;-Wl,--end-group;general;-Wl,--start-group;general;-Wl,--end-group;general;detectionResearchGeneral;general;detectionOpenCVWrappers;general;3rdpartyTinyXml;general;3rdpartyTinyXml++;
 
 //Dependencies for the target
-detectionResearchDetectionFramework_LIB_DEPENDS:STATIC=general;-Wl,--start-group;general;-Wl,--end-group;general;-Wl,--start-group;general;-Wl,--end-group;general;detectionResearchGeneral;general;detectionOpenCVWrappers;general;3rdpartyTinyXml;general;3rdpartyTinyXml++;
+detectionResearchDetectionFramework_LIB_DEPENDS:STATIC=general;-Wl,--start-group;general;-Wl,--end-group;general;-Wl,--start-group;general;-Wl,--end-group;general;detectionResearchGeneral;general;detectionOpenCVWrappers;general;detectionPeopleCounter;general;3rdpartyTinyXml;general;3rdpartyTinyXml++;
 
 //Dependencies for the target
 detectionResearchGeneral_LIB_DEPENDS:STATIC=general;-Wl,--start-group;general;-Wl,--end-group;general;-Wl,--start-group;general;-Wl,--end-group;general;3rdpartyTinyXml++;general;detectionOpenCVWrappers;

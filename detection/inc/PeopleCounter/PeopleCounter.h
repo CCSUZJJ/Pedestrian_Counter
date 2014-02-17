@@ -1,3 +1,7 @@
+#ifndef PEOPLECOUNTER_H
+#define PEOPLECOUNTER_H
+
+
 #include "DetAlgoI.h"
 
 class PeopleCounter : public IDetAlgo {
@@ -23,3 +27,5 @@ class PeopleCounter : public IDetAlgo {
 		void SetVideoName(const std::string& Path, const std::string& VideoName,
                           unsigned int FrameRate, CvSize& FrameSize, bool CreateVideo = false) override;
 };
+
+#endif

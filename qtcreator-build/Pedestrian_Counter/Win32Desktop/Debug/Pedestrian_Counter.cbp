@@ -560,6 +560,7 @@
             <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../3rdparty/inc/TinyXml" />
             <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../3rdparty/inc/TinyXml++" />
             <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/OpenCVWrappers" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter" />
             <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/ResearchGeneral" />
             <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../inc/ResearchDetectionFramework" />
          </Compiler>
@@ -607,6 +608,7 @@
             <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../3rdparty/inc/TinyXml" />
             <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../3rdparty/inc/TinyXml++" />
             <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/OpenCVWrappers" />
+            <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter" />
             <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/ResearchGeneral" />
             <Add directory="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../inc/ResearchDetectionFramework" />
          </Compiler>
@@ -624,6 +626,9 @@
          <Option type="2" />
          <Option compiler="gcc" />
          <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
             <Add option="-D_CRT_SECURE_NO_WARNINGS" />
             <Add option="-D_UNICODE" />
             <Add option="-DUNICODE" />
@@ -671,6 +676,9 @@
          <Option type="2" />
          <Option compiler="gcc" />
          <Compiler>
+            <Add option="-D_CRT_SECURE_NO_WARNINGS" />
+            <Add option="-D_UNICODE" />
+            <Add option="-DUNICODE" />
             <Add option="-D_CRT_SECURE_NO_WARNINGS" />
             <Add option="-D_UNICODE" />
             <Add option="-DUNICODE" />
@@ -772,6 +780,8 @@
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/cvplot.cpp">
       </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/ForegroundSegmentation.cpp">
+      </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/PeopleCounter.cpp">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/ResearchDetectionFramework.cpp">
@@ -837,6 +847,8 @@
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/Point.h">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/cvplot.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/ForegroundSegmentation.h">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/PeopleCounter.h">
       </Unit>

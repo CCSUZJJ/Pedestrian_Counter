@@ -1,0 +1,112 @@
+bool ResearchDetectionFramework::Run()
+{
+
+    bool RetVal = false;
+
+
+    if(m_Configured){
+        int thresholdLow = 40;
+        int thresholdHigh = 100;
+        cv::Mat backgroundShort = cv::Mat::zeros(m_VideoPlayer.GetFrameSize(), CV_8UC1);
+        cv::Mat backgroundLong = cv::Mat::zeros(backgroundShort.size(), CV_8UC1);
+        cv::Mat foregroundShort = cv::Mat::zeros(backgroundShort.size(), CV_8UC1);
+        cv::Mat foregroundLong = cv::Mat::zeros(backgroundShort.size(), CV_8UC1);
+        cv::Mat foregroundTotal = cv::Mat::zeros(backgroundShort.size(), CV_8UC1);
+
+        while(true){
+            cv::Mat currFrame = m_VideoPlayer.GetNextFrame();
+            if(currFrame.data == 0){
+                m_VideoPlayer.Reset();
+                break;
+            }
+            //Blur because Edge detection is sensitive to noise
+            cv::GaussianBlur(currFrame, currFrame, cv::Size(3,3), 0, 0, cv::BORDER_DEFAULT);
+            cv::Mat currFrameGray;
+            cv::cvtColor(currFrame, currFrameGray, CV_BGR2GRAY);
+
+            //Short Term Background Edge Model
+            cv::Mat gradX;
+            cv::Sobel(currFrameGray, gradX, CV_16SC1, 1, 0, 3, 1, 0, cv::BORDER_DEFAULT);
+            cv::convertScaleAbs(gradX, gradX);
+            for(int i = 0; i < gradX.rows; i ++){
+                for(int j = 0; j < gradX.cols; j++){
+                    double alfa = 0.1;
+                    short difference = gradX.at<uchar>(i,j) - backgroundShort.at<uchar>(i,j);
+                    backgroundShort.at<uchar>(i,j) += (alfa*difference);
+                    //Short Term Foreground Mask
+                    if(difference > thresholdLow){
+                        foregroundShort.at<uchar>(i,j) = 255;
+                    }
+                    else{
+                        foregroundShort.at<uchar>(i,j) = 0;
+                    }
+                }
+            }
+
+            //Long Term Background Edge Model
+            for(int i = 0; i < backgroundLong.rows; i++){
+                for(int j = 0; j < backgroundLong.cols; j++){
+                    //Long Term Foreground Mask
+                    double alfa = 0.01;
+                    short difference = gradX.at<uchar>(i,j) - backgroundLong.at<uchar>(i,j);
+                    if(difference > thresholdHigh){
+                        foregroundLong.at<uchar>(i,j) = 255;
+                    }
+                    else if(difference < thresholdLow){
+                        foregroundLong.at<uchar>(i,j) = 0;
+                    }
+                    else{
+                        short diffUL = gradX.at<uchar>(i-1,j-1) - backgroundLong.at<uchar>(i-1,j-1);
+                        short diffU = gradX.at<uchar>(i,j-1) - backgroundLong.at<uchar>(i,j-1);
+                        short diffUR = gradX.at<uchar>(i+1,j-1) - backgroundLong.at<uchar>(i+1,j-1);
+                        short diffL = gradX.at<uchar>(i-1,j) - backgroundLong.at<uchar>(i-1,j);
+                        short diffR = gradX.at<uchar>(i+1,j) - backgroundLong.at<uchar>(i+1,j);
+                        short diffDL = gradX.at<uchar>(i-1,j+1) - backgroundLong.at<uchar>(i-1,j+1);
+                        short diffD = gradX.at<uchar>(i,j+1) - backgroundLong.at<uchar>(i,j+1);
+                        short diffDR = gradX.at<uchar>(i+1,j+1) - backgroundLong.at<uchar>(i+1,j+1);
+                        if(diffUL > thresholdHigh || diffU > thresholdHigh || diffUR > thresholdHigh ||
+                           diffL  > thresholdHigh ||                          diffR  > thresholdHigh ||
+                           diffDL > thresholdHigh || diffD > thresholdHigh || diffDR > thresholdHigh){
+                            foregroundLong.at<uchar>(i,j) = 255;
+                        }
+                        else{
+                            foregroundLong.at<uchar>(i,j) = 0;
+                        }
+                    }
+                    //Long Term Background Edge Model
+                    if((foregroundLong.at<uchar>(i,j) == 0) && (foregroundShort.at<uchar>(i,j) == 0)){
+                        backgroundLong.at<uchar>(i,j) += (alfa*difference);
+                    }
+                }
+            }
+
+            //Total Foreground Estimate
+            for(int i = 0; i < foregroundTotal.rows; i++){
+                for(int j = 0; j < foregroundTotal.cols; j++){
+                    if((foregroundShort.at<uchar>(i,j) == 255) && (foregroundLong.at<uchar>(i,j) == 255)){
+                        foregroundTotal.at<uchar>(i,j) = 255;
+                    }
+                    else{
+                        foregroundTotal.at<uchar>(i,j) = 0;
+                    }
+                }
+            }
+
+            cv::namedWindow("Detected Edges");
+            cv::imshow("Detected Edges", gradX);
+            cv::namedWindow("Short Term Background");
+            cv::imshow("Short Term Background", backgroundShort);
+            cv::namedWindow("Short Term Foreground Mask");
+            cv::imshow("Short Term Foreground Mask", foregroundShort);
+            cv::namedWindow("Long Term Background");
+            cv::imshow("Long Term Background", backgroundLong);
+            cv::namedWindow("Long Term Foreground");
+            cv::imshow("Long Term Foreground", foregroundLong);
+            cv::namedWindow("Total Foreground Estimate");
+            cv::imshow("Total Foreground Estimate", foregroundTotal);
+            cv::waitKey(20);
+        }
+
+    }
+    return true;
+}

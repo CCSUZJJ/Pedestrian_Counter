@@ -8,6 +8,8 @@ traf_set_public_headers("PeopleCounter")
 set(SRC_COMMON 
 	"${TRAF_INCLUDE_PUBLIC}/PeopleCounter.h"
     "src/PeopleCounter.cpp"
+        "${TRAF_INCLUDE_PUBLIC}/ForegroundSegmentation.h"
+    "src/ForegroundSegmentation.cpp"
             )
 
 set(SRC_TARGET detectionPeopleCounter)

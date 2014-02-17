@@ -27,6 +27,8 @@ traf_lib_use("detection" "ResearchGeneral")
 
 traf_lib_use("detection" "OpenCVWrappers")
 
+traf_lib_use("detection" "PeopleCounter")
+
 traf_lib_use("3rdparty" "TinyXml" )
 
 traf_lib_use("3rdparty" "TinyXml++")
@@ -36,6 +38,8 @@ traf_include_public_headers("ResearchDetectionFramework")
 traf_lib_include("detection" "ResearchGeneral")
 
 traf_lib_include("detection" "OpenCVWrappers")
+
+traf_lib_include("detection" "PeopleCounter")
 
 traf_lib_include("3rdparty" "TinyXml" )
 
