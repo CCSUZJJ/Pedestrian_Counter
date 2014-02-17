@@ -780,6 +780,8 @@
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/cvplot.cpp">
       </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/BlobSegmentation.cpp">
+      </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/ForegroundSegmentation.cpp">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/PeopleCounter.cpp">
@@ -847,6 +849,8 @@
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/Point.h">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/cvplot.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/BlobSegmentation.h">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/ForegroundSegmentation.h">
       </Unit>

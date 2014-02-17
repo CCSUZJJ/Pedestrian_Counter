@@ -1,6 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/detectionPeopleCounter.dir/src/PeopleCounter.cpp.obj"
   "CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj"
+  "CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.obj"
   "libdetectionPeopleCounter.pdb"
   "libdetectionPeopleCounter.a"
 )

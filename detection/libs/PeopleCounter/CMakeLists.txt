@@ -10,6 +10,8 @@ set(SRC_COMMON
     "src/PeopleCounter.cpp"
         "${TRAF_INCLUDE_PUBLIC}/ForegroundSegmentation.h"
     "src/ForegroundSegmentation.cpp"
+        "${TRAF_INCLUDE_PUBLIC}/BlobSegmentation.h"
+    "src/BlobSegmentation.cpp"
             )
 
 set(SRC_TARGET detectionPeopleCounter)

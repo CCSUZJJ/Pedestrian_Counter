@@ -14,6 +14,7 @@
 
 #include "DetectedObject.h"
 #include "ForegroundSegmentation.h"
+#include "BlobSegmentation.h"
 
 namespace
 {
@@ -213,6 +214,7 @@ bool ResearchDetectionFramework::Run()
         //-------------------------------------------------------------------------------------------
 
         ForegroundSegmentation fgSegment = ForegroundSegmentation();
+        BlobSegmentation blobSegment =  BlobSegmentation();
 
         while(true){
             cv::Mat newFrame = m_VideoPlayer.GetNextFrame();
@@ -231,9 +233,13 @@ bool ResearchDetectionFramework::Run()
                                              detectionCount, toUpdate);
 
             //Morphological Operations: opening -> closing
+            cv::Mat foregroundMorph;
             cv::Mat kernel = cv::Mat::ones(cv::Size(4,4), CV_8UC1);
-            cv::morphologyEx(foreground, foreground, cv::MORPH_OPEN, kernel);
-            cv::morphologyEx(foreground, foreground, cv::MORPH_CLOSE, kernel);
+            cv::morphologyEx(foreground, foregroundMorph, cv::MORPH_OPEN, kernel);
+            cv::morphologyEx(foreground, foregroundMorph, cv::MORPH_CLOSE, kernel);
+
+            //Blob Segmentation
+            blobSegment.intensitySegment(foregroundMorph);
 
             //Display
             cv::namedWindow("Current Frame");
@@ -242,7 +248,7 @@ bool ResearchDetectionFramework::Run()
             cv::imshow("Current Frame", currFrame);
             cv::imshow("Background", background);
             cv::imshow("Foreground", foreground);
-            cv::waitKey(1);
+            cv::waitKey();
         }
 
     }

@@ -124,6 +124,30 @@ detectionPeopleCounter/fast:
 	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/build
 .PHONY : detectionPeopleCounter/fast
 
+src/BlobSegmentation.obj: src/BlobSegmentation.cpp.obj
+.PHONY : src/BlobSegmentation.obj
+
+# target to build an object file
+src/BlobSegmentation.cpp.obj:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.obj
+.PHONY : src/BlobSegmentation.cpp.obj
+
+src/BlobSegmentation.i: src/BlobSegmentation.cpp.i
+.PHONY : src/BlobSegmentation.i
+
+# target to preprocess a source file
+src/BlobSegmentation.cpp.i:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.i
+.PHONY : src/BlobSegmentation.cpp.i
+
+src/BlobSegmentation.s: src/BlobSegmentation.cpp.s
+.PHONY : src/BlobSegmentation.s
+
+# target to generate assembly for a file
+src/BlobSegmentation.cpp.s:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.s
+.PHONY : src/BlobSegmentation.cpp.s
+
 src/ForegroundSegmentation.obj: src/ForegroundSegmentation.cpp.obj
 .PHONY : src/ForegroundSegmentation.obj
 
@@ -182,6 +206,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... test
+	@echo ... src/BlobSegmentation.obj
+	@echo ... src/BlobSegmentation.i
+	@echo ... src/BlobSegmentation.s
 	@echo ... src/ForegroundSegmentation.obj
 	@echo ... src/ForegroundSegmentation.i
 	@echo ... src/ForegroundSegmentation.s
