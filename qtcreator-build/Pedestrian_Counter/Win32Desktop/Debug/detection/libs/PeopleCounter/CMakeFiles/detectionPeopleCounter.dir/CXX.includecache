@@ -817,4 +817,6 @@ OpenCvUtilities.h
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/OpenCvUtilities.h
 math.h
 -
+vector
+-
 

@@ -7,7 +7,9 @@ class BlobSegmentation {
     public:
         BlobSegmentation(){}
 
-        void intensitySegment(cv::Mat fg);
+        std::vector<cv::Rect> contourSegment(cv::Mat fg);
+
+        std::vector<cv::Rect> intensitySegment(cv::Mat fg);
 };
 
 #endif

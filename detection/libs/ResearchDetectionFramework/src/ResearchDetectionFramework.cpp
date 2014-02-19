@@ -239,16 +239,25 @@ bool ResearchDetectionFramework::Run()
             cv::morphologyEx(foreground, foregroundMorph, cv::MORPH_CLOSE, kernel);
 
             //Blob Segmentation
-            blobSegment.intensitySegment(foregroundMorph);
+            std::vector<cv::Rect> boundRect = blobSegment.contourSegment(foregroundMorph);
+            //std::vector<cv::Rect> boundRect = blobSegment.intensitySegment(foregroundMorph);
+
+            //Draw the Bounding Boxes
+            for(int i = 0; i < boundRect.size(); i++){
+                cv::Rect rect = boundRect[i];
+                if(rect.area() > 300){
+                    cv::rectangle(newFrame, rect, cv::Scalar(0,255,0), 1,8,0);
+                }
+            }
 
             //Display
             cv::namedWindow("Current Frame");
-            cv::namedWindow("Background");
-            cv::namedWindow("Foreground");
-            cv::imshow("Current Frame", currFrame);
-            cv::imshow("Background", background);
-            cv::imshow("Foreground", foreground);
-            cv::waitKey();
+            //cv::namedWindow("Background");
+            //cv::namedWindow("Foreground");
+            cv::imshow("Current Frame", newFrame);
+            //cv::imshow("Background", background);
+            //cv::imshow("Foreground", foreground);
+            cv::waitKey(1);
         }
 
     }
