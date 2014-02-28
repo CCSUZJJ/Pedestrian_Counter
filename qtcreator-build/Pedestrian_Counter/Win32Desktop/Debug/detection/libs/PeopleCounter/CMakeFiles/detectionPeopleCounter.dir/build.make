@@ -75,29 +75,29 @@ detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/PeopleCou
 
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/PeopleCounter.cpp.obj.provides.build: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/PeopleCounter.cpp.obj
 
-detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/flags.make
-detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/includes_CXX.rsp
-detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/ForegroundSegmentation.cpp
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/flags.make
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/includes_CXX.rsp
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/ForegroundSubtraction.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj"
-	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\detection\libs\PeopleCounter && C:\TDM-GCC-32\bin\g++.exe   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles\detectionPeopleCounter.dir\src\ForegroundSegmentation.cpp.obj -c F:\user\Documents\FLIR\Pedestrian_Counter\detection\libs\PeopleCounter\src\ForegroundSegmentation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj"
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\detection\libs\PeopleCounter && C:\TDM-GCC-32\bin\g++.exe   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles\detectionPeopleCounter.dir\src\ForegroundSubtraction.cpp.obj -c F:\user\Documents\FLIR\Pedestrian_Counter\detection\libs\PeopleCounter\src\ForegroundSubtraction.cpp
 
-detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.i"
-	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\detection\libs\PeopleCounter && C:\TDM-GCC-32\bin\g++.exe  $(CXX_DEFINES) $(CXX_FLAGS) -E F:\user\Documents\FLIR\Pedestrian_Counter\detection\libs\PeopleCounter\src\ForegroundSegmentation.cpp > CMakeFiles\detectionPeopleCounter.dir\src\ForegroundSegmentation.cpp.i
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.i"
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\detection\libs\PeopleCounter && C:\TDM-GCC-32\bin\g++.exe  $(CXX_DEFINES) $(CXX_FLAGS) -E F:\user\Documents\FLIR\Pedestrian_Counter\detection\libs\PeopleCounter\src\ForegroundSubtraction.cpp > CMakeFiles\detectionPeopleCounter.dir\src\ForegroundSubtraction.cpp.i
 
-detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.s"
-	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\detection\libs\PeopleCounter && C:\TDM-GCC-32\bin\g++.exe  $(CXX_DEFINES) $(CXX_FLAGS) -S F:\user\Documents\FLIR\Pedestrian_Counter\detection\libs\PeopleCounter\src\ForegroundSegmentation.cpp -o CMakeFiles\detectionPeopleCounter.dir\src\ForegroundSegmentation.cpp.s
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.s"
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\detection\libs\PeopleCounter && C:\TDM-GCC-32\bin\g++.exe  $(CXX_DEFINES) $(CXX_FLAGS) -S F:\user\Documents\FLIR\Pedestrian_Counter\detection\libs\PeopleCounter\src\ForegroundSubtraction.cpp -o CMakeFiles\detectionPeopleCounter.dir\src\ForegroundSubtraction.cpp.s
 
-detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj.requires:
-.PHONY : detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj.requires
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj.requires:
+.PHONY : detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj.requires
 
-detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj.provides: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj.requires
-	$(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj.provides.build
-.PHONY : detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj.provides
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj.provides: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj.requires
+	$(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj.provides.build
+.PHONY : detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj.provides
 
-detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj.provides.build: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj.provides.build: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj
 
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.obj: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/flags.make
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.obj: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/includes_CXX.rsp
@@ -126,14 +126,14 @@ detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegme
 # Object files for target detectionPeopleCounter
 detectionPeopleCounter_OBJECTS = \
 "CMakeFiles/detectionPeopleCounter.dir/src/PeopleCounter.cpp.obj" \
-"CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj" \
+"CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj" \
 "CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.obj"
 
 # External object files for target detectionPeopleCounter
 detectionPeopleCounter_EXTERNAL_OBJECTS =
 
 detection/libs/PeopleCounter/libdetectionPeopleCounter.a: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/PeopleCounter.cpp.obj
-detection/libs/PeopleCounter/libdetectionPeopleCounter.a: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj
+detection/libs/PeopleCounter/libdetectionPeopleCounter.a: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj
 detection/libs/PeopleCounter/libdetectionPeopleCounter.a: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.obj
 detection/libs/PeopleCounter/libdetectionPeopleCounter.a: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/build.make
 detection/libs/PeopleCounter/libdetectionPeopleCounter.a: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/link.txt
@@ -146,7 +146,7 @@ detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/build: detect
 .PHONY : detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/build
 
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/requires: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/PeopleCounter.cpp.obj.requires
-detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/requires: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj.requires
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/requires: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj.requires
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/requires: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.obj.requires
 .PHONY : detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/requires
 

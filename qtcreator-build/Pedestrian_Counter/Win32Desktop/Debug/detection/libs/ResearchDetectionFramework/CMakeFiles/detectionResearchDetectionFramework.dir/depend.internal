@@ -82,7 +82,7 @@ detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionF
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/OpenCVWrappers/OpenCvVideo.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/OpenCVWrappers/Point.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/BlobSegmentation.h
- F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/ForegroundSegmentation.h
+ F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/ForegroundSubtraction.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/ResearchGeneral/DetAlgoI.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/ResearchGeneral/DetectedObject.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../inc/ResearchDetectionFramework/ResearchDetectionFramework.h

@@ -926,7 +926,7 @@ F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramew
 OpenCvUtilities.h
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/OpenCvUtilities.h
 
-F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/ForegroundSegmentation.h
+F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/ForegroundSubtraction.h
 OpenCvUtilities.h
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/OpenCvUtilities.h
 
@@ -979,8 +979,8 @@ math.h
 -
 DetectedObject.h
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/DetectedObject.h
-ForegroundSegmentation.h
-F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/ForegroundSegmentation.h
+ForegroundSubtraction.h
+F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/ForegroundSubtraction.h
 BlobSegmentation.h
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/BlobSegmentation.h
 

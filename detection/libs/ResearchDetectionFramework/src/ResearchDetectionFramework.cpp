@@ -13,7 +13,7 @@
 #include <math.h>
 
 #include "DetectedObject.h"
-#include "ForegroundSegmentation.h"
+#include "ForegroundSubtraction.h"
 #include "BlobSegmentation.h"
 
 namespace
@@ -239,8 +239,9 @@ bool ResearchDetectionFramework::Run()
             cv::morphologyEx(foreground, foregroundMorph, cv::MORPH_CLOSE, kernel);
 
             //Blob Segmentation
-            std::vector<cv::Rect> boundRect = blobSegment.contourSegment(foregroundMorph);
+            //std::vector<cv::Rect> boundRect = blobSegment.contourSegment(foregroundMorph);
             //std::vector<cv::Rect> boundRect = blobSegment.intensitySegment(foregroundMorph);
+            std::vector<cv::Rect> boundRect = blobSegment.connectedComponentSegment(foregroundMorph);
 
             //Draw the Bounding Boxes
             for(int i = 0; i < boundRect.size(); i++){
@@ -254,9 +255,11 @@ bool ResearchDetectionFramework::Run()
             cv::namedWindow("Current Frame");
             //cv::namedWindow("Background");
             //cv::namedWindow("Foreground");
+            //cv::namedWindow("Foreground Morphed");
             cv::imshow("Current Frame", newFrame);
             //cv::imshow("Background", background);
             //cv::imshow("Foreground", foreground);
+            //cv::imshow("Foreground Morphed", foregroundMorph);
             cv::waitKey(1);
         }
 

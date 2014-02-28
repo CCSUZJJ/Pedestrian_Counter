@@ -782,7 +782,7 @@
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/BlobSegmentation.cpp">
       </Unit>
-      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/ForegroundSegmentation.cpp">
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/ForegroundSubtraction.cpp">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/PeopleCounter.cpp">
       </Unit>
@@ -852,7 +852,7 @@
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/BlobSegmentation.h">
       </Unit>
-      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/ForegroundSegmentation.h">
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/ForegroundSubtraction.h">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/PeopleCounter.h">
       </Unit>

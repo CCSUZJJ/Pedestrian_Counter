@@ -148,29 +148,29 @@ src/BlobSegmentation.cpp.s:
 	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.s
 .PHONY : src/BlobSegmentation.cpp.s
 
-src/ForegroundSegmentation.obj: src/ForegroundSegmentation.cpp.obj
-.PHONY : src/ForegroundSegmentation.obj
+src/ForegroundSubtraction.obj: src/ForegroundSubtraction.cpp.obj
+.PHONY : src/ForegroundSubtraction.obj
 
 # target to build an object file
-src/ForegroundSegmentation.cpp.obj:
-	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.obj
-.PHONY : src/ForegroundSegmentation.cpp.obj
+src/ForegroundSubtraction.cpp.obj:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj
+.PHONY : src/ForegroundSubtraction.cpp.obj
 
-src/ForegroundSegmentation.i: src/ForegroundSegmentation.cpp.i
-.PHONY : src/ForegroundSegmentation.i
+src/ForegroundSubtraction.i: src/ForegroundSubtraction.cpp.i
+.PHONY : src/ForegroundSubtraction.i
 
 # target to preprocess a source file
-src/ForegroundSegmentation.cpp.i:
-	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.i
-.PHONY : src/ForegroundSegmentation.cpp.i
+src/ForegroundSubtraction.cpp.i:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.i
+.PHONY : src/ForegroundSubtraction.cpp.i
 
-src/ForegroundSegmentation.s: src/ForegroundSegmentation.cpp.s
-.PHONY : src/ForegroundSegmentation.s
+src/ForegroundSubtraction.s: src/ForegroundSubtraction.cpp.s
+.PHONY : src/ForegroundSubtraction.s
 
 # target to generate assembly for a file
-src/ForegroundSegmentation.cpp.s:
-	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSegmentation.cpp.s
-.PHONY : src/ForegroundSegmentation.cpp.s
+src/ForegroundSubtraction.cpp.s:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.s
+.PHONY : src/ForegroundSubtraction.cpp.s
 
 src/PeopleCounter.obj: src/PeopleCounter.cpp.obj
 .PHONY : src/PeopleCounter.obj
@@ -209,9 +209,9 @@ help:
 	@echo ... src/BlobSegmentation.obj
 	@echo ... src/BlobSegmentation.i
 	@echo ... src/BlobSegmentation.s
-	@echo ... src/ForegroundSegmentation.obj
-	@echo ... src/ForegroundSegmentation.i
-	@echo ... src/ForegroundSegmentation.s
+	@echo ... src/ForegroundSubtraction.obj
+	@echo ... src/ForegroundSubtraction.i
+	@echo ... src/ForegroundSubtraction.s
 	@echo ... src/PeopleCounter.obj
 	@echo ... src/PeopleCounter.i
 	@echo ... src/PeopleCounter.s
