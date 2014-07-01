@@ -8,7 +8,6 @@ traf_set_public_headers("ResearchGeneral")
 set(SRC_COMMON 
 	"${TRAF_INCLUDE_PUBLIC}/DetAlgoI.h"
         "${TRAF_INCLUDE_PUBLIC}/ResearchGeneral.h"
-        "${TRAF_INCLUDE_PUBLIC}/DetectedObject.h"
         "src/ResearchGeneral.cpp"
             )
 

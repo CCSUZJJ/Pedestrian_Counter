@@ -944,7 +944,7 @@ all: CMakeFiles/Pedestrian_Counter.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Pedestrian_Counter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 36
+	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 41
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/Pedestrian_Counter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 0
 .PHONY : CMakeFiles/Pedestrian_Counter.dir/rule
@@ -1087,7 +1087,7 @@ detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/all: 3rdp
 detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/all: detection/libs/OpenCVWrappers/CMakeFiles/detectionOpenCVWrappers.dir/all
 	$(MAKE) -f detection\libs\ResearchGeneral\CMakeFiles\detectionResearchGeneral.dir\build.make detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/depend
 	$(MAKE) -f detection\libs\ResearchGeneral\CMakeFiles\detectionResearchGeneral.dir\build.make detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles  36
+	$(CMAKE_COMMAND) -E cmake_progress_report F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles  41
 	@echo Built target detectionResearchGeneral
 .PHONY : detection/libs/ResearchGeneral/CMakeFiles/detectionResearchGeneral.dir/all
 
@@ -1193,7 +1193,7 @@ detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionF
 detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/all
 	$(MAKE) -f detection\libs\ResearchDetectionFramework\CMakeFiles\detectionResearchDetectionFramework.dir\build.make detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/depend
 	$(MAKE) -f detection\libs\ResearchDetectionFramework\CMakeFiles\detectionResearchDetectionFramework.dir\build.make detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles  35
+	$(CMAKE_COMMAND) -E cmake_progress_report F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles  40
 	@echo Built target detectionResearchDetectionFramework
 .PHONY : detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all
 
@@ -1203,7 +1203,7 @@ all: detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetec
 
 # Build rule for subdir invocation for target.
 detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 35
+	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 40
 	$(MAKE) -f CMakeFiles\Makefile2 detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 0
 .PHONY : detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionFramework.dir/rule
@@ -1246,7 +1246,7 @@ detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/all: detectio
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/all: detection/libs/OpenCVWrappers/CMakeFiles/detectionOpenCVWrappers.dir/all
 	$(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/depend
 	$(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles  32 33 34
+	$(CMAKE_COMMAND) -E cmake_progress_report F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles  32 33 34 35 36 37 38 39
 	@echo Built target detectionPeopleCounter
 .PHONY : detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/all
 
@@ -1256,7 +1256,7 @@ all: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/all
 
 # Build rule for subdir invocation for target.
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 34
+	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 39
 	$(MAKE) -f CMakeFiles\Makefile2 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles 0
 .PHONY : detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/rule

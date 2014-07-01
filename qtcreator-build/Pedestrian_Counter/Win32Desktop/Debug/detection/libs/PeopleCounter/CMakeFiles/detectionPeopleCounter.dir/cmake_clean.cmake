@@ -2,6 +2,11 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/detectionPeopleCounter.dir/src/PeopleCounter.cpp.obj"
   "CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj"
   "CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.obj"
+  "CMakeFiles/detectionPeopleCounter.dir/src/Tracking.cpp.obj"
+  "CMakeFiles/detectionPeopleCounter.dir/src/DetectedBlob.cpp.obj"
+  "CMakeFiles/detectionPeopleCounter.dir/src/Track.cpp.obj"
+  "CMakeFiles/detectionPeopleCounter.dir/src/AlgorithmEvent.cpp.obj"
+  "CMakeFiles/detectionPeopleCounter.dir/src/Geometry.cpp.obj"
   "libdetectionPeopleCounter.pdb"
   "libdetectionPeopleCounter.a"
 )

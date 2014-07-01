@@ -12,6 +12,17 @@ set(SRC_COMMON
     "src/ForegroundSubtraction.cpp"
         "${TRAF_INCLUDE_PUBLIC}/BlobSegmentation.h"
     "src/BlobSegmentation.cpp"
+        "${TRAF_INCLUDE_PUBLIC}/Tracking.h"
+    "src/Tracking.cpp"
+        "${TRAF_INCLUDE_PUBLIC}/DetectedObject.h"
+        "${TRAF_INCLUDE_PUBLIC}/DetectedBlob.h"
+    "src/DetectedBlob.cpp"
+        "${TRAF_INCLUDE_PUBLIC}/Track.h"
+    "src/Track.cpp"
+        "${TRAF_INCLUDE_PUBLIC}/AlgorithmEvent.h"
+    "src/AlgorithmEvent.cpp"
+        "${TRAF_INCLUDE_PUBLIC}/Geometry.h"
+    "src/Geometry.cpp"
             )
 
 set(SRC_TARGET detectionPeopleCounter)

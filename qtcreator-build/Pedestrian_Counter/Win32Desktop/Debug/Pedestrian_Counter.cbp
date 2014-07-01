@@ -780,11 +780,21 @@
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/OpenCVWrappers/src/cvplot.cpp">
       </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/AlgorithmEvent.cpp">
+      </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/BlobSegmentation.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/DetectedBlob.cpp">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/ForegroundSubtraction.cpp">
       </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/Geometry.cpp">
+      </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/PeopleCounter.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/Track.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/Tracking.cpp">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/ResearchDetectionFramework.cpp">
       </Unit>
@@ -850,17 +860,27 @@
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/OpenCVWrappers/cvplot.h">
       </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/AlgorithmEvent.h">
+      </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/BlobSegmentation.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/DetectedBlob.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/DetectedObject.h">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/ForegroundSubtraction.h">
       </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/Geometry.h">
+      </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/PeopleCounter.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/Track.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/Tracking.h">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/ResearchDetectionFramework/ResearchDetectionFramework.h">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/ResearchGeneral/DetAlgoI.h">
-      </Unit>
-      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/ResearchGeneral/DetectedObject.h">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/ResearchGeneral/ResearchGeneral.h">
       </Unit>

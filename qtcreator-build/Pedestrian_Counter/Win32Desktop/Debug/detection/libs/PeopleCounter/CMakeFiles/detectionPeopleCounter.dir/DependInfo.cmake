@@ -4,9 +4,14 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
+  "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/AlgorithmEvent.cpp" "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/AlgorithmEvent.cpp.obj"
   "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/BlobSegmentation.cpp" "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.obj"
+  "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/DetectedBlob.cpp" "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/DetectedBlob.cpp.obj"
   "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/ForegroundSubtraction.cpp" "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/ForegroundSubtraction.cpp.obj"
+  "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/Geometry.cpp" "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Geometry.cpp.obj"
   "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/PeopleCounter.cpp" "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/PeopleCounter.cpp.obj"
+  "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/Track.cpp" "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Track.cpp.obj"
+  "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/Tracking.cpp" "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Tracking.cpp.obj"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

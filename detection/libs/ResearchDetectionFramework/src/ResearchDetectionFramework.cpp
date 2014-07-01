@@ -12,9 +12,13 @@
 #include <vector>
 #include <math.h>
 
-#include "DetectedObject.h"
 #include "ForegroundSubtraction.h"
 #include "BlobSegmentation.h"
+#include "Tracking.h"
+#include "DetectedBlob.h"
+//#include "DetectedObject.h"
+#include "Track.h"
+#include "Geometry.h"
 
 namespace
 {
@@ -194,6 +198,43 @@ bool ResearchDetectionFramework::Run()
 
 
     if(m_Configured){
+        //Populate the lines vector used to count objects crossing a line
+        std::vector< std::vector<int> > lines;
+        ticpp::Document XmlDoc(m_ConfigFileName.c_str());
+        try{
+            XmlDoc.LoadFile();
+        }
+        catch(ticpp::Exception& ex){
+            std::cout << ex.what();
+        }
+
+        try{
+            ticpp::Element* parent = XmlDoc.FirstChild("Configuration")->FirstChildElement("IntrusionDetection")
+                    ->FirstChildElement("IntrusionDetection")->FirstChildElement("Zones");
+            ticpp::Iterator<ticpp::Node> iterator;
+            for(iterator = iterator.begin(parent); iterator != iterator.end(); iterator++){
+                ticpp::Element* point1 = iterator->FirstChildElement("Shape")->FirstChildElement("Point");
+                ticpp::Element* point2 = point1->NextSiblingElement("Point");
+                int point1x;
+                int point1y;
+                int point2x;
+                int point2y;
+                point1->GetAttribute("X", &point1x);
+                point1->GetAttribute("Y", &point1y);
+                point2->GetAttribute("X", &point2x);
+                point2->GetAttribute("Y", &point2y);
+                std::vector<int> line;
+                line.push_back(point1x);
+                line.push_back(point1y);
+                line.push_back(point2x);
+                line.push_back(point2y);
+                lines.push_back(line);
+            }
+        }
+        catch(ticpp::Exception& ex){
+            std::cout << ex.what();
+        }
+
         //Init runningAvgBackground
         //cv::Mat background = m_VideoPlayer.GetNextFrame();
         //cv::cvtColor(background, background, CV_BGR2GRAY);
@@ -215,13 +256,25 @@ bool ResearchDetectionFramework::Run()
 
         ForegroundSegmentation fgSegment = ForegroundSegmentation();
         BlobSegmentation blobSegment =  BlobSegmentation();
+        Tracking tracker = Tracking();
 
+        std::vector<Track> finishedTracks;
+        std::vector<Track> currentTracks;
+
+        int posToNegCnt =0;
+        int negToPosCnt =0;
+
+        int frameNumber = -1;       //init at -1 => first framenumber = 0
+        //int count = 0;            //to stop at certain frame
         while(true){
+            //count++;
             cv::Mat newFrame = m_VideoPlayer.GetNextFrame();
             if(newFrame.data == 0){
                 m_VideoPlayer.Reset();
                 break;
             }
+            frameNumber++;
+
             cv::Mat currFrame;
             cv::cvtColor(newFrame, currFrame, CV_BGR2GRAY);
             cv::Mat foreground = cv::Mat(m_VideoPlayer.GetFrameSize(), CV_8UC1);
@@ -234,33 +287,147 @@ bool ResearchDetectionFramework::Run()
 
             //Morphological Operations: opening -> closing
             cv::Mat foregroundMorph;
-            cv::Mat kernel = cv::Mat::ones(cv::Size(4,4), CV_8UC1);
+            //Remove noise
+            cv::Mat kernel = cv::Mat::ones(cv::Size(2,2), CV_8UC1);
             cv::morphologyEx(foreground, foregroundMorph, cv::MORPH_OPEN, kernel);
-            cv::morphologyEx(foreground, foregroundMorph, cv::MORPH_CLOSE, kernel);
+            //Connect objects
+            cv::Mat kernel2 =  cv::Mat::ones(cv::Size(20,20), CV_8UC1);
+            cv::morphologyEx(foregroundMorph, foregroundMorph, cv::MORPH_CLOSE, kernel2);
+
 
             //Blob Segmentation
             //std::vector<cv::Rect> boundRect = blobSegment.contourSegment(foregroundMorph);
-            //std::vector<cv::Rect> boundRect = blobSegment.intensitySegment(foregroundMorph);
+            //std::vector<cv::Rect> boundRect = blobSegment.intensitySegment(foregroundMorph); //Unfinished
             std::vector<cv::Rect> boundRect = blobSegment.connectedComponentSegment(foregroundMorph);
-
-            //Draw the Bounding Boxes
-            for(int i = 0; i < boundRect.size(); i++){
-                cv::Rect rect = boundRect[i];
-                if(rect.area() > 300){
-                    cv::rectangle(newFrame, rect, cv::Scalar(0,255,0), 1,8,0);
+            //Create objects from the bounding boxes used for tracking
+            int nextLabel = 1;
+            std::vector<DetectedBlob> detectedBlobs;
+            std::vector<cv::Rect>::iterator rectIt;
+            for(rectIt = boundRect.begin(); rectIt != boundRect.end(); rectIt++){
+                if(rectIt->area() > 180){
+                    DetectedBlob blob = DetectedBlob();
+                    blob.frameNr = frameNumber;
+                    blob.BBox = (*rectIt);
+                    blob.label = nextLabel;
+                    nextLabel++;
+                    detectedBlobs.push_back(blob);
                 }
             }
 
-            //Display
+            //Tracking
+            //tracker.bestMatchTracking(presentObjects, detectedBlobs); //Check for best match in prev.
+                                                    //If select eachother => match
+                                                    //No match backward => new object
+                                                    //No match forward => end of object
+            tracker.simpleTracking(finishedTracks, currentTracks, detectedBlobs, frameNumber);
+
+            //Check if Pedestrian crossed
+            std::vector<Track>::iterator it;
+            for(it = currentTracks.begin(); it != currentTracks.end(); it++){
+                if(static_cast<int>(it->getBoxes().size()) > 1){
+                    cv::Rect lastBox = it->getBoxes().back().BBox;
+                    cv::Rect secondToLast = (*(it->getBoxes().rbegin()+1)).BBox;
+                    cv::Point lastA = cv::Point(lastBox.x, lastBox.y+lastBox.height);
+                    cv::Point lastB = cv::Point(lastBox.x+lastBox.width, lastBox.y+lastBox.height);
+                    cv::Point sLastA = cv::Point(secondToLast.x, secondToLast.y+secondToLast.height);
+                    cv::Point sLastB = cv::Point(secondToLast.x+secondToLast.width,
+                                                           secondToLast.y+secondToLast.height);
+                    cv::Point line1A = cv::Point(lines[0][0], lines[0][1]);
+                    cv::Point line1B = cv::Point(lines[0][2], lines[0][3]);
+
+                    LineSegment line1 = LineSegment(line1A, line1B);
+                    LineSegment trajectLB = LineSegment(sLastA, lastA);
+                    LineSegment trajectRB = LineSegment(sLastB, lastB);
+                    //Check if Left-bottom crossed
+                    if(Geometry::doLinesIntersect(trajectLB, line1)){
+                        bool sideBeforeBL = Geometry::whatSideOfLine(line1,sLastA);
+                        bool sideAfterBL = Geometry::whatSideOfLine(line1,lastA);
+                        it->setBLCrossed(!it->getBLCrossed());
+                        it->setBLPosToNeg(sideBeforeBL);
+                        if(it->getBLCrossed()){
+                            if(it->getBRCrossed() && it->getBRPosToNeg()==sideBeforeBL){ //BR previously crossed in
+                                                                                         //same direction
+                                if(sideBeforeBL == true){
+                                    posToNegCnt++;
+                                }
+                                else{
+                                    negToPosCnt++;
+                                }
+                            }
+                        }
+                    }
+                    //Check if Right-bottom crossed
+                    if(Geometry::doLinesIntersect(trajectRB, line1)){
+                        bool sideBeforeBR = Geometry::whatSideOfLine(line1, sLastB);
+                        bool sideAfterBR = Geometry::whatSideOfLine(line1, lastB);
+                        it->setBRCrossed(!it->getBRCrossed());
+                        it->setBRPosToNeg(sideBeforeBR);
+                        if(it->getBRCrossed()){
+                            if(it->getBLCrossed() && it->getBLPosToNeg() == sideBeforeBR){ //BL previously crossed in
+                                                                                           //same direction
+                                if(sideBeforeBR == true){
+                                    posToNegCnt++;
+                                }
+                                else{
+                                    negToPosCnt++;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            //Draw the Bounding Boxes
+            for(it = currentTracks.begin(); it != currentTracks.end(); it++){
+                if(it->getMatched() == true){ //Up to date
+                    cv::Rect rect = it->getBoxes().back().BBox;
+                    //if(rect.area() > 180){
+                        cv::rectangle(newFrame, rect, it->getColor());
+                    //}
+                }
+            }
+
+            //Draw the configured counting lines
+            std::vector< std::vector<int> >::iterator lineIt;
+            for(lineIt = lines.begin(); lineIt != lines.end(); lineIt++){
+                int p1x = (*lineIt)[0];
+                int p1y = (*lineIt)[1];
+                int p2x = (*lineIt)[2];
+                int p2y = (*lineIt)[3];
+                cv::Point point1 = cv::Point(p1x, p1y);
+                cv::Point point2 = cv::Point(p2x, p2y);
+                cv::line(newFrame, point1, point2, cv::Scalar(0,0,255),2,8,0);
+            }
+
+            //Display counters
+            std::stringstream ss;
+            ss << posToNegCnt;
+            cv::putText(newFrame, ss.str(), cv::Point(30,newFrame.rows-30),cv::FONT_HERSHEY_SIMPLEX,1,
+                        cv::Scalar(0,255,0),3,8,false);
+            ss.str("");
+            ss << negToPosCnt;
+            cv::putText(newFrame, ss.str(), cv::Point(100,newFrame.rows-30),cv::FONT_HERSHEY_SIMPLEX,1,
+                        cv::Scalar(0,255,0),3,8,false);
+
+            //Generate windows
             cv::namedWindow("Current Frame");
             //cv::namedWindow("Background");
             //cv::namedWindow("Foreground");
+            //cv::namedWindow("Variance");
+            //cv::namedWindow("Confidence Measurement");
             //cv::namedWindow("Foreground Morphed");
             cv::imshow("Current Frame", newFrame);
             //cv::imshow("Background", background);
             //cv::imshow("Foreground", foreground);
+            //cv::imshow("Variance", variance);
+            //cv::imshow("Confidence Measurement", confidence);
             //cv::imshow("Foreground Morphed", foregroundMorph);
-            cv::waitKey(1);
+            //if(count<=392){
+                cv::waitKey(1);
+            //} else {
+              //  cv::waitKey();
+            //}
         }
 
     }
