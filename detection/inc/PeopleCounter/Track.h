@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "DetectedBlob.h"
+#include "AlgorithmEvent.h"
 
 class Track{
     public:
@@ -31,6 +32,14 @@ class Track{
         bool getBLPosToNeg();
         void setBRPosToNeg(bool val);
         bool getBRPosToNeg();
+        AlgoEvent getEvent();
+        void setEvent(AlgoEvent e);
+        bool getCountedNegToPos();
+        void setCountedNegToPos(bool v);
+        bool getCountedPosToNeg();
+        void setCountedPosToNeg(bool v);
+        void setCounted(bool v);
+        bool getCounted(bool v);
 
         static cv::Point getBaseCenter(cv::Rect rect);
         cv::Point predict(cv::Rect rect, double learningRate);
@@ -43,6 +52,7 @@ class Track{
         cv::Point prediction;
         cv::Scalar color;
 
+        AlgoEvent event;
         int dx = 0;
         int dy = 0;
         bool matched = false;
@@ -51,6 +61,8 @@ class Track{
         bool BRCrossed = false;
         bool BLPosToNeg = false;
         bool BRPosToNeg = false;
+        bool CountedPosToNeg = false;
+        bool CountedNegToPos = false;
 };
 
 #endif

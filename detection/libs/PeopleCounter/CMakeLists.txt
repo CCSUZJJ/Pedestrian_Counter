@@ -23,6 +23,10 @@ set(SRC_COMMON
     "src/AlgorithmEvent.cpp"
         "${TRAF_INCLUDE_PUBLIC}/Geometry.h"
     "src/Geometry.cpp"
+        "${TRAF_INCLUDE_PUBLIC}/gtTrack.h"
+    "src/gtTrack.cpp"
+        "${TRAF_INCLUDE_PUBLIC}/gtEvent.h"
+    "src/gtEvent.cpp"
             )
 
 set(SRC_TARGET detectionPeopleCounter)

@@ -139,3 +139,45 @@ void Track::setBRPosToNeg(bool val){
 bool Track::getBRPosToNeg(){
     return BRPosToNeg;
 }
+
+AlgoEvent Track::getEvent(){
+    return event;
+}
+
+void Track::setEvent(AlgoEvent e){
+    event = e;
+}
+
+bool Track::getCountedNegToPos(){
+    return CountedNegToPos;
+}
+
+void Track::setCountedNegToPos(bool v){
+    CountedNegToPos = v;
+}
+
+bool Track::getCountedPosToNeg(){
+    return CountedPosToNeg;
+}
+
+void Track::setCountedPosToNeg(bool v){
+    CountedPosToNeg = v;
+}
+
+void Track::setCounted(bool v){
+    if(v=true){
+        CountedPosToNeg = true;
+    }
+    else{
+        CountedNegToPos = true;
+    }
+}
+
+bool Track::getCounted(bool v){
+    if(v=true){
+        return CountedPosToNeg;
+    }
+    else{
+        return CountedNegToPos;
+    }
+}

@@ -12,6 +12,8 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/PeopleCounter.cpp" "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/PeopleCounter.cpp.obj"
   "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/Track.cpp" "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Track.cpp.obj"
   "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/Tracking.cpp" "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Tracking.cpp.obj"
+  "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/gtEvent.cpp" "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj"
+  "F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/gtTrack.cpp" "F:/user/Documents/FLIR/Pedestrian_Counter/qtcreator-build/Pedestrian_Counter/Win32Desktop/Debug/detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

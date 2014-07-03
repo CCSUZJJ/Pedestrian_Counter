@@ -7,6 +7,8 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/detectionPeopleCounter.dir/src/Track.cpp.obj"
   "CMakeFiles/detectionPeopleCounter.dir/src/AlgorithmEvent.cpp.obj"
   "CMakeFiles/detectionPeopleCounter.dir/src/Geometry.cpp.obj"
+  "CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj"
+  "CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj"
   "libdetectionPeopleCounter.pdb"
   "libdetectionPeopleCounter.a"
 )

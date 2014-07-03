@@ -1,0 +1,42 @@
+#include "gtEvent.h"
+
+
+int gtEvent::getStart(){
+    return start;
+}
+
+void gtEvent::setStart(int s){
+    start = s;
+}
+
+int gtEvent::getEnd(){
+    return end;
+}
+
+void gtEvent::setEnd(int e){
+     end = e;
+}
+
+cv::Rect gtEvent::getStartRect(){
+    return startRect;
+}
+
+void gtEvent::setStartRect(cv::Rect sr){
+    startRect = sr;
+}
+
+cv::Rect gtEvent::getEndRect(){
+    return endRect;
+}
+
+void gtEvent::setEndRect(cv::Rect er){
+    endRect = er;
+}
+
+bool gtEvent::getPosToNeg(){
+    return posToNeg;
+}
+
+void gtEvent::setPosToNeg(bool v){
+    posToNeg = v;
+}

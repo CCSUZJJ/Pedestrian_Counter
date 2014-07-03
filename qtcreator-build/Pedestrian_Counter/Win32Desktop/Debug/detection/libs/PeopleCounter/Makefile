@@ -316,6 +316,54 @@ src/Tracking.cpp.s:
 	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Tracking.cpp.s
 .PHONY : src/Tracking.cpp.s
 
+src/gtEvent.obj: src/gtEvent.cpp.obj
+.PHONY : src/gtEvent.obj
+
+# target to build an object file
+src/gtEvent.cpp.obj:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj
+.PHONY : src/gtEvent.cpp.obj
+
+src/gtEvent.i: src/gtEvent.cpp.i
+.PHONY : src/gtEvent.i
+
+# target to preprocess a source file
+src/gtEvent.cpp.i:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.i
+.PHONY : src/gtEvent.cpp.i
+
+src/gtEvent.s: src/gtEvent.cpp.s
+.PHONY : src/gtEvent.s
+
+# target to generate assembly for a file
+src/gtEvent.cpp.s:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.s
+.PHONY : src/gtEvent.cpp.s
+
+src/gtTrack.obj: src/gtTrack.cpp.obj
+.PHONY : src/gtTrack.obj
+
+# target to build an object file
+src/gtTrack.cpp.obj:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj
+.PHONY : src/gtTrack.cpp.obj
+
+src/gtTrack.i: src/gtTrack.cpp.i
+.PHONY : src/gtTrack.i
+
+# target to preprocess a source file
+src/gtTrack.cpp.i:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.i
+.PHONY : src/gtTrack.cpp.i
+
+src/gtTrack.s: src/gtTrack.cpp.s
+.PHONY : src/gtTrack.s
+
+# target to generate assembly for a file
+src/gtTrack.cpp.s:
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug && $(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.s
+.PHONY : src/gtTrack.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -350,6 +398,12 @@ help:
 	@echo ... src/Tracking.obj
 	@echo ... src/Tracking.i
 	@echo ... src/Tracking.s
+	@echo ... src/gtEvent.obj
+	@echo ... src/gtEvent.i
+	@echo ... src/gtEvent.s
+	@echo ... src/gtTrack.obj
+	@echo ... src/gtTrack.i
+	@echo ... src/gtTrack.s
 .PHONY : help
 
 

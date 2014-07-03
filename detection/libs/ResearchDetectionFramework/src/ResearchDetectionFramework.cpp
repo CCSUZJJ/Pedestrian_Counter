@@ -18,7 +18,9 @@
 #include "DetectedBlob.h"
 //#include "DetectedObject.h"
 #include "Track.h"
+#include "gtTrack.h"
 #include "Geometry.h"
+#include "gtEvent.h"
 
 namespace
 {
@@ -235,6 +237,140 @@ bool ResearchDetectionFramework::Run()
             std::cout << ex.what();
         }
 
+        //Generate Ground Truth tracks
+        ticpp::Document dom(m_Config.s_GroundTruthFile.c_str());
+        try{
+            dom.LoadFile();
+        }
+        catch(ticpp::Exception& ex){
+            std::cout << ex.what();
+        }
+
+        ticpp::Element* frameNodes = dom.FirstChild("GroundTruth")->FirstChildElement("Frames");
+        std::vector<gtTrack> gtTracks;
+        std::vector<gtTrack> currSeqGtTracks;
+        std::vector<int> existingIDs;
+
+        ticpp::Iterator < ticpp::Element > frame("Frame");
+        for(frame = frame.begin(frameNodes); frame != frame.end(); frame++){
+            if(frame->FirstChildElement("BBox", 0) != NULL){    //BBoxes aanwezig, geen exception werpen als null
+                int frameNr;
+                frame->GetAttribute("Nr", &frameNr);
+
+                ticpp::Element* currFrame = frame.Get();
+                ticpp::Iterator< ticpp::Element > CurrBox ( "BBox" );
+                for(CurrBox = CurrBox.begin(currFrame); CurrBox != CurrBox.end(); CurrBox++){
+                    int x, y, w, h, id, catid;
+                    CurrBox->GetAttribute("X", &x);
+                    CurrBox->GetAttribute("Y", &y);
+                    CurrBox->GetAttribute("W", &w);
+                    CurrBox->GetAttribute("H", &h);
+                    CurrBox->GetAttribute("ID", &id);
+                    CurrBox->GetAttribute("CatID", &catid);
+                    DetectedBlob newBlob;
+                    newBlob.BBox = cv::Rect(x,y,w,h);
+                    newBlob.frameNr = frameNr;
+
+                    if(std::find(existingIDs.begin(),existingIDs.end(), id) != existingIDs.end()){
+                        //id already exists in current sequence => find existing object, add box
+                        std::vector<gtTrack>::iterator obj;
+                        for(obj = currSeqGtTracks.begin(); obj != currSeqGtTracks.end(); obj++){
+                            if(obj->getID() == id){
+                                obj->addBlob(newBlob);
+                            }
+                        }
+                    }
+                    else{
+                        //create new gtTrack, add id to existing ID's
+                        gtTrack newTrack;
+                        newTrack.setCatID(catid);
+                        newTrack.setID(id);
+                        newTrack.addBlob(newBlob);
+                        existingIDs.push_back(id);
+                        currSeqGtTracks.push_back(newTrack);
+                    }
+                }
+            }
+            else{   //end of current sequence of frames that contains BBoxes
+                for(gtTrack track : currSeqGtTracks){
+                    gtTracks.push_back(track);
+                }
+                if(!(currSeqGtTracks.empty() || existingIDs.empty())){ //empty the vectors
+                    currSeqGtTracks.clear();
+                    existingIDs.clear();
+                }
+            }
+        }
+
+        //Generate Ground Truth events
+        std::vector<gtEvent> gtEvents;
+        std::vector<gtTrack>::iterator gtIt;
+        for(gtIt = gtTracks.begin(); gtIt != gtTracks.end(); gtIt++){
+            gtEvent event;
+            std::vector<DetectedBlob>::iterator blobIt;
+            for(blobIt = gtIt->getBoxes().begin()+1; blobIt != gtIt->getBoxes().end()-1; blobIt++){
+                cv::Rect box = blobIt->BBox;
+                std::vector<DetectedBlob>::iterator tmpIt = blobIt+1;
+                cv::Rect nextBox = tmpIt->BBox;
+
+                cv::Point boxA = cv::Point(box.x,box.y+box.height);
+                cv::Point boxB = cv::Point(box.x+box.width,box.y+box.height);
+                cv::Point nxBoxA = cv::Point(nextBox.x, nextBox.y+nextBox.height);
+                cv::Point nxBoxB = cv::Point(nextBox.x+nextBox.width, nextBox.y+nextBox.height);
+                cv::Point line1A = cv::Point(lines[0][0], lines[0][1]);
+                cv::Point line1B = cv::Point(lines[0][2], lines[0][3]);
+
+                LineSegment line1 = LineSegment(line1A, line1B);
+                LineSegment trajectLB = LineSegment(boxA, nxBoxA);
+                LineSegment trajectRB = LineSegment(boxB, nxBoxB);
+
+                //Check if Left-bottom crossed
+                if(Geometry::doLinesIntersect(trajectLB, line1)){
+                    bool sideBeforeBL = Geometry::whatSideOfLine(line1,boxA);
+                    bool sideAfterBL = Geometry::whatSideOfLine(line1,nxBoxA);
+                    gtIt->setBLCrossed(!gtIt->getBLCrossed());
+                    gtIt->setBLPosToNeg(sideBeforeBL);
+                    if(gtIt->getBLCrossed() && gtIt->getBRCrossed()){ // BR already crossed
+                        if(sideBeforeBL == gtIt->getBRPosToNeg()){    // in same direction
+                            event.setEnd(tmpIt->frameNr);
+                            event.setEndRect(nextBox);
+                            event.setPosToNeg(sideBeforeBL);
+                            gtEvents.push_back(event);
+                            std::cout<<"GTru event "<<event.getPosToNeg()<<" to "<<!event.getPosToNeg()
+                                    <<" from frame "<<event.getStart()<<" to "<<event.getEnd()<<std::endl;
+                        }
+                    }
+                    else if(gtIt->getBLCrossed() && !gtIt->getBRCrossed()){                                             //only BL crossed -> new event
+                        event.setStart(blobIt->frameNr);
+                        event.setStartRect(box);
+                        event.setPosToNeg(sideBeforeBL);
+                    }
+                }
+                //Check if Right-bottom crossed
+                if(Geometry::doLinesIntersect(trajectRB, line1)){
+                    bool sideBeforeBR = Geometry::whatSideOfLine(line1, boxB);
+                    bool sideAfterBR = Geometry::whatSideOfLine(line1, nxBoxB);
+                    gtIt->setBRCrossed(!gtIt->getBRCrossed());
+                    gtIt->setBRPosToNeg(sideBeforeBR);
+                    if(gtIt->getBLCrossed() && gtIt->getBRCrossed()){
+                        if(sideBeforeBR == gtIt->getBLPosToNeg()){
+                            event.setEnd(tmpIt->frameNr);
+                            event.setEndRect(nextBox);
+                            event.setPosToNeg(sideBeforeBR);
+                            gtEvents.push_back(event);
+                            std::cout<<"GTru event "<<event.getPosToNeg()<<" to "<<!event.getPosToNeg()
+                                    <<" from frame "<<event.getStart()<<" to "<<event.getEnd()<<std::endl;
+                        }
+                    }
+                    else if(gtIt->getBRCrossed() && !gtIt->getBLCrossed()){
+                        event.setStart(blobIt->frameNr);
+                        event.setStartRect(box);
+                        event.setPosToNeg(sideBeforeBR);
+                    }
+                }
+            }
+        }
+
         //Init runningAvgBackground
         //cv::Mat background = m_VideoPlayer.GetNextFrame();
         //cv::cvtColor(background, background, CV_BGR2GRAY);
@@ -322,6 +458,7 @@ bool ResearchDetectionFramework::Run()
             tracker.simpleTracking(finishedTracks, currentTracks, detectedBlobs, frameNumber);
 
             //Check if Pedestrian crossed
+            std::vector<AlgoEvent> algoEvents;
             std::vector<Track>::iterator it;
             for(it = currentTracks.begin(); it != currentTracks.end(); it++){
                 if(static_cast<int>(it->getBoxes().size()) > 1){
@@ -340,38 +477,78 @@ bool ResearchDetectionFramework::Run()
                     LineSegment trajectRB = LineSegment(sLastB, lastB);
                     //Check if Left-bottom crossed
                     if(Geometry::doLinesIntersect(trajectLB, line1)){
+                        std::cout<<"LB crossed"<<std::endl;
                         bool sideBeforeBL = Geometry::whatSideOfLine(line1,sLastA);
                         bool sideAfterBL = Geometry::whatSideOfLine(line1,lastA);
                         it->setBLCrossed(!it->getBLCrossed());
                         it->setBLPosToNeg(sideBeforeBL);
-                        if(it->getBLCrossed()){
-                            if(it->getBRCrossed() && it->getBRPosToNeg()==sideBeforeBL){ //BR previously crossed in
-                                                                                         //same direction
-                                if(sideBeforeBL == true){
-                                    posToNegCnt++;
-                                }
-                                else{
-                                    negToPosCnt++;
+                        std::cout<<"sideBeforeBL = "<<sideBeforeBL<<std::endl;
+                        if(it->getBLCrossed() && it->getBRCrossed()){   //if BR already crossed
+                            std::cout<<"LB and RB crossed"<<std::endl;
+                            if(sideBeforeBL == it->getBRPosToNeg()){  //in same direction -> end the event
+                                std::cout<<"in same direction"<<std::endl;
+                                if(it->getCounted(sideBeforeBL)){       //not counted before in this direction
+                                    AlgoEvent event = it->getEvent();
+                                    event.setEnd(frameNumber);
+                                    event.setEndRect(lastBox);
+                                    event.setPosToNeg(sideBeforeBL);
+                                    it->setEvent(event);
+                                    it->setCounted(sideBeforeBL);
+                                    algoEvents.push_back(event);
+                                    if(sideBeforeBL == true){
+                                        posToNegCnt++;
+                                    }
+                                    else{
+                                        negToPosCnt++;
+                                    }
                                 }
                             }
+                        }
+                        else if(it->getBLCrossed() && !it->getBRCrossed()){ //only BL has crossed -> new event
+                            std::cout<<"LB crossed, RB not yet"<<std::endl;
+                            AlgoEvent event;
+                            event.setStart(frameNumber);
+                            event.setStartRect(secondToLast);
+                            event.setPosToNeg(sideBeforeBL);
+                            it->setEvent(event);
                         }
                     }
                     //Check if Right-bottom crossed
                     if(Geometry::doLinesIntersect(trajectRB, line1)){
-                        bool sideBeforeBR = Geometry::whatSideOfLine(line1, sLastB);
-                        bool sideAfterBR = Geometry::whatSideOfLine(line1, lastB);
+                        std::cout<<"RB crossed"<<std::endl;
+                        bool sideBeforeBR = Geometry::whatSideOfLine(line1,sLastB);
+                        bool sideAfterBR = Geometry::whatSideOfLine(line1,lastB);
                         it->setBRCrossed(!it->getBRCrossed());
                         it->setBRPosToNeg(sideBeforeBR);
-                        if(it->getBRCrossed()){
-                            if(it->getBLCrossed() && it->getBLPosToNeg() == sideBeforeBR){ //BL previously crossed in
-                                                                                           //same direction
-                                if(sideBeforeBR == true){
-                                    posToNegCnt++;
-                                }
-                                else{
-                                    negToPosCnt++;
+                        std::cout<<"sideBeforeBR = "<<sideBeforeBR<<std::endl;
+                        if(it->getBRCrossed() && it->getBLCrossed()){   //if BL already crossed
+                            std::cout<<"RB and LB crossed"<<std::endl;
+                            if(sideBeforeBR == it->getBLPosToNeg()){  //in same direction -> end the event
+                                std::cout<<"in same direction"<<std::endl;
+                                if(!it->getCounted(sideBeforeBR)){     //if not counted before in this direction
+                                    AlgoEvent event = it->getEvent();
+                                    event.setEnd(frameNumber);
+                                    event.setEndRect(lastBox);
+                                    event.setPosToNeg(sideBeforeBR);
+                                    it->setEvent(event);
+                                    it->setCounted(sideBeforeBR);
+                                    algoEvents.push_back(event);
+                                    if(sideBeforeBR == true){
+                                        posToNegCnt++;
+                                    }
+                                    else{
+                                        negToPosCnt++;
+                                    }
                                 }
                             }
+                        }
+                        else if(it->getBRCrossed() && !it->getBLCrossed()){ //only BR has crossed -> new event
+                            std::cout<<"RB crossed, LB not yet"<<std::endl;
+                            AlgoEvent event;
+                            event.setStart(frameNumber);
+                            event.setStartRect(secondToLast);
+                            event.setPosToNeg(sideBeforeBR);
+                            it->setEvent(event);
                         }
                     }
                 }
@@ -387,6 +564,17 @@ bool ResearchDetectionFramework::Run()
                     //}
                 }
             }
+            //Draw Ground truth
+//            std::vector<gtTrack>::iterator gtIt;
+//            for(gtIt = gtTracks.begin(); gtIt != gtTracks.end(); gtIt++){
+//                std::vector<DetectedBlob> dbs = gtIt->getBoxes();
+//                std::vector<DetectedBlob>::iterator dbIt;
+//                for(dbIt = dbs.begin(); dbIt != dbs.end(); dbIt++){
+//                    if(dbIt->frameNr == frameNumber){
+//                        cv::rectangle(newFrame,dbIt->BBox,cv::Scalar(0,255,0));
+//                    }
+//                }
+//            }
 
             //Draw the configured counting lines
             std::vector< std::vector<int> >::iterator lineIt;
@@ -423,10 +611,10 @@ bool ResearchDetectionFramework::Run()
             //cv::imshow("Variance", variance);
             //cv::imshow("Confidence Measurement", confidence);
             //cv::imshow("Foreground Morphed", foregroundMorph);
-            //if(count<=392){
+            //if(count<=333){
                 cv::waitKey(1);
             //} else {
-              //  cv::waitKey();
+            //    cv::waitKey();
             //}
         }
 

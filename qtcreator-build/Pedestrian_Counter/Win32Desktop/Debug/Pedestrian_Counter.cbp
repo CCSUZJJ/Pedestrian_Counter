@@ -796,6 +796,10 @@
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/Tracking.cpp">
       </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/gtEvent.cpp">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/gtTrack.cpp">
+      </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/ResearchDetectionFramework.cpp">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchGeneral/src/ResearchGeneral.cpp">
@@ -877,6 +881,10 @@
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/Track.h">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/Tracking.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/gtEvent.h">
+      </Unit>
+      <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/PeopleCounter/gtTrack.h">
       </Unit>
       <Unit filename="F:/user/Documents/FLIR/Pedestrian_Counter/detection/inc/ResearchDetectionFramework/ResearchDetectionFramework.h">
       </Unit>

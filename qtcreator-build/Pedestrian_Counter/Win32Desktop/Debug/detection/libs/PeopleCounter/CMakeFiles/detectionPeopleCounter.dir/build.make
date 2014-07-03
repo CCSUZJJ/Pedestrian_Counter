@@ -243,6 +243,54 @@ detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Geometry.
 
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Geometry.cpp.obj.provides.build: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Geometry.cpp.obj
 
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/flags.make
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/includes_CXX.rsp
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/gtTrack.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles $(CMAKE_PROGRESS_9)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj"
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\detection\libs\PeopleCounter && C:\TDM-GCC-32\bin\g++.exe   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles\detectionPeopleCounter.dir\src\gtTrack.cpp.obj -c F:\user\Documents\FLIR\Pedestrian_Counter\detection\libs\PeopleCounter\src\gtTrack.cpp
+
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.i"
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\detection\libs\PeopleCounter && C:\TDM-GCC-32\bin\g++.exe  $(CXX_DEFINES) $(CXX_FLAGS) -E F:\user\Documents\FLIR\Pedestrian_Counter\detection\libs\PeopleCounter\src\gtTrack.cpp > CMakeFiles\detectionPeopleCounter.dir\src\gtTrack.cpp.i
+
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.s"
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\detection\libs\PeopleCounter && C:\TDM-GCC-32\bin\g++.exe  $(CXX_DEFINES) $(CXX_FLAGS) -S F:\user\Documents\FLIR\Pedestrian_Counter\detection\libs\PeopleCounter\src\gtTrack.cpp -o CMakeFiles\detectionPeopleCounter.dir\src\gtTrack.cpp.s
+
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj.requires:
+.PHONY : detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj.requires
+
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj.provides: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj.requires
+	$(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj.provides.build
+.PHONY : detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj.provides
+
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj.provides.build: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj
+
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/flags.make
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/includes_CXX.rsp
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/gtEvent.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\CMakeFiles $(CMAKE_PROGRESS_10)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj"
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\detection\libs\PeopleCounter && C:\TDM-GCC-32\bin\g++.exe   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles\detectionPeopleCounter.dir\src\gtEvent.cpp.obj -c F:\user\Documents\FLIR\Pedestrian_Counter\detection\libs\PeopleCounter\src\gtEvent.cpp
+
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.i"
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\detection\libs\PeopleCounter && C:\TDM-GCC-32\bin\g++.exe  $(CXX_DEFINES) $(CXX_FLAGS) -E F:\user\Documents\FLIR\Pedestrian_Counter\detection\libs\PeopleCounter\src\gtEvent.cpp > CMakeFiles\detectionPeopleCounter.dir\src\gtEvent.cpp.i
+
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.s"
+	cd /d F:\user\Documents\FLIR\Pedestrian_Counter\qtcreator-build\Pedestrian_Counter\Win32Desktop\Debug\detection\libs\PeopleCounter && C:\TDM-GCC-32\bin\g++.exe  $(CXX_DEFINES) $(CXX_FLAGS) -S F:\user\Documents\FLIR\Pedestrian_Counter\detection\libs\PeopleCounter\src\gtEvent.cpp -o CMakeFiles\detectionPeopleCounter.dir\src\gtEvent.cpp.s
+
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj.requires:
+.PHONY : detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj.requires
+
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj.provides: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj.requires
+	$(MAKE) -f detection\libs\PeopleCounter\CMakeFiles\detectionPeopleCounter.dir\build.make detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj.provides.build
+.PHONY : detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj.provides
+
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj.provides.build: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj
+
 # Object files for target detectionPeopleCounter
 detectionPeopleCounter_OBJECTS = \
 "CMakeFiles/detectionPeopleCounter.dir/src/PeopleCounter.cpp.obj" \
@@ -252,7 +300,9 @@ detectionPeopleCounter_OBJECTS = \
 "CMakeFiles/detectionPeopleCounter.dir/src/DetectedBlob.cpp.obj" \
 "CMakeFiles/detectionPeopleCounter.dir/src/Track.cpp.obj" \
 "CMakeFiles/detectionPeopleCounter.dir/src/AlgorithmEvent.cpp.obj" \
-"CMakeFiles/detectionPeopleCounter.dir/src/Geometry.cpp.obj"
+"CMakeFiles/detectionPeopleCounter.dir/src/Geometry.cpp.obj" \
+"CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj" \
+"CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj"
 
 # External object files for target detectionPeopleCounter
 detectionPeopleCounter_EXTERNAL_OBJECTS =
@@ -265,6 +315,8 @@ detection/libs/PeopleCounter/libdetectionPeopleCounter.a: detection/libs/PeopleC
 detection/libs/PeopleCounter/libdetectionPeopleCounter.a: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Track.cpp.obj
 detection/libs/PeopleCounter/libdetectionPeopleCounter.a: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/AlgorithmEvent.cpp.obj
 detection/libs/PeopleCounter/libdetectionPeopleCounter.a: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Geometry.cpp.obj
+detection/libs/PeopleCounter/libdetectionPeopleCounter.a: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj
+detection/libs/PeopleCounter/libdetectionPeopleCounter.a: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj
 detection/libs/PeopleCounter/libdetectionPeopleCounter.a: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/build.make
 detection/libs/PeopleCounter/libdetectionPeopleCounter.a: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library libdetectionPeopleCounter.a"
@@ -283,6 +335,8 @@ detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/requires: det
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/requires: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Track.cpp.obj.requires
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/requires: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/AlgorithmEvent.cpp.obj.requires
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/requires: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Geometry.cpp.obj.requires
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/requires: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtTrack.cpp.obj.requires
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/requires: detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj.requires
 .PHONY : detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/requires
 
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/clean:

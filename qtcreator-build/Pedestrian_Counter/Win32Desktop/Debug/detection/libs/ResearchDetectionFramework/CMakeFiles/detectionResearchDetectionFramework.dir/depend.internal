@@ -81,6 +81,7 @@ detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionF
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/OpenCVWrappers/OpenCvUtilities.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/OpenCVWrappers/OpenCvVideo.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/OpenCVWrappers/Point.h
+ F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/AlgorithmEvent.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/BlobSegmentation.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/DetectedBlob.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/DetectedObject.h
@@ -88,6 +89,8 @@ detection/libs/ResearchDetectionFramework/CMakeFiles/detectionResearchDetectionF
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/Geometry.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/Track.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/Tracking.h
+ F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/gtEvent.h
+ F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/gtTrack.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/ResearchGeneral/DetAlgoI.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../inc/ResearchDetectionFramework/ResearchDetectionFramework.h
  F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/FrameDecoding.h
