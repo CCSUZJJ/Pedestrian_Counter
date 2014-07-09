@@ -22,13 +22,15 @@ int main(int , char *[])
 
     for(auto const& Group : TestGroups)
     {
+        std::vector<std::string> TestCaseResultNames;
         for(auto const& Case : Group.s_TestCases)
         {
-            DetFramework.Configure(Case.s_VideoName, Case.s_ConfigName, Case.s_GroundTruthName, Group.s_GroupName);
+            TestCaseResultNames.push_back(Case.s_ResultName);
+            DetFramework.Configure(Case.s_VideoName, Case.s_ConfigName, Case.s_GroundTruthName, Case.s_ResultName, Group.s_GroupName);
             DetFramework.Run();
         }
 
-        DetFramework.FinishGroupPerformanceAnalyse();
+        DetFramework.FinishGroupPerformanceAnalyse(Group.s_GroupResultName, TestCaseResultNames);
     }
 
     DetFramework.FinishPerformanceAnalyse();

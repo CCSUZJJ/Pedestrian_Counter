@@ -40,3 +40,11 @@ bool AlgoEvent::getPosToNeg(){
 void AlgoEvent::setPosToNeg(bool v){
     posToNeg = v;
 }
+
+bool AlgoEvent::getFoundInGT(){
+    return foundInGT;
+}
+
+void AlgoEvent::setFoundInGT(bool b){
+    foundInGT = b;
+}

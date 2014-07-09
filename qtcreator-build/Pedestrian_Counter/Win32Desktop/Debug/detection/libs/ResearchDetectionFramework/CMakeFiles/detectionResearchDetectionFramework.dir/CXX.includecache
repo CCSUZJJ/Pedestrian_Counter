@@ -977,6 +977,8 @@ vector
 -
 DetectedBlob.h
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/DetectedBlob.h
+AlgorithmEvent.h
+F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/AlgorithmEvent.h
 
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/gtTrack.h
 vector
@@ -1008,6 +1010,8 @@ F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramew
 ResearchDetectionFramework.h
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/ResearchDetectionFramework.h
 iostream
+-
+fstream
 -
 tinyxml.h
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/tinyxml.h
@@ -1043,4 +1047,6 @@ Geometry.h
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/Geometry.h
 gtEvent.h
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/gtEvent.h
+DetAlgoI.h
+F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/src/DetAlgoI.h
 

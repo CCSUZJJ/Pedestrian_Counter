@@ -1,5 +1,6 @@
 #include "ResearchDetectionFramework.h"
 #include <iostream>
+#include <fstream>
 #include "tinyxml.h"     //Te verwijderen na vervangen tinyxml -> ticpp
                          //Probleem doordat LoadFile geen bool returnt bij ticpp zie r149
 #include "ticpp.h"
@@ -21,6 +22,7 @@
 #include "gtTrack.h"
 #include "Geometry.h"
 #include "gtEvent.h"
+#include "DetAlgoI.h"
 
 namespace
 {
@@ -98,7 +100,7 @@ void ResearchDetectionFramework::ClearAlgoList()
 }
 
 void ResearchDetectionFramework::Configure(const std::string& FileNameVideo, const std::string& FileNameConfiguration,
-                                           const std::string& GroundTruthFileName, const std::string& GroupName)
+                                           const std::string& GroundTruthFileName, const std::string& ResultFileName, const std::string& GroupName)
 {
     std::cout << "Open Video: "  << FileNameVideo << std::endl;
     m_VideoPlayer.SetName(FileNameVideo);
@@ -124,7 +126,7 @@ void ResearchDetectionFramework::Configure(const std::string& FileNameVideo, con
     m_ConfigFileName = FileNameConfiguration;
     std::cout << "Send Config: "  << m_ConfigFileName << std::endl;
     bool PrevConfig = m_Configured;
-    m_Configured = m_Configured && SendConfig(GroundTruthFileName, GroupName);
+    m_Configured = m_Configured && SendConfig(GroundTruthFileName, ResultFileName, GroupName);
 
     if(PrevConfig && !m_Configured)
     {
@@ -153,7 +155,8 @@ void ResearchDetectionFramework::AddAlgo(IDetAlgo* Algo)
     }
 }
 
-bool ResearchDetectionFramework::SendConfig(const std::string& GroundTruthFileName, const std::string& GroupName)
+bool ResearchDetectionFramework::SendConfig(const std::string& GroundTruthFileName, const std:: string& ResultFileName
+                                            ,const std::string& GroupName)
 {
     bool RetVal = false;
     std::cout << "Parse Config file: " << m_ConfigFileName << std::endl;
@@ -161,6 +164,7 @@ bool ResearchDetectionFramework::SendConfig(const std::string& GroundTruthFileNa
     //ticpp::Document XmlDoc;
     m_Config.s_XmlDoc = &XmlDoc;
     m_Config.s_GroundTruthFile = GroundTruthFileName;
+    m_Config.s_ResultFile = ResultFileName;
     m_Config.s_GroupName = GroupName;
     if (!m_ConfigFileName.empty() && XmlDoc.LoadFile(m_ConfigFileName.c_str())) //m.b.v. ticpp returnt LoadFile void ipv bool
     {
@@ -397,6 +401,8 @@ bool ResearchDetectionFramework::Run()
         std::vector<Track> finishedTracks;
         std::vector<Track> currentTracks;
 
+
+        std::vector<AlgoEvent> algoEvents;
         int posToNegCnt =0;
         int negToPosCnt =0;
 
@@ -427,9 +433,10 @@ bool ResearchDetectionFramework::Run()
             cv::Mat kernel = cv::Mat::ones(cv::Size(2,2), CV_8UC1);
             cv::morphologyEx(foreground, foregroundMorph, cv::MORPH_OPEN, kernel);
             //Connect objects
-            cv::Mat kernel2 =  cv::Mat::ones(cv::Size(20,20), CV_8UC1);
+            cv::Mat kernel2 =  cv::Mat::ones(cv::Size(5,5), CV_8UC1);
             cv::morphologyEx(foregroundMorph, foregroundMorph, cv::MORPH_CLOSE, kernel2);
-
+            cv::morphologyEx(foregroundMorph, foregroundMorph, cv::MORPH_CLOSE, kernel2);
+            cv::morphologyEx(foregroundMorph, foregroundMorph, cv::MORPH_CLOSE, kernel2);
 
             //Blob Segmentation
             //std::vector<cv::Rect> boundRect = blobSegment.contourSegment(foregroundMorph);
@@ -458,7 +465,6 @@ bool ResearchDetectionFramework::Run()
             tracker.simpleTracking(finishedTracks, currentTracks, detectedBlobs, frameNumber);
 
             //Check if Pedestrian crossed
-            std::vector<AlgoEvent> algoEvents;
             std::vector<Track>::iterator it;
             for(it = currentTracks.begin(); it != currentTracks.end(); it++){
                 if(static_cast<int>(it->getBoxes().size()) > 1){
@@ -477,17 +483,12 @@ bool ResearchDetectionFramework::Run()
                     LineSegment trajectRB = LineSegment(sLastB, lastB);
                     //Check if Left-bottom crossed
                     if(Geometry::doLinesIntersect(trajectLB, line1)){
-                        std::cout<<"LB crossed"<<std::endl;
                         bool sideBeforeBL = Geometry::whatSideOfLine(line1,sLastA);
-                        bool sideAfterBL = Geometry::whatSideOfLine(line1,lastA);
                         it->setBLCrossed(!it->getBLCrossed());
                         it->setBLPosToNeg(sideBeforeBL);
-                        std::cout<<"sideBeforeBL = "<<sideBeforeBL<<std::endl;
                         if(it->getBLCrossed() && it->getBRCrossed()){   //if BR already crossed
-                            std::cout<<"LB and RB crossed"<<std::endl;
                             if(sideBeforeBL == it->getBRPosToNeg()){  //in same direction -> end the event
-                                std::cout<<"in same direction"<<std::endl;
-                                if(it->getCounted(sideBeforeBL)){       //not counted before in this direction
+                                if(!it->getCounted(sideBeforeBL)){       //not counted before in this direction
                                     AlgoEvent event = it->getEvent();
                                     event.setEnd(frameNumber);
                                     event.setEndRect(lastBox);
@@ -497,15 +498,16 @@ bool ResearchDetectionFramework::Run()
                                     algoEvents.push_back(event);
                                     if(sideBeforeBL == true){
                                         posToNegCnt++;
+                                        std::cout<<"Algo event 1 to 0 from frame "<<event.getStart()<<" to "<<event.getEnd()<<std::endl;
                                     }
                                     else{
                                         negToPosCnt++;
+                                        std::cout<<"Algo event 0 to 1 from frame "<<event.getStart()<<" to "<<event.getEnd()<<std::endl;
                                     }
                                 }
                             }
                         }
                         else if(it->getBLCrossed() && !it->getBRCrossed()){ //only BL has crossed -> new event
-                            std::cout<<"LB crossed, RB not yet"<<std::endl;
                             AlgoEvent event;
                             event.setStart(frameNumber);
                             event.setStartRect(secondToLast);
@@ -515,16 +517,11 @@ bool ResearchDetectionFramework::Run()
                     }
                     //Check if Right-bottom crossed
                     if(Geometry::doLinesIntersect(trajectRB, line1)){
-                        std::cout<<"RB crossed"<<std::endl;
                         bool sideBeforeBR = Geometry::whatSideOfLine(line1,sLastB);
-                        bool sideAfterBR = Geometry::whatSideOfLine(line1,lastB);
                         it->setBRCrossed(!it->getBRCrossed());
                         it->setBRPosToNeg(sideBeforeBR);
-                        std::cout<<"sideBeforeBR = "<<sideBeforeBR<<std::endl;
                         if(it->getBRCrossed() && it->getBLCrossed()){   //if BL already crossed
-                            std::cout<<"RB and LB crossed"<<std::endl;
                             if(sideBeforeBR == it->getBLPosToNeg()){  //in same direction -> end the event
-                                std::cout<<"in same direction"<<std::endl;
                                 if(!it->getCounted(sideBeforeBR)){     //if not counted before in this direction
                                     AlgoEvent event = it->getEvent();
                                     event.setEnd(frameNumber);
@@ -535,15 +532,16 @@ bool ResearchDetectionFramework::Run()
                                     algoEvents.push_back(event);
                                     if(sideBeforeBR == true){
                                         posToNegCnt++;
+                                        std::cout<<"Algo event 1 to 0 from frame "<<event.getStart()<<" to "<<event.getEnd()<<std::endl;
                                     }
                                     else{
                                         negToPosCnt++;
+                                        std::cout<<"Algo event 0 to 1 from frame "<<event.getStart()<<" to "<<event.getEnd()<<std::endl;
                                     }
                                 }
                             }
                         }
                         else if(it->getBRCrossed() && !it->getBLCrossed()){ //only BR has crossed -> new event
-                            std::cout<<"RB crossed, LB not yet"<<std::endl;
                             AlgoEvent event;
                             event.setStart(frameNumber);
                             event.setStartRect(secondToLast);
@@ -599,43 +597,157 @@ bool ResearchDetectionFramework::Run()
                         cv::Scalar(0,255,0),3,8,false);
 
             //Generate windows
-            cv::namedWindow("Current Frame");
+            //cv::namedWindow("Current Frame");
             //cv::namedWindow("Background");
             //cv::namedWindow("Foreground");
+            //cv::namedWindow("Foreground Morphed");
             //cv::namedWindow("Variance");
             //cv::namedWindow("Confidence Measurement");
-            //cv::namedWindow("Foreground Morphed");
-            cv::imshow("Current Frame", newFrame);
+            //cv::imshow("Current Frame", newFrame);
             //cv::imshow("Background", background);
             //cv::imshow("Foreground", foreground);
+            //cv::imshow("Foreground Morphed", foregroundMorph);
             //cv::imshow("Variance", variance);
             //cv::imshow("Confidence Measurement", confidence);
-            //cv::imshow("Foreground Morphed", foregroundMorph);
-            //if(count<=333){
+            //if(count<=3850){
                 cv::waitKey(1);
             //} else {
             //    cv::waitKey();
             //}
         }
 
+        //Write Algo Events to XML
+        ticpp::Document result;
+        ticpp::Declaration dec = ticpp::Declaration("1.0", "utf-8", "");
+        ticpp::Declaration* decp = &dec;
+        result.LinkEndChild(decp);
+
+        ticpp::Element results("Results");
+        ticpp::Element gTruEvents("GroundTruthEvents");
+        std::vector<gtEvent>::iterator gIt;
+        for(gIt = gtEvents.begin(); gIt != gtEvents.end(); gIt++){
+            ticpp::Element gEvent("GroundTruthEvent");
+            gEvent.SetAttribute("Start", gIt->getStart());
+            gEvent.SetAttribute("End", gIt->getEnd());
+            gEvent.SetAttribute("Direction", gIt->getPosToNeg());
+            gTruEvents.InsertEndChild(gEvent);
+        }
+        results.InsertEndChild(gTruEvents);
+        ticpp::Element algEvents("AlgorithmEvents");
+        std::vector<AlgoEvent>::iterator aIt;
+        for(aIt = algoEvents.begin(); aIt != algoEvents.end(); aIt++){
+            ticpp::Element algEvent("AlgorithmEvent");
+            algEvent.SetAttribute("Start", aIt->getStart());
+            algEvent.SetAttribute("End", aIt->getEnd());
+            algEvent.SetAttribute("Direction", aIt->getPosToNeg());
+            algEvents.InsertEndChild(algEvent);
+        }
+        results.InsertEndChild(algEvents);
+
+        result.InsertEndChild(results);
+
+        std::ofstream file;
+        file.open(m_Config.s_ResultFile);
+        file << result;
+        file.close();
     }
     return true;
 }
 
 void ResearchDetectionFramework::FinishPerformanceAnalyse()
 {
-    for(auto& Algo : m_Algo)
+    /*for(auto& Algo : m_Algo)
     {
         Algo->FinishPerformanceAnalyse();
-    }
+    }*/
+
+    //Total sensitivity and precision
 }
 
-void ResearchDetectionFramework::FinishGroupPerformanceAnalyse()
+void ResearchDetectionFramework::FinishGroupPerformanceAnalyse(const string &GroupResultName, std::vector<std::string>& TestCaseResultNames)
 {
-    for(auto& Algo : m_Algo)
+    /*for(auto& Algo : m_Algo)
     {
         Algo->FinishGroupPerformanceAnalyse();
+    }*/
+
+    //Calculate sensitivity and precision for each group
+    std::vector<AlgoEvent> algoEvents;
+    std::vector<gtEvent> gtEvents;
+    int TP = 0;
+    int FP = 0;
+    int FN = 0;
+    double sensitivity;
+    double precision;
+
+    for(auto TestCaseResultName : TestCaseResultNames){
+        ticpp::Document doc(TestCaseResultName.c_str());
+        doc.LoadFile();
+        ticpp::Element* parent = doc.FirstChild("Results")->FirstChildElement("GroundTruthEvents");
+        ticpp::Iterator< ticpp::Element > iterator("GroundTruthEvent");
+        for(iterator = iterator.begin(parent); iterator != iterator.end(); iterator++){
+            ticpp::Element* xmlEvent = iterator.Get();
+            gtEvent event;
+            int start, end;
+            xmlEvent->GetAttribute("Start", &start);
+            xmlEvent->GetAttribute("End", &end);
+            event.setStart(start);
+            event.setEnd(end);
+            gtEvents.push_back(event);
+        }
+        parent = doc.FirstChild("Results")->FirstChildElement("AlgorithmEvents");
+        ticpp::Iterator< ticpp::Element > iterator2("AlgorithmEvent");
+        for(iterator2 = iterator2.begin(parent); iterator2 != iterator2.end(); iterator2++){
+            ticpp::Element* xmlEvent = iterator2.Get();
+            AlgoEvent event;
+            int start, end;
+            xmlEvent->GetAttribute("Start", &start);
+            xmlEvent->GetAttribute("End", &end);
+            event.setStart(start);
+            event.setEnd(end);
+            algoEvents.push_back(event);
+        }
     }
+
+    for(auto& gte : gtEvents){
+        for(auto& alge : algoEvents){
+            if(gte.isMatch(alge)){          //Find matches in the Algorithm Events
+                alge.setFoundInGT(true);    //Find match => True Positive
+                gte.setFoundMatch(true);
+                TP++;
+                break;
+            }
+        }
+        if(!gte.getFoundMatch()){           //No match => False Negative
+            FN++;
+        }
+    }
+
+    FP = static_cast<unsigned int>(algoEvents.size()) - TP; //All unmatched algorithm events are False Positive
+
+    sensitivity = 100.0*TP/(TP+FN);
+    precision = 100.0*TP/(TP+FP);
+
+    ticpp::Document result;
+    ticpp::Declaration dec = ticpp::Declaration("1.0", "utf-8", "");
+    ticpp::Declaration* decp = &dec;
+    result.LinkEndChild(decp);
+
+    ticpp::Element GroupResult("GroupResult");
+    GroupResult.SetAttribute("AlgorithmEvents", static_cast<unsigned int>(algoEvents.size()));
+    GroupResult.SetAttribute("GroundTruthEvents", static_cast<unsigned int>(gtEvents.size()));
+    GroupResult.SetAttribute("TruePositive", TP);
+    GroupResult.SetAttribute("FalsePositive", FP);
+    GroupResult.SetAttribute("FalseNegative", FN);
+    GroupResult.SetAttribute("Sensitivity", sensitivity);
+    GroupResult.SetAttribute("Precision", precision);
+
+    result.InsertEndChild(GroupResult);
+
+    std::ofstream file;
+    file.open(GroupResultName.c_str());
+    file << result;
+    file.close();
 }
 
 unsigned long ResearchDetectionFramework::GetTraficonFieldCounter(const IplImage* GrayImage)

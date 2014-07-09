@@ -19,6 +19,8 @@ class AlgoEvent{
         void setEndRect(cv::Rect er);
         bool getPosToNeg();
         void setPosToNeg(bool v);
+        bool getFoundInGT();
+        void setFoundInGT(bool b);
 
     private:
         int start;
@@ -26,6 +28,7 @@ class AlgoEvent{
         cv::Rect startRect;
         cv::Rect endRect;
         bool posToNeg;
+        bool foundInGT = false;
 };
 
 #endif

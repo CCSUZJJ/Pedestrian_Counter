@@ -486,6 +486,7 @@ detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.c
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../../detection/inc/OpenCVWrappers/CvHistogramPlot.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../../detection/inc/OpenCVWrappers/OfflineFrame.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../../detection/inc/OpenCVWrappers/OpenCvUtilities.h
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/AlgorithmEvent.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/DetectedBlob.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/gtEvent.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/gtEvent.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/gtEvent.cpp

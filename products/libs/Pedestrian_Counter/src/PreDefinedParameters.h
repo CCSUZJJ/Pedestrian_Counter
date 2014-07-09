@@ -10,23 +10,25 @@ namespace
 struct STestCases
 {
     STestCases() :
-        s_VideoName(), s_GroundTruthName(), s_CaseName(), s_ConfigName()
+        s_VideoName(), s_GroundTruthName(), s_CaseName(), s_ConfigName(), s_ResultName()
     {}
 
     std::string s_VideoName;
     std::string s_GroundTruthName;
     std::string s_CaseName;
     std::string s_ConfigName;
+    std::string s_ResultName;
 };
 
 struct STestGroup
 {
     STestGroup() :
-        s_TestCases(), s_GroupName()
+        s_TestCases(), s_GroupName(), s_GroupResultName()
     {}
 
     std::deque<STestCases> s_TestCases;
     std::string s_GroupName;
+    std::string s_GroupResultName;
 };
 
 bool CheckConfigName(const std::string& ConfigName)
@@ -75,6 +77,8 @@ std::deque<STestGroup> ReadAllTests()
                 CurrGroup->GetAttribute("AnnotationMap", &AnnotationMap);
             std::string VideoMap;
                 CurrGroup->GetAttribute("VideoMap", &VideoMap);
+            std::string ResultMap;
+                CurrGroup->GetAttribute("ResultMap", &ResultMap);
 
             std::deque<STestCases> Results;
 
@@ -91,11 +95,14 @@ std::deque<STestGroup> ReadAllTests()
                     CurrVideo->GetAttribute("Name", &Name);
                 std::string ConfigName;
                     CurrVideo->GetAttribute("Config", &ConfigName);
+                std::string ResultName;
+                    CurrVideo->GetAttribute("Results", &ResultName);
 
                 NewCase.s_VideoName = GlobalPath + VideoMap + VideoName;
                 NewCase.s_GroundTruthName = GlobalPath + AnnotationMap  + GroundTruthName;
                 NewCase.s_CaseName = Name;
                 NewCase.s_ConfigName = GlobalPath /*+ Name */+ ConfigName;
+                NewCase.s_ResultName = GlobalPath + ResultMap + ResultName;
                 if(!CheckConfigName(NewCase.s_ConfigName))
                 {
                     NewCase.s_ConfigName = GlobalPath + Name + std::string("Config.xml");
@@ -114,6 +121,7 @@ std::deque<STestGroup> ReadAllTests()
                 GroupName = GroupName.substr(0,Found);
             }
             CurrGroupRes.s_GroupName = GroupName;
+            CurrGroupRes.s_GroupResultName = GlobalPath + ResultMap + std::string("Group Results.xml");
 
             GroupResults.push_back(CurrGroupRes);
             //std::cout << CurrGroupRes.s_GroupName << std::endl;     //GROUPS LUKKEN ITT NEWCASES

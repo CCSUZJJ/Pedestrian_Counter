@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "DetectedBlob.h"
+#include "AlgorithmEvent.h"
 
 class gtEvent{
     public:
@@ -19,6 +20,9 @@ class gtEvent{
         void setEndRect(cv::Rect er);
         bool getPosToNeg();
         void setPosToNeg(bool v);
+        bool getFoundMatch();
+        void setFoundMatch(bool v);
+        bool isMatch(AlgoEvent e);
 
     private:
         int start;
@@ -26,6 +30,7 @@ class gtEvent{
         cv::Rect startRect;
         cv::Rect endRect;
         bool posToNeg;
+        bool foundMatch;
 };
 
 #endif

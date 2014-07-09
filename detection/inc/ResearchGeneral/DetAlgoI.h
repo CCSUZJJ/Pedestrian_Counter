@@ -11,7 +11,7 @@ class TiXmlDocument;
 
 struct SFrameWorkConfig
 {
-    SFrameWorkConfig(): s_XmlDoc(), s_TestBatchFile(), s_GroundTruthFile(), s_GroupName(),
+    SFrameWorkConfig(): s_XmlDoc(), s_TestBatchFile(), s_GroundTruthFile(), s_ResultFile(),s_GroupName(),
                         s_ConfigFile(), s_Debug(false), s_CreateVideo(false), s_CommandLineMode(false)
     {}
 
@@ -19,6 +19,7 @@ struct SFrameWorkConfig
     //ticpp::Document* s_XmlDoc;
     std::string     s_TestBatchFile;
     std::string     s_GroundTruthFile;
+    std::string     s_ResultFile;
     std::string     s_GroupName;
     std::string     s_ConfigFile;
     bool            s_Debug;

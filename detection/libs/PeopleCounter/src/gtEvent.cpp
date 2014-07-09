@@ -40,3 +40,21 @@ bool gtEvent::getPosToNeg(){
 void gtEvent::setPosToNeg(bool v){
     posToNeg = v;
 }
+
+bool gtEvent::getFoundMatch(){
+    return foundMatch;
+}
+
+void gtEvent::setFoundMatch(bool v){
+    foundMatch = v;
+}
+
+bool gtEvent::isMatch(AlgoEvent e){
+    if((start+30 >= e.getStart()) && (start-30 <= e.getStart()) &&  //start within margin
+       (end+30 >= e.getEnd()) && (end-30 <= e.getEnd())){           //end within margin
+        return true;
+    }
+    else{
+        return false;
+    }
+}

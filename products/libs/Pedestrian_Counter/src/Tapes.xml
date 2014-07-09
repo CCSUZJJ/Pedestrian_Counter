@@ -1,16 +1,16 @@
 <xml>
    <VideoPath Path="F:/user/Documents/FLIR_Data/" />
 
-   <TestCase AnnotationMap="Annotations/tape1/" VideoMap="Video/tape1/" >
-       <Test Name="tape1/" Video="DVD Video Recording-1_fc.mpg" Config="Configurations/tape1/tape1.xml"  Annotations="DVD Video Recording-1_fc.xgtf" />
-       <Test Name="tape1/" Video="DVD Video Recording-2_fc.mpg" Config="Configurations/tape1/tape1.xml"  Annotations="DVD Video Recording-2_fc.xgtf" />
-       <Test Name="tape1/" Video="DVD Video Recording-3_fc.mpg" Config="Configurations/tape1/tape1.xml"  Annotations="DVD Video Recording-3_fc.xgtf" /> 
+   <TestCase AnnotationMap="Annotations/tape1/" VideoMap="Video/tape1/" ResultMap="Results/tape1/">
+       <Test Name="tape1/" Video="DVD Video Recording-1_fc.mpg" Config="Configurations/tape1/tape1.xml"  Annotations="DVD Video Recording-1_fc.xgtf" Results="Result DVD Video Recording-1_fc.xml"/>
+       <Test Name="tape1/" Video="DVD Video Recording-2_fc.mpg" Config="Configurations/tape1/tape1.xml"  Annotations="DVD Video Recording-2_fc.xgtf" Results="Result DVD Video Recording-2_fc.xml"/>
+       <Test Name="tape1/" Video="DVD Video Recording-3_fc.mpg" Config="Configurations/tape1/tape1.xml"  Annotations="DVD Video Recording-3_fc.xgtf" Results="Result DVD Video Recording-3_fc.xml"/> 
    </TestCase>
    
-   <TestCase AnnotationMap="Annotations/tape2/" VideoMap="Video/tape2/" >
-       <Test Name="tape2/" Video="DVD Video Recording-1_fc.mpg" Config="Configurations/tape2/tape2.xml"  Annotations="DVD Video Recording-1_fc.xgtf" />
-       <Test Name="tape2/" Video="DVD Video Recording-2_fc.mpg" Config="Configurations/tape2/tape2.xml"  Annotations="DVD Video Recording-2_fc.xgtf" />
-       <Test Name="tape2/" Video="DVD Video Recording-3_fc.mpg" Config="Configurations/tape2/tape2.xml"  Annotations="DVD Video Recording-3_fc.xgtf" /> 
+   <TestCase AnnotationMap="Annotations/tape2/" VideoMap="Video/tape2/" ResultMap="Results/tape2/">
+       <Test Name="tape2/" Video="DVD Video Recording-1_fc.mpg" Config="Configurations/tape2/tape2.xml"  Annotations="DVD Video Recording-1_fc.xgtf" Results="Result DVD Video Recording-1_fc.xml"/>
+       <Test Name="tape2/" Video="DVD Video Recording-2_fc.mpg" Config="Configurations/tape2/tape2.xml"  Annotations="DVD Video Recording-2_fc.xgtf" Results="Result DVD Video Recording-2_fc.xml"/>
+       <Test Name="tape2/" Video="DVD Video Recording-3_fc.mpg" Config="Configurations/tape2/tape2.xml"  Annotations="DVD Video Recording-3_fc.xgtf" Results="Result DVD Video Recording-3_fc.xml"/> 
    </TestCase>
    
 </xml>

@@ -21,12 +21,12 @@ public:
     void AddAlgo(IDetAlgo* Algo);
 
     void Configure(const std::string& FileNameVideo, const std::string& FileNameConfiguration,
-                   const std::string& GroundTruthFileName, const std::string& GroupName);
+                   const std::string& GroundTruthFileName, const std::string& ResultFileName, const std::string& GroupName);
 
     bool Run();
 
     void FinishPerformanceAnalyse();
-    void FinishGroupPerformanceAnalyse();
+    void FinishGroupPerformanceAnalyse(const std::string& GroupResultName, std::vector<std::string>& TestCaseResultNames);
 
 
 private:
@@ -36,7 +36,7 @@ private:
     std::string m_ConfigFileName;
     SFrameWorkConfig m_Config;
 
-    bool SendConfig(const std::string& GroundTruthFileName, const std::string& GroupName);
+    bool SendConfig(const std::string& GroundTruthFileName, const string &ResultFileName, const std::string& GroupName);
     void SetVideoName(const std::string& VideoFileName, unsigned int FrameRate, CvSize FrameSize);
     unsigned long GetTraficonFieldCounter(const IplImage* GrayImage);
 
