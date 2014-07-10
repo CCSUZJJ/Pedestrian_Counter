@@ -654,14 +654,61 @@ bool ResearchDetectionFramework::Run()
     return true;
 }
 
-void ResearchDetectionFramework::FinishPerformanceAnalyse()
+void ResearchDetectionFramework::FinishPerformanceAnalyse(const std::vector<std::string>& GroupResultNames, const string &FinalResultName)
 {
     /*for(auto& Algo : m_Algo)
     {
         Algo->FinishPerformanceAnalyse();
     }*/
 
-    //Total sensitivity and precision
+    int gtEvents = 0;
+    int AlgoEvents = 0;
+    int TP = 0;
+    int FP = 0;
+    int FN = 0;
+    double sensitivity;
+    double precision;
+
+    for(auto GroupResultName : GroupResultNames){
+        ticpp::Document doc(GroupResultName.c_str());
+        doc.LoadFile();
+        ticpp::Element* GroupResult = doc.FirstChildElement("GroupResult");
+        int grpGTE, grpALG, grpTP, grpFP, grpFN;
+        GroupResult->GetAttribute("AlgorithmEvents", &grpALG);
+        GroupResult->GetAttribute("GroundTruthEvents", &grpGTE);
+        GroupResult->GetAttribute("TruePositive", &grpTP);
+        GroupResult->GetAttribute("FalsePositive", &grpFP);
+        GroupResult->GetAttribute("FalseNegative", &grpFN);
+        gtEvents += grpGTE;
+        AlgoEvents += grpALG;
+        TP += grpTP;
+        FP += grpFP;
+        FN += grpFN;
+    }
+
+    sensitivity = 100.0*TP/(TP+FN);
+    precision = 100.0*TP/(TP+FP);
+
+    ticpp::Document result;
+    ticpp::Declaration dec = ticpp::Declaration("1.0", "utf-8", "");
+    ticpp::Declaration* decp = &dec;
+    result.LinkEndChild(decp);
+
+    ticpp::Element FinalResult("FinalResult");
+    FinalResult.SetAttribute("AlgorithmEvents", AlgoEvents);
+    FinalResult.SetAttribute("GroundTruthEvents", gtEvents);
+    FinalResult.SetAttribute("TruePositive", TP);
+    FinalResult.SetAttribute("FalsePositive", FP);
+    FinalResult.SetAttribute("FalseNegative", FN);
+    FinalResult.SetAttribute("Sensitivity", sensitivity);
+    FinalResult.SetAttribute("Precision", precision);
+
+    result.InsertEndChild(FinalResult);
+
+    std::ofstream file;
+    file.open(FinalResultName.c_str());
+    file << result;
+    file.close();
 }
 
 void ResearchDetectionFramework::FinishGroupPerformanceAnalyse(const string &GroupResultName, std::vector<std::string>& TestCaseResultNames)

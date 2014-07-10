@@ -25,7 +25,7 @@ public:
 
     bool Run();
 
-    void FinishPerformanceAnalyse();
+    void FinishPerformanceAnalyse(const std::vector<string> &GroupResultNames, const std::string& FinalResultName);
     void FinishGroupPerformanceAnalyse(const std::string& GroupResultName, std::vector<std::string>& TestCaseResultNames);
 
 

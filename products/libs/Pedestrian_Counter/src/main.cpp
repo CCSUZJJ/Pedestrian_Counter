@@ -20,8 +20,10 @@ int main(int , char *[])
 
     //DetFramework.AddAlgo(//IN TE VULLEN);
 
+    std::vector<std::string> GroupResultNames;
     for(auto const& Group : TestGroups)
     {
+        GroupResultNames.push_back(Group.s_GroupResultName);
         std::vector<std::string> TestCaseResultNames;
         for(auto const& Case : Group.s_TestCases)
         {
@@ -33,7 +35,8 @@ int main(int , char *[])
         DetFramework.FinishGroupPerformanceAnalyse(Group.s_GroupResultName, TestCaseResultNames);
     }
 
-    DetFramework.FinishPerformanceAnalyse();
+    std::string FinalResultName = "F:/user/Documents/FLIR_Data/Results/FinalResult.xml";
+    DetFramework.FinishPerformanceAnalyse(GroupResultNames, FinalResultName);
 
     return 0;
 }
