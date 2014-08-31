@@ -931,6 +931,8 @@ F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramew
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/BlobSegmentation.h
 OpenCvUtilities.h
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/OpenCvUtilities.h
+DetectedBlob.h
+F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/DetectedBlob.h
 
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/DetectedBlob.h
 vector
@@ -959,6 +961,8 @@ DetectedBlob.h
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/DetectedBlob.h
 AlgorithmEvent.h
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/AlgorithmEvent.h
+Geometry.h
+F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/Geometry.h
 
 F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/ResearchDetectionFramework/../../../detection/inc/PeopleCounter/Tracking.h
 OpenCvUtilities.h

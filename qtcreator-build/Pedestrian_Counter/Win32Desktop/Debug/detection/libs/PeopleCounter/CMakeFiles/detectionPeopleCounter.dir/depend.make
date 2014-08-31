@@ -136,6 +136,7 @@ detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegme
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../../detection/inc/OpenCVWrappers/OfflineFrame.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../../detection/inc/OpenCVWrappers/OpenCvUtilities.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/BlobSegmentation.h
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/DetectedBlob.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/BlobSegmentation.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/BlobSegmentation.cpp
 
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/DetectedBlob.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/DetectedBlob.cpp
@@ -346,6 +347,7 @@ detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Track.cpp
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Track.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../../detection/inc/OpenCVWrappers/OpenCvUtilities.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Track.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/AlgorithmEvent.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Track.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/DetectedBlob.h
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Track.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/Geometry.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Track.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/Track.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Track.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/Track.cpp
 
@@ -417,6 +419,7 @@ detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Tracking.
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Tracking.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/AlgorithmEvent.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Tracking.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/DetectedBlob.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Tracking.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/DetectedObject.h
+detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Tracking.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/Geometry.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Tracking.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/Track.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Tracking.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/../../inc/PeopleCounter/Tracking.h
 detection/libs/PeopleCounter/CMakeFiles/detectionPeopleCounter.dir/src/Tracking.cpp.obj: F:/user/Documents/FLIR/Pedestrian_Counter/detection/libs/PeopleCounter/src/Tracking.cpp

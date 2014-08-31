@@ -4,6 +4,7 @@
 #include <vector>
 #include "DetectedBlob.h"
 #include "AlgorithmEvent.h"
+#include "Geometry.h"
 
 class Track{
     public:
@@ -24,6 +25,12 @@ class Track{
         int getTTL();
         void setTTL(int i);
         void decrTTL();
+        void decTTLBy(int i);
+        void condDecrTTL();
+        int getConfidence();
+        void setConfidence(int i);
+        void incrConfidence();
+        void decrConfidence();
         void setBLCrossed(bool val);
         bool getBLCrossed();
         void setBRCrossed(bool val);
@@ -40,6 +47,12 @@ class Track{
         void setCountedPosToNeg(bool v);
         void setCounted(bool v);
         bool getCounted(bool v);
+        void setPedestrianCnt(int c);
+        void incrPedestrianCnt();
+        void decrPedestrianCnt();
+        int getPedestrianCnt();
+        bool isPedestrian();
+        void classify(DetectedBlob blob);
 
         static cv::Point getBaseCenter(cv::Rect rect);
         cv::Point predict(cv::Rect rect, double learningRate);
@@ -57,12 +70,14 @@ class Track{
         int dy = 0;
         bool matched = false;
         int ttl = 75;
+        int confidence = 0;
         bool BLCrossed = false;
         bool BRCrossed = false;
         bool BLPosToNeg = false;
         bool BRPosToNeg = false;
         bool CountedPosToNeg = false;
         bool CountedNegToPos = false;
+        int pedestrianCnt = 0;
 };
 
 #endif

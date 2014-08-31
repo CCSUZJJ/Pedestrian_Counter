@@ -10,7 +10,6 @@ void Track::findBestMatch(std::vector<DetectedBlob>& blobs){
     for(blob = blobs.begin(); blob != blobs.end(); blob++){
         if(blob->foundMatch == false){
             cv::Point midBase = getBaseCenter(blob->BBox);
-            cv::Point prediction = getPrediction();
             cv::Point diff = prediction - midBase;
             double distance = sqrt(diff.x*diff.x + diff.y*diff.y);
             if((distance < shortestDist) && (distance < maxDist)){
@@ -26,10 +25,23 @@ void Track::findBestMatch(std::vector<DetectedBlob>& blobs){
                 blob->foundMatch = true;
             }
         }
-        predict(bestMatch.BBox, 1);
+        predict(bestMatch.BBox, 0.1);
+        incrConfidence();
+        classify(bestMatch);
         addBlob(bestMatch);
         setMatched(true);
     }
+}
+
+void Track::classify(DetectedBlob blob){
+    LineSegment sv = LineSegment(cv::Point(10,2.4), cv::Point(20,0.4));
+    cv::Point input = cv::Point(blob.compactness, blob.leanness);
+    if(!(Geometry::whatSideOfLine(sv, input))){
+        incrPedestrianCnt();
+    }
+    //else{
+    //    decrPedestrianCnt();
+    //}
 }
 
 cv::Point Track::getBaseCenter(cv::Rect rect){
@@ -108,6 +120,45 @@ void Track::decrTTL(){
     ttl--;
 }
 
+void Track::decTTLBy(int i){
+    ttl -= i;
+}
+
+void Track::condDecrTTL(){
+    int minDec = 1;
+    int maxDec = 10;
+    int minConf = 15;
+    int maxConf = 50;
+    if(confidence < minConf){
+        ttl -= maxDec;
+    }
+    else if(confidence >= minConf || confidence < maxConf){
+        //decrement i.f.o. confidence
+        double ratio = ((maxDec-minDec)*1.0)/(maxConf-minConf);   // *1.0 else integer division
+        int decrement = maxDec - round((confidence - minConf)*ratio);
+        decTTLBy(decrement);
+    }
+    else if(confidence >= maxConf){
+        ttl -= minDec;
+    }
+}
+
+int Track::getConfidence(){
+    return confidence;
+}
+
+void Track::setConfidence(int i){
+    confidence = i;
+}
+
+void Track::incrConfidence(){
+    confidence++;
+}
+
+void Track::decrConfidence(){
+    confidence--;
+}
+
 void Track::setBLCrossed(bool val){
     BLCrossed = val;
 }
@@ -181,3 +232,27 @@ bool Track::getCounted(bool v){
         return CountedNegToPos;
     }
 }
+
+int Track::getPedestrianCnt(){
+    return pedestrianCnt;
+}
+
+void Track::incrPedestrianCnt(){
+    if(pedestrianCnt<40)
+        pedestrianCnt++;
+}
+
+void Track::decrPedestrianCnt(){
+    if(pedestrianCnt>0){
+        pedestrianCnt--;
+    }
+}
+
+void Track::setPedestrianCnt(int c){
+    pedestrianCnt = c;
+}
+
+bool Track::isPedestrian(){
+    return(pedestrianCnt >= 40);
+}
+

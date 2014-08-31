@@ -2,6 +2,7 @@
 #define BLOBSEGMENTATION_H
 
 #include "OpenCvUtilities.h"
+#include "DetectedBlob.h"
 
 struct Run{
     cv::Point start;
@@ -18,7 +19,7 @@ class BlobSegmentation {
 
         void /*std::vector<cv::Rect>*/ intensitySegment(cv::Mat fg);
 
-        std::vector<cv::Rect> connectedComponentSegment(cv::Mat fg);
+        std::vector<DetectedBlob> connectedComponentSegment(cv::Mat fg, int frameNumber);
 };
 
 #endif

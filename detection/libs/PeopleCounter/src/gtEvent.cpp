@@ -50,11 +50,11 @@ void gtEvent::setFoundMatch(bool v){
 }
 
 bool gtEvent::isMatch(AlgoEvent e){
-    if((start+30 >= e.getStart()) && (start-30 <= e.getStart()) &&  //start within margin
-       (end+30 >= e.getEnd()) && (end-30 <= e.getEnd())){           //end within margin
-        return true;
+    if(!(e.getFoundInGT())){    //algo event not already matched with other ground truth event
+        if((start+75 >= e.getStart()) && (start-75 <= e.getStart()) &&  //start within margin
+           (end+75 >= e.getEnd()) && (end-75 <= e.getEnd())){           //end within margin
+            return true;
+        }
     }
-    else{
-        return false;
-    }
+    return false;
 }

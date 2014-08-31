@@ -380,7 +380,7 @@ bool ResearchDetectionFramework::Run()
         //cv::cvtColor(background, background, CV_BGR2GRAY);
         //m_VideoPlayer.Init();                               //Videoplayer back at frame 0
         //-------------------------------------------------------------------------------------------
-        //Init Sigma Delta
+        //Init Median
         //cv::Mat background = cv::Mat(m_VideoPlayer.GetFrameSize(), CV_8UC1, cv::Scalar(128));
         //-------------------------------------------------------------------------------------------
         //Init Sigma Delta with Confidence Measure
@@ -407,9 +407,9 @@ bool ResearchDetectionFramework::Run()
         int negToPosCnt =0;
 
         int frameNumber = -1;       //init at -1 => first framenumber = 0
-        //int count = 0;            //to stop at certain frame
+        int count = 0;            //to stop at certain frame
         while(true){
-            //count++;
+            count++;
             cv::Mat newFrame = m_VideoPlayer.GetNextFrame();
             if(newFrame.data == 0){
                 m_VideoPlayer.Reset();
@@ -423,9 +423,9 @@ bool ResearchDetectionFramework::Run()
 
             //Foreground Segmentation
             //fgSegment.runningAvgBackground(currFrame, background, foreground);
-            //fgSegment.sigmaDeltaBackground(currFrame, background, foreground);
+            //fgSegment.medianBackground(currFrame, background, foreground);
             fgSegment.sigmaDeltaCMBackground(currFrame, background, foreground, frameCount, confidence, variance,
-                                             detectionCount, toUpdate);
+                                           detectionCount, toUpdate);
 
             //Morphological Operations: opening -> closing
             cv::Mat foregroundMorph;
@@ -437,31 +437,16 @@ bool ResearchDetectionFramework::Run()
             cv::morphologyEx(foregroundMorph, foregroundMorph, cv::MORPH_CLOSE, kernel2);
             cv::morphologyEx(foregroundMorph, foregroundMorph, cv::MORPH_CLOSE, kernel2);
             cv::morphologyEx(foregroundMorph, foregroundMorph, cv::MORPH_CLOSE, kernel2);
+            //cv::Mat kernel2 =  cv::Mat::ones(cv::Size(20,20), CV_8UC1);
+            //cv::morphologyEx(foregroundMorph, foregroundMorph, cv::MORPH_CLOSE, kernel2);
 
             //Blob Segmentation
             //std::vector<cv::Rect> boundRect = blobSegment.contourSegment(foregroundMorph);
             //std::vector<cv::Rect> boundRect = blobSegment.intensitySegment(foregroundMorph); //Unfinished
-            std::vector<cv::Rect> boundRect = blobSegment.connectedComponentSegment(foregroundMorph);
-            //Create objects from the bounding boxes used for tracking
-            int nextLabel = 1;
-            std::vector<DetectedBlob> detectedBlobs;
-            std::vector<cv::Rect>::iterator rectIt;
-            for(rectIt = boundRect.begin(); rectIt != boundRect.end(); rectIt++){
-                if(rectIt->area() > 180){
-                    DetectedBlob blob = DetectedBlob();
-                    blob.frameNr = frameNumber;
-                    blob.BBox = (*rectIt);
-                    blob.label = nextLabel;
-                    nextLabel++;
-                    detectedBlobs.push_back(blob);
-                }
-            }
+            std::vector<DetectedBlob> detectedBlobs = blobSegment.connectedComponentSegment(foregroundMorph, frameNumber);
+
 
             //Tracking
-            //tracker.bestMatchTracking(presentObjects, detectedBlobs); //Check for best match in prev.
-                                                    //If select eachother => match
-                                                    //No match backward => new object
-                                                    //No match forward => end of object
             tracker.simpleTracking(finishedTracks, currentTracks, detectedBlobs, frameNumber);
 
             //Check if Pedestrian crossed
@@ -484,11 +469,13 @@ bool ResearchDetectionFramework::Run()
                     //Check if Left-bottom crossed
                     if(Geometry::doLinesIntersect(trajectLB, line1)){
                         bool sideBeforeBL = Geometry::whatSideOfLine(line1,sLastA);
-                        it->setBLCrossed(!it->getBLCrossed());
-                        it->setBLPosToNeg(sideBeforeBL);
+                        it->setBLCrossed(!it->getBLCrossed());  //not yet crossed <-> crossed
+                        it->setBLPosToNeg(sideBeforeBL);        //remember direction
                         if(it->getBLCrossed() && it->getBRCrossed()){   //if BR already crossed
-                            if(sideBeforeBL == it->getBRPosToNeg()){  //in same direction -> end the event
-                                if(!it->getCounted(sideBeforeBL)){       //not counted before in this direction
+                            if(sideBeforeBL == it->getBRPosToNeg()){    //in same direction -> end the event
+                                if((!it->getCounted(sideBeforeBL))      //not counted before in this direction
+                                && (it->getConfidence() >= 25)      //has existed long enough
+                                && (it->isPedestrian())){           //classified enough times
                                     AlgoEvent event = it->getEvent();
                                     event.setEnd(frameNumber);
                                     event.setEndRect(lastBox);
@@ -521,8 +508,10 @@ bool ResearchDetectionFramework::Run()
                         it->setBRCrossed(!it->getBRCrossed());
                         it->setBRPosToNeg(sideBeforeBR);
                         if(it->getBRCrossed() && it->getBLCrossed()){   //if BL already crossed
-                            if(sideBeforeBR == it->getBLPosToNeg()){  //in same direction -> end the event
-                                if(!it->getCounted(sideBeforeBR)){     //if not counted before in this direction
+                            if(sideBeforeBR == it->getBLPosToNeg()){    //in same direction -> end the event
+                                if(!it->getCounted(sideBeforeBR)    //not counted before
+                                && (it->getConfidence() >= 25)      //has existed long enough
+                                && (it->isPedestrian())){           //if not counted before in this direction
                                     AlgoEvent event = it->getEvent();
                                     event.setEnd(frameNumber);
                                     event.setEndRect(lastBox);
@@ -555,10 +544,17 @@ bool ResearchDetectionFramework::Run()
 
             //Draw the Bounding Boxes
             for(it = currentTracks.begin(); it != currentTracks.end(); it++){
-                if(it->getMatched() == true){ //Up to date
+                if(it->getMatched() == true){ //Up to date && 40x classified as pedestrian
                     cv::Rect rect = it->getBoxes().back().BBox;
                     //if(rect.area() > 180){
-                        cv::rectangle(newFrame, rect, it->getColor());
+                        cv::Scalar color = cv::Scalar(0,0,255);
+                        if(it->isPedestrian())
+                            color = cv::Scalar(0,255,0);
+                        cv::rectangle(newFrame, rect, color);
+                        std::stringstream ss;
+                        //ss << it->getPedestrianCnt();
+                        //cv::putText(newFrame,ss.str(),cv::Point(rect.x+4, rect.y+4),cv::FONT_HERSHEY_SIMPLEX,1,
+                        //            it->getColor(),3,8,false);
                     //}
                 }
             }
@@ -597,19 +593,19 @@ bool ResearchDetectionFramework::Run()
                         cv::Scalar(0,255,0),3,8,false);
 
             //Generate windows
-            //cv::namedWindow("Current Frame");
+            cv::namedWindow("Current Frame");
             //cv::namedWindow("Background");
             //cv::namedWindow("Foreground");
             //cv::namedWindow("Foreground Morphed");
             //cv::namedWindow("Variance");
             //cv::namedWindow("Confidence Measurement");
-            //cv::imshow("Current Frame", newFrame);
+            cv::imshow("Current Frame", newFrame);
             //cv::imshow("Background", background);
             //cv::imshow("Foreground", foreground);
             //cv::imshow("Foreground Morphed", foregroundMorph);
             //cv::imshow("Variance", variance);
             //cv::imshow("Confidence Measurement", confidence);
-            //if(count<=3850){
+            //if(count<=1){
                 cv::waitKey(1);
             //} else {
             //    cv::waitKey();
@@ -752,25 +748,32 @@ void ResearchDetectionFramework::FinishGroupPerformanceAnalyse(const string &Gro
             xmlEvent->GetAttribute("End", &end);
             event.setStart(start);
             event.setEnd(end);
+            event.setFoundInGT(false);
             algoEvents.push_back(event);
         }
     }
 
-    for(auto& gte : gtEvents){
-        for(auto& alge : algoEvents){
-            if(gte.isMatch(alge)){          //Find matches in the Algorithm Events
-                alge.setFoundInGT(true);    //Find match => True Positive
-                gte.setFoundMatch(true);
+    std::vector<AlgoEvent>::iterator alge;
+    std::vector<gtEvent>::iterator gte;
+    for(gte = gtEvents.begin(); gte != gtEvents.end(); gte++){
+        for(alge = algoEvents.begin(); alge != algoEvents.end(); alge++){
+            if(gte->isMatch(*alge)){          //Find matches in the Algorithm Events
+                alge->setFoundInGT(true);    //Find match => True Positive
+                gte->setFoundMatch(true);
                 TP++;
                 break;
             }
         }
-        if(!gte.getFoundMatch()){           //No match => False Negative
+        if(!(gte->getFoundMatch())){           //No match => False Negative
             FN++;
         }
     }
 
-    FP = static_cast<unsigned int>(algoEvents.size()) - TP; //All unmatched algorithm events are False Positive
+    for(alge = algoEvents.begin(); alge != algoEvents.end(); alge++){ //All unmatched algorithm events are False Positive
+        if(!(alge->getFoundInGT())){
+            FP++;
+        }
+    }
 
     sensitivity = 100.0*TP/(TP+FN);
     precision = 100.0*TP/(TP+FP);

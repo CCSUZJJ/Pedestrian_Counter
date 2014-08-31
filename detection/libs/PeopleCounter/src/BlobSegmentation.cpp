@@ -52,8 +52,8 @@ void /*std::vector<cv::Rect>*/ BlobSegmentation::intensitySegment(cv::Mat fg){
 //    cv::waitKey(1);
 }
 
-std::vector<cv::Rect> BlobSegmentation::connectedComponentSegment(cv::Mat fg){
-    std::vector<cv::Rect> boundRect;
+std::vector<DetectedBlob> BlobSegmentation::connectedComponentSegment(cv::Mat fg, int frameNumber){
+    std::vector<DetectedBlob> detectedBlobs;
 
     //Run-length encode
     std::vector<Run> runs;
@@ -75,7 +75,7 @@ std::vector<cv::Rect> BlobSegmentation::connectedComponentSegment(cv::Mat fg){
 
     if(!runs.empty()){
         //Label the runs
-        int nextNewLabel = 0;
+        int nextNewLabel = 1;
         std::vector<Run>::iterator run;
         for(run = runs.begin(); run != runs.end(); run++){
             if(run->label == -1){ //If run has no label (run on first row with runs or unconnected with a run above
@@ -104,8 +104,8 @@ std::vector<cv::Rect> BlobSegmentation::connectedComponentSegment(cv::Mat fg){
             }
         }
 
-        //Make blobs, determine bounding box
-        for(int i = 0; i < nextNewLabel; i++){
+        //Make blobs, determine bounding box, leanness, compactness
+        for(int i = 1; i < nextNewLabel; i++){
             std::vector<Run> blob;
             std::vector<Run>::iterator currRun;
             for(currRun = runs.begin(); currRun != runs.end(); currRun++){
@@ -115,12 +115,18 @@ std::vector<cv::Rect> BlobSegmentation::connectedComponentSegment(cv::Mat fg){
             }
             if(!blob.empty()){
                 Run firstRun = blob[0];
+                Run lastRun = blob[blob.size()-1];
+                int perimeter = 0;
+                int area = 0;
                 int minX = firstRun.start.x;
                 int maxX = firstRun.start.x + firstRun.length;
                 int minY = firstRun.start.y;
                 int maxY = firstRun.start.y;
                 std::vector<Run>::iterator blobRun;
                 for(blobRun = blob.begin(); blobRun != blob.end(); blobRun++){
+                    perimeter += 2; //beginning and end
+                    area += blobRun->length;
+
                     if(blobRun->start.x < minX)
                         minX = blobRun->start.x;
                     if((blobRun->start.x + blobRun->length) > maxX)
@@ -130,13 +136,26 @@ std::vector<cv::Rect> BlobSegmentation::connectedComponentSegment(cv::Mat fg){
                     else if(blobRun->start.y > maxY)
                         maxY = blobRun->start.y;
                 }
-                cv::Rect boundingBox = cv::Rect(minX, minY, maxX-minX, maxY-minY);
-                if(boundingBox.area() > 300){
-                    boundRect.push_back(boundingBox);
+
+                perimeter += (firstRun.length-2); //correction for first and last run
+                perimeter += (lastRun.length-2);
+
+                DetectedBlob b = DetectedBlob();
+                b.frameNr = frameNumber;
+                b.BBox = cv::Rect(minX, minY, maxX-minX, maxY-minY);
+                b.label = i;
+                b.leanness = b.BBox.height*1.0/b.BBox.width;
+                b.compactness = (perimeter*perimeter*1.0)/area;
+
+
+                if(area > 220){
+                    detectedBlobs.push_back(b);
+                    //std::cout << "Perimeter: "<<perimeter<<"    Area: "<<area<<std::endl;
+                    //std::cout << "Leanness: "<<b.leanness<<"    Compactness: "<<b.compactness<<std::endl;
                 }
             }
         }
     } //END if(!runs.empty())
 
-    return boundRect;
+    return detectedBlobs;
 }

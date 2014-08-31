@@ -10,7 +10,7 @@ void ForegroundSegmentation::runningAvgBackground(cv::Mat frame, cv::Mat bg, cv:
     cv::threshold(fg, fg, 40, 255, 0);
 }
 
-void ForegroundSegmentation::sigmaDeltaBackground(cv::Mat frame, cv::Mat bg, cv::Mat fg){
+void ForegroundSegmentation::medianBackground(cv::Mat frame, cv::Mat bg, cv::Mat fg){
     for(int i = 0; i < frame.rows; i++){
         for(int j = 0; j < frame.cols; j++){
             if(frame.at<uchar>(i,j) > bg.at<uchar>(i,j))

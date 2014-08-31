@@ -9,6 +9,8 @@ struct DetectedBlob {
     int label;
     bool foundMatch = false;
     int frameNr;
+    double compactness;
+    double leanness;
 };
 
 

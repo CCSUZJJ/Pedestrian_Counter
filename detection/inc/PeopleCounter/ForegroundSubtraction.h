@@ -10,7 +10,7 @@ class ForegroundSegmentation {
 
         void runningAvgBackground(cv::Mat frame, cv::Mat bg, cv::Mat fg);
 
-        void sigmaDeltaBackground(cv::Mat frame, cv::Mat bg, cv::Mat fg);
+        void medianBackground(cv::Mat frame, cv::Mat bg, cv::Mat fg);
 
         void sigmaDeltaCMBackground(cv::Mat frame, cv::Mat bg, cv::Mat fg, cv::Mat frameCount,
                                     cv::Mat confidence, cv::Mat variance, cv::Mat detectionCount,

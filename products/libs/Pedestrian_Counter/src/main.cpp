@@ -4,6 +4,7 @@
 #include "PreDefinedParameters.h"
 #include "PeopleCounter.h"
 //#include "IntrusionWrapperAlgo.h"
+#include <time.h>
 
 int main(int , char *[])
 {
@@ -29,7 +30,14 @@ int main(int , char *[])
         {
             TestCaseResultNames.push_back(Case.s_ResultName);
             DetFramework.Configure(Case.s_VideoName, Case.s_ConfigName, Case.s_GroundTruthName, Case.s_ResultName, Group.s_GroupName);
+
+            time_t start;
+            time_t end;
+            time(&start);
             DetFramework.Run();
+            time(&end);
+            double runtime = difftime(end, start);
+            std::cout << "runtime is " << runtime << " seconds"<<std::endl;
         }
 
         DetFramework.FinishGroupPerformanceAnalyse(Group.s_GroupResultName, TestCaseResultNames);
